@@ -1,366 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>NavMiles – Smart Fuel & Mileage Tracker</title>
-  <meta name="description" content="NavMiles: The smart, one-tap mileage, fuel, and trip tracker for drivers and businesses. IRS-ready logs, fuel alerts, business/personal switching, and more.">
-  <meta property="og:title" content="NavMiles – Smart Fuel & Mileage Tracker">
-  <meta property="og:description" content="One-tap gas, IRS-ready trip logs, fuel alerts, and more. Save time and money with NavMiles.">
-  <meta property="og:image" content="assets/app_logo.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/png" href="assets/app_logo.png">
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%);
-      color: #cde5fa;
-      min-height: 100vh;
-    }
-    .navbar {
-      width: 100vw;
-      background: rgba(10,24,47,0.95);
-      box-shadow: 0 1px 10px #01152433;
-      padding: 0;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      display: flex;
-      justify-content: center;
-    }
-    .nav-content {
-      width: 100%;
-      max-width: 530px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      gap: 12px;
-      padding: 10px 0 7px 0;
-    }
-    .nav-logo {
-      height: 36px;
-      margin-right: 16px;
-      border-radius: 13px;
-      box-shadow: 0 3px 12px #01152433;
-      background: #fff1;
-      object-fit: contain;
-    }
-    .nav-btn {
-      background: none;
-      border: none;
-      color: #cde5fa;
-      font-size: 1.05rem;
-      padding: 9px 16px;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-      border-radius: 13px;
-      margin: 0 4px;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s;
-    }
-    .nav-btn.active,
-    .nav-btn:hover {
-      background: #1e88e5;
-      color: #fff;
-    }
-    .container {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 0 18px 60px 18px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .logo {
-      width: 220px;
-      margin: 36px auto 22px auto;
-      display: block;
-      border-radius: 30px;
-      box-shadow: 0 6px 36px #01152444;
-    }
-    .download-btn {
-      display: block;
-      width: 100%;
-      padding: 22px 0;
-      margin: 0 auto 30px auto;
-      background: #1e88e5;
-      color: #fff;
-      font-weight: bold;
-      font-size: 1.35rem;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      box-shadow: 0 3px 12px #01152455;
-      transition: background 0.18s;
-      text-align: center;
-      text-decoration: none;
-      letter-spacing: 1px;
-    }
-    .download-btn:hover {
-      background: #1976d2;
-    }
-    .card {
-      width: 100%;
-      background: rgba(10,24,47,0.97);
-      border-radius: 26px;
-      padding: 34px 28px 28px 28px;
-      margin-bottom: 34px;
-      box-shadow: 0 6px 28px #01152460;
-      display: none;
-    }
-    .card.active {
-      display: block;
-      animation: fadeIn 0.6s;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(40px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    .why-title, .faq-title, .contact-title {
-      color: #e39b0d;
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 14px;
-      text-align: center;
-      letter-spacing: 0.5px;
-    }
-    .why-card ul {
-      margin: 20px 0 0 0;
-      padding-left: 18px;
-    }
-    .why-card li {
-      margin-bottom: 13px;
-      font-size: 1.07rem;
-      line-height: 1.7;
-    }
-    .why-card p, .faq-card p, .contact-card p {
-      color: #b5d4ef;
-      font-size: 1.07rem;
-      margin: 0 0 8px 0;
-      text-align: center;
-    }
-    /* FAQ */
-    .faq-list {
-      margin: 22px 0 0 0;
-      padding: 0;
-      list-style: none;
-    }
-    .faq-q {
-      color: #36cfff;
-      font-weight: bold;
-      margin-top: 22px;
-      margin-bottom: 5px;
-      font-size: 1.12rem;
-      letter-spacing: 0.2px;
-      text-align: left;
-    }
-    .faq-a {
-      color: #cde5fa;
-      font-size: 1rem;
-      margin-bottom: 2px;
-      line-height: 1.6;
-      text-align: left;
-    }
-    /* Contact */
-    .contact-card label {
-      display: block;
-      color: #e39b0d;
-      margin-bottom: 6px;
-      font-weight: bold;
-      letter-spacing: 0.3px;
-    }
-    .contact-card input,
-    .contact-card textarea {
-      width: 100%;
-      padding: 11px 12px;
-      border-radius: 8px;
-      border: 1px solid #113355;
-      background: #0d233a;
-      color: #fff;
-      margin-bottom: 15px;
-      font-size: 1rem;
-      resize: vertical;
-      font-family: inherit;
-      transition: border 0.18s;
-    }
-    .contact-card input:focus,
-    .contact-card textarea:focus {
-      border: 1.5px solid #1e88e5;
-      outline: none;
-    }
-    .contact-btn {
-      background: #1e88e5;
-      color: #fff;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 12px;
-      padding: 11px 34px;
-      margin: 0 auto;
-      display: block;
-      cursor: pointer;
-      box-shadow: 0 2px 12px #01152444;
-      transition: background 0.18s;
-    }
-    .contact-btn:hover {
-      background: #1976d2;
-    }
-    .contact-note {
-      color: #8ea2be;
-      text-align: center;
-      margin-top: 10px;
-      font-size: 0.95rem;
-    }
-    .footer {
-      position: fixed;
-      bottom: 0; left: 0; width: 100vw;
-      background: rgba(10,24,47,0.92);
-      color: #8ea2be;
-      text-align: center;
-      font-size: 1rem;
-      padding: 13px 6px 11px 6px;
-      letter-spacing: 0.5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      z-index: 100;
-      box-shadow: 0 -2px 12px #01152466;
-    }
-    .footer a {
-      color: #46cfff;
-      text-decoration: none;
-      margin-left: 3px;
-      font-size: 1.16em;
-      vertical-align: middle;
-      transition: color 0.18s;
-    }
-    .footer a:hover {
-      color: #e39b0d;
-    }
-    .x-icon {
-      width: 23px; height: 23px; vertical-align: middle; margin-right: 4px;
-      filter: brightness(1.2);
-    }
-    @media (max-width: 600px) {
-      .container { max-width: 99vw; padding: 0 5vw 70px 5vw; }
-      .why-card, .faq-card, .contact-card { padding: 19px 6vw 23px 6vw; }
-      .logo, .nav-logo { width: 85vw; min-width: 110px; max-width: 280px; }
-      .download-btn { padding: 17px 0; font-size: 1.1rem;}
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NavMiles – Smart Mileage & Fuel Tracking</title>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <div class="navbar">
-    <div class="nav-content">
-      <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
-      <button class="nav-btn active" data-section="home">Home</button>
-      <button class="nav-btn" data-section="faq">FAQ</button>
-      <button class="nav-btn" data-section="contact">Contact Us</button>
-    </div>
-  </div>
-
-  <div class="container">
-    <!-- Logo (main page) -->
-    <img src="assets/app_logo.png" class="logo" alt="NavMiles Logo" id="main-logo">
-
-    <!-- Home Card -->
-    <div class="card why-card active" id="home-card">
-      <div class="why-title">Why NavMiles?</div>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="features.html">Features</a>
+    <a href="comparison.html">Comparison</a>
+    <a href="faq.html">FAQ</a>
+    <a href="newsletter.html">Newsletter</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <main>
+    <div class="hero">
+      <img src="assets/app_logo.png" class="logo" alt="NavMiles Logo" />
+      <h1>NavMiles</h1>
+      <h2>The Smarter Way to Track Miles, Find Gas, & Save Money</h2>
       <p>
-        NavMiles is your intelligent mileage and fuel tracker—built for drivers, freelancers, business owners, and anyone who wants to save money and time.<br><br>
-        One tap finds the nearest gas, logs your trip, and tracks your fuel costs—all with IRS-compliant records.
+        Mileage logs, IRS-ready reports, fuel finders, and more. For drivers, businesses, and road warriors.  
+        <br /><br />
+        <a href="#" class="btn-main">Download from App Store</a>
+        <a href="https://x.com/NavMiles" class="btn-main" target="_blank">Follow us on X</a>
       </p>
-      <a class="download-btn" href="#" target="_blank">Download on the App Store</a>
-      <ul>
-        <li>✓ Fast, one-tap gas station finder along your route</li>
-        <li>✓ Effortless mileage tracking & trip logs for tax deductions</li>
-        <li>✓ Automatic fuel alerts and range calculations</li>
-        <li>✓ Export IRS-ready trip logs (PDF & CSV)</li>
-        <li>✓ Business & personal trip tracking—switch with a tap</li>
-        <li>✓ Privacy-first. No selling your data—ever</li>
-      </ul>
     </div>
-
-    <!-- FAQ Card -->
-    <div class="card faq-card" id="faq-card">
-      <div class="faq-title">Frequently Asked Questions</div>
-      <ul class="faq-list">
-        <li>
-          <div class="faq-q">How do I track my miles automatically?</div>
-          <div class="faq-a">Tap "Start Tracking" in the app dashboard before your drive. NavMiles will automatically log your trip, miles, and stops. When you arrive, tap "End Tracking" to save your trip to the log. You can also manually enter trips if you forgot to track them.</div>
-        </li>
-        <li>
-          <div class="faq-q">How do I find gas stations nearby?</div>
-          <div class="faq-a">Just tap the "Find Gas" button on the main screen. NavMiles instantly shows nearby stations—no searching, no distractions.</div>
-        </li>
-        <li>
-          <div class="faq-q">How do I export my trip logs for taxes?</div>
-          <div class="faq-a">Upgrade to the Business plan to unlock trip export. Tap "Export" on your Trip Log screen, choose CSV or PDF, and select your date range. Files are ready for email, print, or upload to your accountant.</div>
-        </li>
-        <li>
-          <div class="faq-q">What features do I get with Business?</div>
-          <div class="faq-a">Business unlocks unlimited trip history, IRS-ready PDF & CSV exports, business/personal trip switching, and more. See all upgrade benefits in the app under "Upgrade."</div>
-        </li>
-        <li>
-          <div class="faq-q">Can I switch between business and personal trips?</div>
-          <div class="faq-a">Yes! You can tag each trip as "Personal" or "Business" when logging it, and filter/export based on trip type—perfect for IRS compliance.</div>
-        </li>
-        <li>
-          <div class="faq-q">Does NavMiles track my data or sell it?</div>
-          <div class="faq-a">No. Your trip and location data is stored securely and never sold. Check our <a href="privacy.html" target="_blank" style="color:#46cfff">Privacy Policy</a> for details.</div>
-        </li>
-        <li>
-          <div class="faq-q">What if I need support?</div>
-          <div class="faq-a">Contact us any time below—we usually respond in 24 hours or less.</div>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Contact Us Card -->
-    <div class="card contact-card" id="contact-card">
-      <div class="contact-title">Contact Us</div>
-      <form action="mailto:support@navmiles.com" method="POST" enctype="text/plain" style="margin-bottom:0;">
-        <label for="name">Name</label>
-        <input id="name" name="Name" type="text" required placeholder="Your name">
-        <label for="email">Email</label>
-        <input id="email" name="Email" type="email" required placeholder="Your email">
-        <label for="msg">Message</label>
-        <textarea id="msg" name="Message" required rows="3" placeholder="How can we help?"></textarea>
-        <button class="contact-btn" type="submit">Send Message</button>
-        <div class="contact-note">
-          Or email us at <a href="mailto:support@navmiles.com" style="color:#46cfff">support@navmiles.com</a>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="footer">
-    &copy; 2025 NavMiles • Built by mcuztoms llc
-    <a href="https://x.com/NavMiles" target="_blank" title="Follow NavMiles on X">
-      <img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">
-      @NavMiles
-    </a>
-  </div>
-  <script>
-    // Tab switching logic
-    const tabs = document.querySelectorAll('.nav-btn');
-    const cards = {
-      home: document.getElementById('home-card'),
-      faq: document.getElementById('faq-card'),
-      contact: document.getElementById('contact-card'),
-    };
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        Object.values(cards).forEach(card => card.classList.remove('active'));
-        cards[tab.dataset.section].classList.add('active');
-      });
-    });
-  </script>
+  </main>
+  <footer>
+    <a href="privacy.html">Privacy Policy</a> •
+    <a href="tos.html">Terms of Service</a> •
+    <a href="refund.html">Refund Policy</a>
+    <br />
+    &copy; 2025 NavMiles. All rights reserved.
+  </footer>
 </body>
 </html>
