@@ -78,14 +78,110 @@
       align-items: center;
       min-height: 100vh;
     }
-    /* --- Footer --- */
+    .logo {
+      width: 220px;
+      margin: 36px auto 22px auto;
+      display: block;
+      border-radius: 30px;
+      box-shadow: 0 6px 36px #01152444;
+    }
+    .title {
+      font-size: 2.2rem;
+      color: #e39b0d;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-align: center;
+      margin: 2px 0 9px 0;
+    }
+    .subtitle {
+      color: #46cfff;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+    .desc {
+      color: #b5d4ef;
+      font-size: 1.08rem;
+      text-align: center;
+      margin-bottom: 24px;
+      margin-top: 4px;
+      line-height: 1.7;
+    }
+    .download-btn {
+      display: block;
+      width: 100%;
+      padding: 22px 0;
+      margin: 0 auto 32px auto;
+      background: #1e88e5;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.35rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 3px 12px #01152455;
+      transition: background 0.18s;
+      text-align: center;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    .download-btn:hover {
+      background: #1976d2;
+    }
+    .features-list {
+      list-style: none;
+      padding: 0 0 0 12px;
+      margin-bottom: 33px;
+      margin-top: 7px;
+      width: 100%;
+    }
+    .features-list li {
+      font-size: 1.06rem;
+      margin-bottom: 13px;
+      line-height: 1.7;
+      color: #cde5fa;
+      position: relative;
+      padding-left: 20px;
+    }
+    .features-list li:before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #2ee99b;
+      font-weight: bold;
+      font-size: 1.19em;
+    }
+    .whats-new-title {
+      color: #e39b0d;
+      font-size: 1.21rem;
+      font-weight: bold;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      text-align: center;
+      letter-spacing: 0.4px;
+    }
+    .whats-new-card {
+      background: rgba(10,24,47,0.97);
+      border-radius: 20px;
+      box-shadow: 0 2px 16px #01152433;
+      padding: 26px 19px 22px 19px;
+      width: 100%;
+      margin: 0 auto 28px auto;
+      color: #b5d4ef;
+      text-align: left;
+      font-size: 1.03rem;
+      margin-bottom: 80px;
+      min-height: 120px;
+    }
     .footer {
       position: fixed;
       left: 0; bottom: 0; width: 100vw;
       background: rgba(10,24,47,0.97);
       color: #8ea2be;
       font-size: 1rem;
-      padding: 16px 6px 20px 6px;
+      padding: 13px 6px 16px 6px;
       letter-spacing: 0.5px;
       box-shadow: 0 -2px 12px #01152466;
       z-index: 100;
@@ -96,7 +192,7 @@
       justify-content: center;
     }
     .footer .copyright {
-      margin-bottom: 7px;
+      margin-bottom: 8px;
       font-size: 1rem;
       font-weight: 600;
       color: #8ea2be;
@@ -107,7 +203,7 @@
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
       justify-content: center;
       width: 100%;
@@ -118,7 +214,7 @@
       font-size: 1.08em;
       transition: color 0.18s;
       display: inline-block;
-      margin: 0 6px;
+      margin: 0 4px;
       word-break: break-all;
     }
     .footer a:hover { color: #e39b0d; }
@@ -132,7 +228,7 @@
         font-size: 0.96rem;
       }
       .footer-links {
-        gap: 7px;
+        gap: 8px;
         font-size: 0.97em;
       }
       .container { padding-bottom: 200px !important;}
