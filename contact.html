@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us – NavMiles</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="comparison.html">Comparison</a>
+    <a href="faq.html">FAQ</a>
+    <a href="newsletter.html">Newsletter</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+  <main>
+    <section class="content-page">
+      <h1>Contact Us</h1>
+      <form name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact">
+        <label>Name</label>
+        <input type="text" name="name" required placeholder="Your Name" />
+        <label>Email</label>
+        <input type="email" name="email" required placeholder="you@email.com" />
+        <label>Message</label>
+        <textarea name="message" required placeholder="Type your message here..."></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <p>Or email us directly: <a href="mailto:support@navmiles.com">support@navmiles.com</a></p>
+      <a href="index.html" class="back-home">← Back to Home</a>
+    </section>
+  </main>
+  <footer>
+    <a href="privacy.html">Privacy Policy</a> •
+    <a href="tos.html">Terms of Service</a> •
+    <a href="refund.html">Refund Policy</a>
+    <br />
+    &copy; 2025 NavMiles. All rights reserved.
+  </footer>
+</body>
+</html>
 
