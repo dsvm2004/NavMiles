@@ -36,8 +36,9 @@
   <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
   <!-- NavMiles site styles -->
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: 'Inter', Arial, sans-serif;
       background: radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%);
       color: #cde5fa;
@@ -47,12 +48,12 @@
       width: 100vw;
       background: rgba(10,24,47,0.95);
       box-shadow: 0 1px 10px #01152433;
-      padding: 0;
       position: sticky;
       top: 0;
       z-index: 20;
       display: flex;
       justify-content: center;
+      min-height: 56px;
     }
     .nav-content {
       width: 100%;
@@ -63,6 +64,9 @@
       margin: 0 auto;
       gap: 12px;
       padding: 10px 0 7px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      flex-wrap: nowrap;
     }
     .nav-logo {
       height: 36px;
@@ -71,6 +75,7 @@
       box-shadow: 0 3px 12px #01152433;
       background: #fff1;
       object-fit: contain;
+      flex-shrink: 0;
     }
     .nav-btn {
       background: none;
@@ -85,12 +90,17 @@
       transition: background 0.15s, color 0.15s;
       text-decoration: none;
       display: inline-block;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
-    .nav-btn.active, .nav-btn:hover { background: #1e88e5; color: #fff; }
+    .nav-btn.active, .nav-btn:hover {
+      background: #1e88e5;
+      color: #fff;
+    }
     .container {
       max-width: 480px;
       margin: 0 auto;
-      padding: 0 18px 70px 18px;
+      padding: 0 18px 150px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -152,19 +162,28 @@
     }
     .footer a:hover { color: #e39b0d; }
     .x-icon { width: 21px; height: 21px; vertical-align: middle; margin-right: 2px; filter: brightness(1.2);}
-    @media (max-width: 600px) {
-      .container { max-width: 99vw; padding: 0 4vw 100px 4vw;}
-      .newsletter-title { font-size: 1.3rem;}
+    @media (max-width: 700px) {
+      .container { max-width: 99vw; padding: 0 4vw 180px 4vw;}
+      .newsletter-title { font-size: 1.3rem; }
     }
     @media (max-width: 650px) {
-      .footer-row { flex-direction: column; align-items: center; gap: 4px; }
-      .footer { font-size: 0.95rem; padding: 14px 5vw 68px 5vw; }
+      .footer-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+      .footer {
+        font-size: 0.95rem;
+        padding: 14px 5vw 68px 5vw;
+        position: fixed;
+        left: 0; bottom: 0; width: 100vw;
+      }
       .footer-links { gap: 8px; margin-top: 2px; }
       .container { padding-bottom: 190px !important;}
-      .nav-content { flex-wrap: wrap; gap: 4px; justify-content: flex-start; overflow-x: auto; }
+      .nav-content { flex-wrap: nowrap; gap: 4px; justify-content: flex-start; padding-left: 4vw; overflow-x: auto; scrollbar-width: none; }
       .nav-content::-webkit-scrollbar { display: none; }
-      .nav-btn { padding: 7px 10px; font-size: 1rem; margin: 2px 3px; }
-      .logo { width: 82vw !important; max-width: 190px !important; }
+      .nav-btn { padding: 8px 9px; font-size: 1rem; margin: 2px 2px; white-space: nowrap; }
+      .nav-logo { height: 29px; margin-right: 9px; min-width: 28px; max-width: 32px; }
     }
     @media (max-width: 430px) {
       .footer { font-size: 0.84rem; padding: 11px 3vw 18px 4vw;}
@@ -173,7 +192,7 @@
   </style>
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- Navbar (updated for site-wide consistency) -->
   <div class="navbar">
     <div class="nav-content">
       <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
@@ -195,6 +214,8 @@
     <!-- Begin Brevo Form -->
     <div class="sib-form" style="text-align: center; background-color: #011524;">
       <div id="sib-form-container" class="sib-form-container">
+        <!-- Brevo form as before, unchanged -->
+        <!-- ...[keep your current Brevo form HTML exactly as it is]... -->
         <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
           <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
             <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
@@ -218,7 +239,9 @@
         </div>
         <div></div>
         <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid; direction:ltr">
+          <!-- Brevo form fields -->
           <form id="sib-form" method="POST" action="https://db0a234c.sibforms.com/serve/MUIFAHnXwxoTUO5trTW_RgRoG_HdkptcA6qV82OUCX6U2qGdZfwol7arur_6z7k_W0GPA2rN4Wa4BbJ89lzOwj0fs4vXSuPilrWUfmaMcvohvJ20trJEgR6yHAXilXXQgRhoyn4bAlX1ckpbIjhYhUOnkkXNbkfnTgVk48UhY3r5wibzpvdVw6ND9LH71KjOqNdKmsXN9FDnrqX6" data-type="subscription">
+            <!-- ...fields as before... -->
             <div style="padding: 8px 0;">
               <div class="sib-form-block" style="font-size:32px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent; text-align:left">
                 <p>NavMiles</p>
