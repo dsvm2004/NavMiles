@@ -1,45 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FAQ – NavMiles</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>NavMiles – FAQ</title>
+  <link rel="icon" type="image/png" href="assets/app_logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; font-family:'Inter',Arial,sans-serif; background:radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%); color:#cde5fa; min-height:100vh;}
+    .navbar { width:100vw; background:rgba(10,24,47,0.95); box-shadow:0 1px 10px #01152433; position:sticky; top:0; z-index:20; display:flex; justify-content:center;}
+    .nav-content { width:100%; max-width:630px; display:flex; align-items:center; justify-content:center; margin:0 auto; gap:12px; padding:10px 0 7px 0;}
+    .nav-logo { height:36px; margin-right:16px; border-radius:13px; box-shadow:0 3px 12px #01152433; background:#fff1; object-fit:contain;}
+    .nav-btn { background:none; border:none; color:#cde5fa; font-size:1.05rem; padding:9px 16px; font-weight:700; border-radius:13px; margin:0 4px; cursor:pointer; transition:background 0.15s, color 0.15s; text-decoration:none; display:inline-block;}
+    .nav-btn.active, .nav-btn:hover { background:#1e88e5; color:#fff;}
+    .container { max-width:520px; margin:0 auto; padding:30px 8px 50px 8px; display:flex; flex-direction:column; align-items:center;}
+    .card { width:100%; background:rgba(10,24,47,0.97); border-radius:26px; padding:34px 18px 28px 18px; margin-bottom:34px; box-shadow:0 6px 28px #01152460;}
+    .faq-title { color:#e39b0d; font-size:2rem; font-weight:bold; margin-bottom:18px; text-align:center; letter-spacing:0.5px;}
+    .faq-list { margin:22px 0 0 0; padding:0; list-style:none;}
+    .faq-q { color:#36cfff; font-weight:bold; margin-top:22px; margin-bottom:5px; font-size:1.13rem; letter-spacing:0.2px; text-align:left;}
+    .faq-a { color:#cde5fa; font-size:1rem; margin-bottom:2px; line-height:1.6; text-align:left;}
+    .footer { position:fixed; bottom:0; left:0; width:100vw; background:rgba(10,24,47,0.92); color:#8ea2be; text-align:center; font-size:1rem; padding:13px 6px 11px 6px; letter-spacing:0.5px; display:flex; justify-content:center; align-items:center; gap:12px; z-index:100; box-shadow:0 -2px 12px #01152466;}
+    .footer a { color:#46cfff; text-decoration:none; margin-left:3px; font-size:1.16em; transition:color 0.18s;}
+    .footer a:hover { color:#e39b0d;}
+    .x-icon { width:23px; height:23px; vertical-align:middle; margin-right:4px; filter:brightness(1.2);}
+    @media (max-width:600px) { .container{max-width:99vw; padding:0 4vw 70px 4vw;} .faq-title{font-size:1.3rem;} }
+  </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="features.html">Features</a>
-    <a href="comparison.html">Comparison</a>
-    <a href="faq.html" class="active">FAQ</a>
-    <a href="newsletter.html">Newsletter</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <main>
-    <section class="content-page">
-      <h1>Frequently Asked Questions</h1>
-      <div class="faq-list">
-        <h2>How do I track my mileage with NavMiles?</h2>
-        <p>Just open the app, tap "Start Tracking," and drive! NavMiles auto-logs your route, mileage, and duration for you.</p>
-        <h2>How do I export my trip log?</h2>
-        <p>Go to the Trip Log tab and tap "Export"—choose PDF or CSV. For unlimited exports, upgrade to Business!</p>
-        <h2>How does "Find Gas" work?</h2>
-        <p>Tap "Find Gas" to instantly show nearby gas stations along your route. No searching needed!</p>
-        <h2>Is my data private?</h2>
-        <p>Yes, your trip data is stored securely and never sold to third parties. Read our <a href="privacy.html">Privacy Policy</a>.</p>
-        <h2>How do I cancel?</h2>
-        <p>Cancel anytime in your device's App Store or Play Store subscriptions section.</p>
-      </div>
-      <a href="index.html" class="back-home">← Back to Home</a>
-    </section>
-  </main>
-  <footer>
-    <a href="privacy.html">Privacy Policy</a> •
-    <a href="tos.html">Terms of Service</a> •
-    <a href="refund.html">Refund Policy</a>
-    <br />
-    &copy; 2025 NavMiles. All rights reserved.
-  </footer>
-</body>
-</html>
-
+  <div class="navbar">
+    <div class="nav-content">
+      <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
+      <a class="nav-btn" href="index.html">Home</a>
+      <a class="nav-btn" href="comparison.html">Comparison</a>
+      <a class="nav-btn active" href="faq.html">FAQ</a>
+      <a class="nav-btn" href="newsletter.html">Newsletter</a>
+      <a class="nav-btn" href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <div class="faq-title">Frequently Asked Questions</div>
+      <ul class="faq-list">
+        <li>
+          <div class="faq-q">How do I track my miles automatically?</div>
+          <div class="faq-a">Tap "Start Tracking" in the app dashboard before your drive. NavMiles will automatically log your trip, miles, and stops. When you arrive, tap "End Tracking" to save your trip to the log. You can also manually enter trips if you forgot to track them.</div>
+        </li>
+        <li>
+          <div class="faq-q">How do I find gas stations nearby?</div>
+          <div class="faq-a">Just tap the "Find Gas" button on the main screen. NavMiles instantly shows nearby stations—no searching, no distractions.</div>
+        </li>
+        <li>
+          <div class="faq-q">How do I export my trip logs for taxes?</div>
+          <div class="faq-a">Upgrade to the Business plan to unlock trip export. Tap "Export" on your Trip Log screen, choose CSV or PDF, and select your date range. Files are ready for email, print, or upload to your accountant.</div>
+        </li>
+        <li>
+          <div class="faq-q">What features do I get with Business?</div>
+          <div class="faq-a">Business unlocks unlimited trip history, IRS-ready PDF & CSV exports, business/personal trip switching, and more. See all upgrade benefits in the app under "Upgrade."</div>
+        </li>
+        <li>
+          <div class="faq-q">Can I switch between business and personal trips?</div>
+          <div class="faq-a">Yes! You can tag each trip as "Personal" or "Business" when loggin
