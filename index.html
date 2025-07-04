@@ -10,6 +10,7 @@
   <meta property="og:image" content="assets/app_logo.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="assets/app_logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -17,6 +18,53 @@
       background: radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%);
       color: #cde5fa;
       min-height: 100vh;
+    }
+    .navbar {
+      width: 100vw;
+      background: rgba(10,24,47,0.95);
+      box-shadow: 0 1px 10px #01152433;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+    }
+    .nav-content {
+      width: 100%;
+      max-width: 530px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      gap: 12px;
+      padding: 10px 0 7px 0;
+    }
+    .nav-logo {
+      height: 36px;
+      margin-right: 16px;
+      border-radius: 13px;
+      box-shadow: 0 3px 12px #01152433;
+      background: #fff1;
+      object-fit: contain;
+    }
+    .nav-btn {
+      background: none;
+      border: none;
+      color: #cde5fa;
+      font-size: 1.05rem;
+      padding: 9px 16px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      border-radius: 13px;
+      margin: 0 4px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-btn.active,
+    .nav-btn:hover {
+      background: #1e88e5;
+      color: #fff;
     }
     .container {
       max-width: 480px;
@@ -28,7 +76,7 @@
     }
     .logo {
       width: 220px;
-      margin: 40px auto 22px auto;
+      margin: 36px auto 22px auto;
       display: block;
       border-radius: 30px;
       box-shadow: 0 6px 36px #01152444;
@@ -54,13 +102,22 @@
     .download-btn:hover {
       background: #1976d2;
     }
-    .why-card, .faq-card, .contact-card {
+    .card {
       width: 100%;
       background: rgba(10,24,47,0.97);
       border-radius: 26px;
       padding: 34px 28px 28px 28px;
       margin-bottom: 34px;
       box-shadow: 0 6px 28px #01152460;
+      display: none;
+    }
+    .card.active {
+      display: block;
+      animation: fadeIn 0.6s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
     }
     .why-title, .faq-title, .contact-title {
       color: #e39b0d;
@@ -191,27 +248,34 @@
     @media (max-width: 600px) {
       .container { max-width: 99vw; padding: 0 5vw 70px 5vw; }
       .why-card, .faq-card, .contact-card { padding: 19px 6vw 23px 6vw; }
-      .logo { width: 85vw; min-width: 180px; max-width: 280px; }
+      .logo, .nav-logo { width: 85vw; min-width: 110px; max-width: 280px; }
       .download-btn { padding: 17px 0; font-size: 1.1rem;}
     }
   </style>
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <div class="nav-content">
+      <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
+      <button class="nav-btn active" data-section="home">Home</button>
+      <button class="nav-btn" data-section="faq">FAQ</button>
+      <button class="nav-btn" data-section="contact">Contact Us</button>
+    </div>
+  </div>
+
   <div class="container">
-    <!-- Logo -->
-    <img src="assets/app_logo.png" class="logo" alt="NavMiles Logo">
+    <!-- Logo (main page) -->
+    <img src="assets/app_logo.png" class="logo" alt="NavMiles Logo" id="main-logo">
 
-    <!-- Download Button -->
-    <a class="download-btn" href="#" target="_blank">Download on the App Store</a>
-
-    <!-- Why Card -->
-    <div class="why-card">
+    <!-- Home Card -->
+    <div class="card why-card active" id="home-card">
       <div class="why-title">Why NavMiles?</div>
       <p>
         NavMiles is your intelligent mileage and fuel tracker—built for drivers, freelancers, business owners, and anyone who wants to save money and time.<br><br>
         One tap finds the nearest gas, logs your trip, and tracks your fuel costs—all with IRS-compliant records.
       </p>
+      <a class="download-btn" href="#" target="_blank">Download on the App Store</a>
       <ul>
         <li>✓ Fast, one-tap gas station finder along your route</li>
         <li>✓ Effortless mileage tracking & trip logs for tax deductions</li>
@@ -223,7 +287,7 @@
     </div>
 
     <!-- FAQ Card -->
-    <div class="faq-card">
+    <div class="card faq-card" id="faq-card">
       <div class="faq-title">Frequently Asked Questions</div>
       <ul class="faq-list">
         <li>
@@ -258,7 +322,7 @@
     </div>
 
     <!-- Contact Us Card -->
-    <div class="contact-card">
+    <div class="card contact-card" id="contact-card">
       <div class="contact-title">Contact Us</div>
       <form action="mailto:support@navmiles.com" method="POST" enctype="text/plain" style="margin-bottom:0;">
         <label for="name">Name</label>
@@ -281,5 +345,22 @@
       @NavMiles
     </a>
   </div>
+  <script>
+    // Tab switching logic
+    const tabs = document.querySelectorAll('.nav-btn');
+    const cards = {
+      home: document.getElementById('home-card'),
+      faq: document.getElementById('faq-card'),
+      contact: document.getElementById('contact-card'),
+    };
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        Object.values(cards).forEach(card => card.classList.remove('active'));
+        cards[tab.dataset.section].classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
