@@ -128,7 +128,13 @@
       letter-spacing: 1px;
       display: block;
     }
-    .plan-btn:hover { background: #1976d2; }
+    .plan-btn[disabled] {
+      background: #445d72;
+      color: #b5d4ef;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+    .plan-btn:hover:not([disabled]) { background: #1976d2; }
     .plan-card[style] .plan-name,
     .plan-card[style] .plan-price { color: #e39b0d !important; }
     .plan-card[style] .plan-btn { background: #e39b0d; color: #223851 !important; }
@@ -139,6 +145,28 @@
       text-align: center;
       margin: 18px 0 6px 0;
       font-size: 1.06rem;
+    }
+    .download-section {
+      margin: 22px auto 0 auto;
+      text-align: center;
+      color: #b5d4ef;
+      font-size: 1.08rem;
+    }
+    .store-badges {
+      margin-top: 7px;
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      justify-content: center;
+    }
+    .store-badge {
+      opacity: 0.7;
+      filter: grayscale(1);
+      pointer-events: none;
+      width: 154px;
+      height: auto;
+      border-radius: 14px;
+      background: #222c33;
     }
     /* Footer (EXACT COPY from index.html main page) */
     .footer {
@@ -187,6 +215,7 @@
       .pricing-title { font-size: 1.2rem; margin-top: 24px;}
       .plans { flex-direction: column; align-items: center; gap: 17px;}
       .plan-card { width: 97vw; min-width: 160px; max-width: 350px; }
+      .store-badge { width: 48vw; min-width: 90px; max-width: 150px;}
     }
     @media (max-width: 650px) {
       .footer-row {
@@ -241,7 +270,7 @@
           <li>✓ Privacy-first: no selling your data</li>
           <li>✓ Basic customer support</li>
         </ul>
-        <a href="#" class="plan-btn" target="_blank">Start Free Trial</a>
+        <button class="plan-btn" onclick="showModal()">Start Free Trial</button>
       </div>
       <div class="plan-card" style="border:2.5px solid #e39b0d;">
         <div class="plan-name" style="color:#e39b0d;">Business</div>
@@ -255,11 +284,49 @@
           <li>✓ Priority support (&lt;24h)</li>
           <li>✓ Built for IRS compliance</li>
         </ul>
-        <a href="#" class="plan-btn" style="background:#e39b0d; color:#223851;" target="_blank">Upgrade to Business</a>
+        <button class="plan-btn" style="background:#e39b0d; color:#223851;" onclick="showModal()">Upgrade to Business</button>
       </div>
     </div>
     <a class="switch-link" href="comparison.html">See full plan comparison &rarr;</a>
+
+    <div class="download-section">
+      <b>NavMiles app is launching soon!</b><br>
+      Subscriptions and upgrades are managed inside the app.<br>
+      <div class="store-badges">
+        <img class="store-badge" src="assets/appstore_coming_soon.png" alt="App Store coming soon" />
+        <img class="store-badge" src="assets/playstore_coming_soon.png" alt="Google Play coming soon" />
+      </div>
+    </div>
   </div>
+
+  <!-- Popup Modal -->
+  <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(8,33,49,0.81); z-index:300; justify-content:center; align-items:center;">
+    <div style="background:rgba(10,24,47,1); color:#e39b0d; border-radius:19px; max-width:355px; margin:0 auto; padding:30px 26px 25px 26px; box-shadow:0 7px 40px #011524bb; text-align:center; font-size:1.17rem;">
+      <b>How to Subscribe</b>
+      <div style="color:#cde5fa; margin:17px 0 11px 0; font-size:1.03rem;">
+        All subscriptions, free trials, and upgrades are managed securely inside the NavMiles app.
+        <br><br>
+        <b>Please download NavMiles from the App Store or Google Play and upgrade from within the app.</b>
+      </div>
+      <button onclick="hideModal()" style="margin-top:14px; background:#1e88e5; color:#fff; border:none; border-radius:9px; padding:10px 26px; font-weight:bold; font-size:1.1em; cursor:pointer;">OK</button>
+    </div>
+  </div>
+  <script>
+    function showModal() {
+      document.getElementById('modal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function hideModal() {
+      document.getElementById('modal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    // Prevent scroll behind modal on mobile
+    window.addEventListener('resize', function() {
+      if(document.getElementById('modal').style.display === 'flex') {
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  </script>
   <!-- FOOTER (EXACT COPY) -->
   <div class="footer">
     <div class="footer-row">
