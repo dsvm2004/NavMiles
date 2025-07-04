@@ -26,101 +26,73 @@
     .plan-btn { background:#1e88e5; color:#fff; border:none; border-radius:14px; font-size:1.12rem; font-weight:bold; padding:11px 32px; cursor:pointer; margin-top:10px; transition:background 0.16s;}
     .plan-btn:hover { background:#1976d2; }
     .switch-link { color:#46cfff; text-decoration:underline; display:block; text-align:center; margin:18px 0 6px 0; font-size:1.06rem;}
-    .footer { position:fixed; bottom:0; left:0; width:100vw; background:rgba(10,24,47,0.92); color:#8ea2be; text-align:center; font-size:1rem; padding:13px 6px 11px 6px; letter-spacing:0.5px; display:flex; justify-content:center; align-items:center; gap:12px; z-index:100; box-shadow:0 -2px 12px #01152466;}
-    .footer a { color:#46cfff; text-decoration:none; margin-left:3px; font-size:1.16em; transition:color 0.18s;}
-    .footer a:hover { color:#e39b0d;}
-    .x-icon { width:23px; height:23px; vertical-align:middle; margin-right:4px; filter:brightness(1.2);}
+    .footer {
+      position: fixed; bottom: 0; left: 0; width: 100vw;
+      background: rgba(10,24,47,0.92);
+      color: #8ea2be;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 4vw 16px 4vw;
+      z-index: 100;
+      box-shadow: 0 -2px 12px #01152466;
+    }
+    .footer-row {
+      width: 100%;
+      max-width: 760px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 2px;
+    }
+    .footer-copyright {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 7px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #8ea2be;
+      letter-spacing: 0.4px;
+    }
+    .footer a {
+      color: #46cfff;
+      text-decoration: none;
+      font-size: 1.14em;
+      margin: 0 8px;
+      transition: color 0.18s;
+      display: inline-block;
+      word-break: break-all;
+    }
+    .footer a:hover { color: #e39b0d; }
+    .x-icon { width: 23px; height: 23px; vertical-align: middle; margin-right: 4px; filter: brightness(1.2);}
     @media (max-width:700px) {
       .container{max-width:99vw; padding:0 4vw 70px 4vw;}
       .plans{flex-direction:column; align-items:center;}
       .plan-card{width:97vw; min-width:160px;}
       .pricing-title{font-size:1.2rem;}
       .card{padding:13px 4vw 23px 4vw;}
-      @media (max-width: 650px) {
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 0.97rem;
-    padding: 13px 6px 18px 12px;
-    gap: 4px;
-    position: fixed;
-    left: 0; bottom: 0; width: 100vw;
-    background: rgba(10,24,47,0.95);
-  }
-  .footer a {
-    margin-left: 0 !important;
-    margin-right: 12px;
-    margin-bottom: 2px;
-    font-size: 1.08em;
-    display: inline-block;
-  }
-  .container {
-    padding-bottom: 170px !important;
-  }
-  .nav-content {
-    flex-wrap: wrap;
-    gap: 4px;
-    justify-content: flex-start;
-    overflow-x: auto;
-  }
-  .nav-btn {
-    padding: 7px 10px;
-    font-size: 1rem;
-    margin: 2px 3px;
-  }
-  .logo {
-    width: 82vw !important;
-    max-width: 190px !important;
-  }
-}
-@media (max-width: 430px) {
-  .footer { font-size: 0.84rem; padding: 11px 3vw 18px 4vw;}
-  .container { padding-bottom: 190px !important;}
-
-  @media (max-width: 650px) {
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 0.97rem;
-    padding: 13px 6px 18px 12px;
-    gap: 4px;
-    position: fixed;
-    left: 0; bottom: 0; width: 100vw;
-    background: rgba(10,24,47,0.95);
-  }
-  .footer a {
-    margin-left: 0 !important;
-    margin-right: 12px;
-    margin-bottom: 2px;
-    font-size: 1.08em;
-    display: inline-block;
-  }
-  .container {
-    padding-bottom: 170px !important;
-  }
-  .nav-content {
-    flex-wrap: wrap;
-    gap: 4px;
-    justify-content: flex-start;
-    overflow-x: auto;
-  }
-  .nav-btn {
-    padding: 7px 10px;
-    font-size: 1rem;
-    margin: 2px 3px;
-  }
-  .logo {
-    width: 82vw !important;
-    max-width: 190px !important;
-  }
-}
-@media (max-width: 430px) {
-  .footer { font-size: 0.84rem; padding: 11px 3vw 18px 4vw;}
-  .container { padding-bottom: 190px !important;}
-}
-
-}
-
+    }
+    @media (max-width:650px) {
+      .footer-row {
+        flex-direction: column;
+        gap: 4px;
+      }
+      .footer {
+        font-size: 0.97rem;
+        padding: 15px 4vw 60px 4vw;
+      }
+      .container {
+        padding-bottom: 170px !important;
+      }
+    }
+    @media (max-width:430px) {
+      .footer { font-size: 0.84rem; padding: 13px 3vw 30px 4vw;}
+      .container { padding-bottom: 180px !important;}
     }
   </style>
 </head>
@@ -129,7 +101,7 @@
     <div class="nav-content">
       <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
       <a class="nav-btn" href="index.html">Home</a>
-      <a class="nav-btn" href="pricing.html">Pricing</a>
+      <a class="nav-btn active" href="pricing.html">Pricing</a>
       <a class="nav-btn" href="comparison.html">Comparison</a>
       <a class="nav-btn" href="faq.html">FAQ</a>
       <a class="nav-btn" href="newsletter.html">Newsletter</a>
@@ -173,11 +145,15 @@
     </div>
   </div>
   <div class="footer">
-    &copy; 2025 NavMiles • Built by Mcuztoms LLC
-    <a href="https://x.com/NavMiles" target="_blank"><img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">@NavMiles</a>
-    <a href="privacy.html">Privacy Policy</a> &middot;
-    <a href="tos.html">Terms of Service</a> &middot;
-    <a href="refund.html">Refund Policy</a>
+    <div class="footer-copyright">
+      &copy; 2025 NavMiles • Built by Mcuztoms LLC
+    </div>
+    <div class="footer-row">
+      <a href="https://x.com/NavMiles" target="_blank"><img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">@NavMiles</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="tos.html">Terms of Service</a>
+      <a href="refund.html">Refund Policy</a>
+    </div>
   </div>
 </body>
 </html>
