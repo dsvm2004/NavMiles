@@ -1,174 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>NavMiles – Smart Mileage & Fuel Tracker</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NavMiles: The smarter way to track mileage, fuel, and trips. Instantly find gas, log miles for IRS, and manage your vehicle’s true running costs—all in one tap.">
-  <link rel="icon" type="image/png" href="app_logo.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NavMiles - Smart Fuel & Mileage Tracker</title>
   <style>
     body {
-      min-height: 100vh;
       margin: 0;
       padding: 0;
-      background: #011524;
-      color: #cde5fa;
+      background: #082033;
       font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .container {
+      color: #cde5fa;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+    }
+    .container {
       width: 100%;
-      max-width: 540px;
+      max-width: 480px;
       margin: 0 auto;
-      min-height: 100vh;
-      padding: 28px 12px 0 12px;
-    }
-    .logo-bg {
-      width: 310px;
-      max-width: 92vw;
-      height: auto;
-      margin-bottom: 16px;
-      box-shadow: 0 8px 40px #0006;
-      border-radius: 26px;
-      background: #fff;
-      padding: 12px 28px;
-      display: block;
-    }
-    .main-title {
-      color: #1976d2;
-      font-size: 2.9rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-align: center;
-      margin: 0 0 8px 0;
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      text-shadow: 0 2px 10px #01152433;
-    }
-    .sub-title {
-      color: #e39b0d;
-      font-size: 1.23rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-      letter-spacing: 1.2px;
-      text-align: center;
-    }
-    .button {
-      background: #1976d2;
-      color: #fff;
-      padding: 13px 34px;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.17rem;
-      font-weight: bold;
-      letter-spacing: 1.2px;
-      cursor: pointer;
-      margin: 26px auto 10px auto;
-      transition: background 0.17s;
-      box-shadow: 0 3px 15px #1976d240;
-      display: block;
-    }
-    .button:hover {
-      background: #1157a6;
-    }
-    .about-section {
-      background: #132337;
-      border-radius: 20px;
-      padding: 28px 23px 26px 23px;
-      margin-top: 32px;
-      margin-bottom: 16px;
-      width: 100%;
-      box-shadow: 0 3px 28px #1b395922;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding-top: 38px;
     }
-    .about-title {
-      color: #e39b0d;
-      font-size: 1.38rem;
+    .logo-img {
+      width: 95%;
+      max-width: 340px;
+      margin-bottom: 26px;
+      border-radius: 20px;
+      box-shadow: 0 4px 36px #01152488;
+      object-fit: contain;
+      background: transparent;
+      display: block;
+    }
+    .download-btn {
+      display: block;
+      background: #1976d2;
+      color: #fff;
+      font-size: 1.2rem;
       font-weight: bold;
-      margin-bottom: 10px;
-      letter-spacing: 1.2px;
-      text-align: center;
-    }
-    .about-desc {
-      color: #cde5fa;
-      font-size: 1.08rem;
-      line-height: 1.7;
-      text-align: center;
-      margin-bottom: 2px;
-      font-weight: 500;
-    }
-    .features-list {
-      list-style: none;
-      padding: 0;
-      margin: 25px 0 0 0;
+      padding: 17px 0;
       width: 100%;
-      max-width: 450px;
-      text-align: left;
-    }
-    .features-list li {
-      color: #b6d8fd;
-      font-size: 1.07rem;
-      margin-bottom: 13px;
-      padding-left: 2.1em;
-      position: relative;
-      font-weight: 500;
-    }
-    .features-list li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: #1976d2;
-      font-weight: bold;
-      font-size: 1.14em;
-    }
-    .footer {
-      color: #8ea2be;
-      margin-top: 55px;
-      font-size: 0.99rem;
+      border: none;
+      border-radius: 13px;
+      box-shadow: 0 4px 16px #09203e66;
+      cursor: pointer;
+      margin: 18px 0 34px 0;
+      letter-spacing: 1px;
+      transition: background 0.2s;
       text-align: center;
-      letter-spacing: 0.4px;
-      padding-bottom: 30px;
+      text-decoration: none;
     }
-    @media (max-width: 600px) {
-      .logo-bg { width: 90vw; padding: 8px; }
-      .main-title { font-size: 2rem; }
-      .about-section { padding: 18px 5vw; }
-      .features-list li { font-size: 1rem; }
+    .download-btn:hover {
+      background: #2356a8;
+    }
+    .section {
+      background: #11294c;
+      border-radius: 18px;
+      padding: 32px 26px 22px 26px;
+      box-shadow: 0 2px 12px #09203e55;
+      width: 100%;
+      max-width: 430px;
+      margin-bottom: 24px;
+    }
+    .section-title {
+      color: #ffc13d;
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 13px;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    ul {
+      padding-left: 20px;
+      margin-top: 14px;
+      margin-bottom: 0;
+    }
+    ul li {
+      margin-bottom: 11px;
+      font-size: 1.06rem;
+      color: #bfe2fd;
+      line-height: 1.5;
+    }
+    @media (max-width: 480px) {
+      .container, .section {
+        padding: 18px 5vw;
+      }
+      .section {
+        padding-top: 26px;
+        padding-bottom: 15px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="app_logo.png" alt="NavMiles Logo" class="logo-bg" />
-    <h1 class="main-title">NavMiles</h1>
-    <div class="sub-title">Smart Mileage, Fuel, & Trip Tracking</div>
-    <a href="https://apps.apple.com/" target="_blank" rel="noopener">
-      <button class="button">Download on the App Store</button>
-    </a>
-    <section class="about-section">
-      <div class="about-title">Why NavMiles?</div>
-      <div class="about-desc">
+    <!-- LOGO IMAGE -->
+    <img src="app_logo.png" alt="NavMiles Logo" class="logo-img" />
+
+    <!-- DOWNLOAD BUTTON -->
+    <a href="#" class="download-btn">Download on the App Store</a>
+
+    <!-- Why NavMiles Section -->
+    <div class="section">
+      <div class="section-title">Why NavMiles?</div>
+      <div style="margin-bottom: 10px; text-align:center; color:#cde5fa;">
         NavMiles is your intelligent mileage and fuel tracker—built for drivers, freelancers, business owners, and anyone who wants to save money and time.<br><br>
         One tap finds the nearest gas, logs your trip, and tracks your fuel costs—all with IRS-compliant records.
       </div>
-      <ul class="features-list">
-        <li>• Fast, one-tap gas station finder along your route</li>
-        <li>• Effortless mileage tracking & trip logs for tax deductions</li>
-        <li>• Track fuel fill-ups, costs, MPG, and real vehicle stats</li>
-        <li>• Export CSV/PDF trip logs for easy IRS reporting</li>
-        <li>• Secure cloud backups & business-grade data privacy</li>
-        <li>• Subscription plan for unlimited logs & advanced reports</li>
+      <ul>
+        <li>✓ Fast, one-tap gas station finder along your route</li>
+        <li>✓ Effortless mileage tracking & trip logs for tax deductions</li>
+        <li>✓ Automatic fuel alerts and range calculations</li>
+        <li>✓ Export IRS-ready trip logs (PDF & CSV)</li>
+        <li>✓ Business & personal trip tracking—switch with a tap</li>
+        <li>✓ Simple, beautiful, and works offline</li>
       </ul>
-    </section>
-    <div class="footer">
-      &copy; 2025 Mcuztoms LLC. All rights reserved.
     </div>
   </div>
 </body>
