@@ -2,146 +2,196 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Privacy Policy | NavMiles</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>NavMiles – Privacy Policy</title>
+  <link rel="icon" type="image/png" href="assets/app_logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: #011524;
-      color: #cde5fa;
-      font-family: 'Inter', Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%);
+      color: #cde5fa;
+      min-height: 100vh;
+    }
+    .navbar {
+      width: 100vw;
+      background: rgba(10,24,47,0.95);
+      box-shadow: 0 1px 10px #01152433;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+    }
+    .nav-content {
+      width: 100%;
+      max-width: 630px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      gap: 12px;
+      padding: 10px 0 7px 0;
+    }
+    .nav-logo {
+      height: 36px;
+      margin-right: 16px;
+      border-radius: 13px;
+      box-shadow: 0 3px 12px #01152433;
+      background: #fff1;
+      object-fit: contain;
+    }
+    .nav-btn {
+      background: none;
+      border: none;
+      color: #cde5fa;
+      font-size: 1.05rem;
+      padding: 9px 16px;
+      font-weight: 700;
+      border-radius: 13px;
+      margin: 0 4px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .nav-btn.active, .nav-btn:hover {
+      background: #1e88e5;
+      color: #fff;
     }
     .container {
-      max-width: 680px;
-      margin: 40px auto;
-      padding: 32px;
-      background: #132337;
-      border-radius: 18px;
-      box-shadow: 0 4px 32px #0008;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 36px 20px 120px 20px; /* extra bottom padding for footer */
+      background: none;
     }
-    h1, h2 {
-      color: #1976d2;
-      margin-bottom: 8px;
+    .policy-card {
+      width: 100%;
+      background: rgba(10,24,47,0.97);
+      border-radius: 26px;
+      padding: 34px 28px 28px 28px;
+      margin-bottom: 34px;
+      box-shadow: 0 6px 28px #01152460;
     }
-    .date {
-      color: #8ea2be;
-      margin-bottom: 18px;
-      font-style: italic;
-    }
-    h2.section {
+    .policy-title {
       color: #e39b0d;
-      font-size: 21px;
-      margin-top: 30px;
+      font-size: 2rem;
+      font-weight: bold;
       margin-bottom: 10px;
+      text-align: center;
+      letter-spacing: 0.5px;
     }
-    strong {
+    .update-date {
+      color: #8ea2be;
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .section-title {
+      color: #36cfff;
+      font-weight: 700;
+      font-size: 1.18rem;
+      margin-top: 22px;
+      margin-bottom: 7px;
+    }
+    .body-text {
+      color: #cde5fa;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      margin-bottom: 3px;
+    }
+    .highlight {
       color: #b6d8fd;
+      font-weight: bold;
     }
-    a {
+    a { color: #46cfff; text-decoration: underline; }
+    .footer {
+      position: fixed;
+      bottom: 0; left: 0; width: 100vw;
+      background: rgba(10,24,47,0.92);
+      color: #8ea2be;
+      text-align: center;
+      font-size: 1rem;
+      padding: 13px 6px 11px 6px;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      z-index: 100;
+      box-shadow: 0 -2px 12px #01152466;
+    }
+    .footer a {
       color: #46cfff;
-      text-decoration: underline;
-      word-break: break-all;
+      text-decoration: none;
+      margin-left: 3px;
+      font-size: 1.16em;
+      transition: color 0.18s;
     }
-    ul, ol {
-      margin-left: 20px;
-    }
-    @media (max-width: 700px) {
-      .container {
-        padding: 15px;
-        margin: 0;
-        border-radius: 0;
-      }
+    .footer a:hover { color: #e39b0d; }
+    .x-icon { width: 23px; height: 23px; vertical-align: middle; margin-right: 4px; filter: brightness(1.2);}
+    @media (max-width: 600px) {
+      .container { max-width: 99vw; padding: 0 3vw 110px 3vw;}
+      .policy-card { padding: 19px 5vw 19px 5vw; }
+      .policy-title { font-size: 1.3rem;}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Privacy Policy</h1>
-    <div class="date">Last Updated: June 2025</div>
-    
-    <h2 class="section">1. Introduction</h2>
-    <p>
-      NavMiles (“we,” “us,” or “our”) is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, share, and safeguard your information when you use the NavMiles mobile application (“App”).
-    </p>
-
-    <h2 class="section">2. Information We Collect</h2>
-    <p><strong>A. Information You Provide:</strong><br>
-      • Account Information (name, email, password, vehicle info)<br>
-      • Payment Information (if/when you purchase subscriptions; processed securely by third-party providers)<br>
-      • Communications (feedback, support requests)
-    </p>
-    <p><strong>B. Information Collected Automatically:</strong><br>
-      • Usage Data (app features used, session length)<br>
-      • Device Information (type, operating system, unique identifiers)<br>
-      • Location Data (with your explicit permission—for features such as mileage tracking and fuel finder)
-    </p>
-
-    <h2 class="section">3. How We Use Your Information</h2>
-    <p>
-      We use your information to:
-      <ul>
-        <li>Provide and improve the NavMiles App and its features</li>
-        <li>Process subscriptions and payments (handled by trusted payment partners)</li>
-        <li>Communicate with you (including updates, security alerts, customer support)</li>
-        <li>Customize your experience and provide relevant suggestions (e.g., fuel stations, route optimization)</li>
-        <li>Ensure security and prevent unauthorized use</li>
-        <li>Comply with applicable laws and regulations</li>
-      </ul>
-    </p>
-
-    <h2 class="section">4. How We Share Your Information</h2>
-    <p>
-      We do <strong>not</strong> sell your personal information. We may share your information:
-      <ul>
-        <li>With trusted service providers who help us operate the app (e.g., analytics, payment processors, cloud hosting)</li>
-        <li>If required by law, court order, or government request</li>
-        <li>To protect our rights, users, property, or safety</li>
-        <li>With your consent or at your direction</li>
-      </ul>
-    </p>
-
-    <h2 class="section">5. Data Security</h2>
-    <p>
-      We take reasonable administrative, technical, and physical safeguards to protect your data. However, no system can be 100% secure; please keep your password confidential and contact us immediately if you suspect unauthorized use.
-    </p>
-
-    <h2 class="section">6. Your Rights and Choices</h2>
-    <p>
-      Depending on your location, you may have rights under data protection laws, including:
-      <ul>
-        <li>The right to access, correct, or delete your information</li>
-        <li>The right to restrict or object to certain data processing</li>
-        <li>The right to withdraw consent at any time</li>
-      </ul>
-      To exercise your rights, email us at <a href="mailto:support@navmiles.com">support@navmiles.com</a>.
-    </p>
-
-    <h2 class="section">7. Children’s Privacy</h2>
-    <p>
-      NavMiles is not intended for children under 16. We do not knowingly collect data from children under 16.
-    </p>
-
-    <h2 class="section">8. Third-Party Services</h2>
-    <p>
-      Our App may contain links or integrations with third-party services (such as payment processors, map providers, analytics). These services are governed by their own privacy policies.
-    </p>
-
-    <h2 class="section">9. International Data Transfers</h2>
-    <p>
-      If you use NavMiles outside the United States, your information may be transferred and processed in the United States or other countries with different data protection laws.
-    </p>
-
-    <h2 class="section">10. Changes to This Policy</h2>
-    <p>
-      We may update this Privacy Policy from time to time. The updated version will be posted in the App with a new “Last Updated” date.
-    </p>
-
-    <h2 class="section">11. Contact Us</h2>
-    <p>
-      If you have any questions, concerns, or requests about this Privacy Policy or your information, please contact us at:<br>
-      <a href="mailto:support@navmiles.com">support@navmiles.com</a>
-    </p>
+  <div class="navbar">
+    <div class="nav-content">
+      <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
+      <a class="nav-btn" href="index.html">Home</a>
+      <a class="nav-btn" href="pricing.html">Pricing</a>
+      <a class="nav-btn" href="comparison.html">Comparison</a>
+      <a class="nav-btn" href="faq.html">FAQ</a>
+      <a class="nav-btn" href="newsletter.html">Newsletter</a>
+      <a class="nav-btn" href="contact.html">Contact</a>
+    </div>
   </div>
-</body>
-</html>
+  <div class="container">
+    <div class="policy-card">
+      <div class="policy-title">Privacy Policy</div>
+      <div class="update-date">Last Updated: June 2025</div>
+
+      <div class="section-title">1. Introduction</div>
+      <div class="body-text">
+        NavMiles (“we,” “us,” or “our”) is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, share, and safeguard your information when you use the NavMiles mobile application (“App”).
+      </div>
+
+      <div class="section-title">2. Information We Collect</div>
+      <div class="body-text">
+        <span class="highlight">A. Information You Provide:</span><br>
+        • Account Information (name, email, password, vehicle info)<br>
+        • Payment Information (if/when you purchase subscriptions; processed securely by third-party providers)<br>
+        • Communications (feedback, support requests)
+        <br><br>
+        <span class="highlight">B. Information Collected Automatically:</span><br>
+        • Usage Data (app features used, session length)<br>
+        • Device Information (type, operating system, unique identifiers)<br>
+        • Location Data (with your explicit permission—for features such as mileage tracking and fuel finder)
+      </div>
+
+      <div class="section-title">3. How We Use Your Information</div>
+      <div class="body-text">
+        We use your information to:<br>
+        • Provide and improve the NavMiles App and its features<br>
+        • Process subscriptions and payments (handled by trusted payment partners)<br>
+        • Communicate with you (including updates, security alerts, customer support)<br>
+        • Customize your experience and provide relevant suggestions (e.g., fuel stations, route optimization)<br>
+        • Ensure security and prevent unauthorized use<br>
+        • Comply with applicable laws and regulations
+      </div>
+
+      <div class="section-title">4. How We Share Your Information</div>
+      <div class="body-text">
+        We do <b>not</b> sell your personal information. We may share your information:<br>
+        • With trusted service providers who help us operate the app (e.g., analytics, payment processors, cloud hosting)<br>
+        • If required by law, court order, or government request<br>
+        • To protect our rights, users, property, or safety<br>
+        • With your consent or at your direction
+      </div>
+
+      <div class="section-title">5. Data Security
