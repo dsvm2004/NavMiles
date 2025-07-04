@@ -72,7 +72,7 @@
     .container {
       max-width: 480px;
       margin: 0 auto;
-      padding: 0 18px 145px 18px; /* More padding for footer on mobile */
+      padding: 0 18px 150px 18px; /* More padding for footer on mobile */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -178,57 +178,69 @@
     .footer {
       position: fixed;
       left: 0; bottom: 0; width: 100vw;
-      background: rgba(10,24,47,0.95);
+      background: rgba(10,24,47,0.97);
       color: #8ea2be;
       font-size: 1rem;
-      padding: 14px 10px 22px 10px;
+      padding: 13px 6px 11px 6px;
       letter-spacing: 0.5px;
+      box-shadow: 0 -2px 12px #01152466;
+      z-index: 100;
+    }
+    .footer-row {
       display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 16px;
-      z-index: 100;
+      gap: 12px;
+      width: 100%;
+    }
+    .footer .copyright {
+      margin-right: 8px;
+      white-space: nowrap;
+    }
+    .footer-links {
+      display: flex;
       flex-wrap: wrap;
-      box-shadow: 0 -2px 12px #01152466;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
     }
     .footer a {
       color: #46cfff;
       text-decoration: none;
-      font-size: 1.14em;
-      margin-left: 8px;
-      margin-right: 8px;
-      margin-bottom: 2px;
+      font-size: 1.1em;
       transition: color 0.18s;
       display: inline-block;
-      word-break: break-all;
+      margin: 0 4px;
     }
     .footer a:hover { color: #e39b0d; }
-    .x-icon { width: 23px; height: 23px; vertical-align: middle; margin-right: 4px; filter: brightness(1.2);}
+    .x-icon { width: 21px; height: 21px; vertical-align: middle; margin-right: 2px; filter: brightness(1.2);}
     @media (max-width: 700px) {
-      .container { max-width: 99vw; padding: 0 4vw 160px 4vw;}
+      .container { max-width: 99vw; padding: 0 4vw 180px 4vw;}
       .logo, .nav-logo { width: 85vw; min-width: 110px; max-width: 220px; }
       .download-btn { padding: 17px 0; font-size: 1.1rem;}
       .features-list { font-size: 0.96rem; }
       .whats-new-card { font-size: 0.98rem; }
     }
     @media (max-width: 650px) {
-      .footer {
+      .footer-row {
         flex-direction: column;
         align-items: flex-start;
-        font-size: 0.95rem;
         gap: 4px;
-        padding: 16px 4vw 75px 4vw;
+      }
+      .footer {
+        font-size: 0.95rem;
+        padding: 14px 5vw 68px 5vw;
         position: fixed;
         left: 0; bottom: 0; width: 100vw;
       }
-      .footer a {
-        margin-left: 0;
-        margin-right: 0;
-        font-size: 1.08em;
-        margin-bottom: 6px;
+      .footer-links {
+        gap: 8px;
+        margin-top: 2px;
       }
       .container {
-        padding-bottom: 180px !important;
+        padding-bottom: 190px !important;
       }
       .nav-content {
         flex-wrap: wrap;
@@ -253,7 +265,7 @@
     }
     @media (max-width: 430px) {
       .footer { font-size: 0.84rem; padding: 11px 3vw 18px 4vw;}
-      .container { padding-bottom: 200px !important;}
+      .container { padding-bottom: 210px !important;}
     }
   </style>
 </head>
@@ -305,11 +317,17 @@
     </div>
   </div>
   <div class="footer">
-    &copy; 2025 NavMiles • Built by Mcuztoms LLC
-    <a href="https://x.com/NavMiles" target="_blank"><img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">@NavMiles</a>
-    <a href="privacy.html">Privacy Policy</a> &middot;
-    <a href="tos.html">Terms of Service</a> &middot;
-    <a href="refund.html">Refund Policy</a>
+    <div class="footer-row">
+      <span class="copyright">&copy; 2025 NavMiles • Built by Mcuztoms LLC</span>
+      <span class="footer-links">
+        <a href="https://x.com/NavMiles" target="_blank">
+          <img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">@NavMiles
+        </a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="tos.html">Terms of Service</a>
+        <a href="refund.html">Refund Policy</a>
+      </span>
+    </div>
   </div>
 </body>
 </html>
