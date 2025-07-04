@@ -3,300 +3,169 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NavMiles - Smart Mileage & Fuel Tracker</title>
-  <link rel="icon" href="logo.png" type="image/png" />
+  <title>NavMiles – Smart Fuel & Mileage Tracker</title>
+  <link rel="icon" type="image/png" href="assets/navmiles1.png">
   <style>
     body {
-      margin: 0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: #011524;
+      background: #011524 url('assets/background3.png') no-repeat center top;
+      background-size: cover;
       color: #cde5fa;
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-    header {
-      background: #1976d2;
-      padding: 0;
-      box-shadow: 0 2px 16px #01152433;
+    .nav {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 14px;
+      padding: 32px 7vw 16px 7vw;
     }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 20px 24px;
+    .nav img {
+      height: 64px;
+      border-radius: 18px;
+      background: #fff;
+      padding: 6px;
     }
-    .logo img {
-      height: 46px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px #0005;
-    }
-    .logo-title {
-      font-size: 2rem;
-      color: #fff;
-      letter-spacing: 1px;
-      font-weight: 800;
-    }
-    nav {
-      display: flex;
-      gap: 22px;
-      margin-right: 34px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.08rem;
-      font-weight: 500;
-      letter-spacing: 0.6px;
-      transition: color 0.18s;
-      padding: 8px 12px;
-      border-radius: 6px;
-    }
-    nav a:hover {
-      background: #113973;
-      color: #ffe066;
+    .nav-title {
+      font-size: 2.3rem;
+      font-weight: bold;
+      color: #1976d2;
+      letter-spacing: 2px;
+      text-shadow: 0 3px 18px #0009;
     }
     .hero {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 54vh;
+      justify-content: flex-start;
+      padding: 32px 8vw;
       text-align: center;
-      padding: 54px 22px 30px 22px;
-      background: linear-gradient(160deg, #011524 80%, #1976d2 120%);
     }
-    .hero-title {
+    .hero h1 {
       font-size: 2.8rem;
-      color: #ffe066;
-      font-weight: 800;
-      letter-spacing: 1.2px;
+      margin-top: 20px;
       margin-bottom: 10px;
+      color: #f7c340;
+      text-shadow: 0 4px 20px #001;
     }
-    .hero-desc {
+    .hero p {
       font-size: 1.25rem;
-      color: #cde5fa;
-      max-width: 510px;
-      margin: 0 auto 18px auto;
-    }
-    .cta-btn {
-      display: inline-block;
-      background: #1976d2;
-      color: #fff;
-      font-weight: 700;
-      border: none;
-      border-radius: 7px;
-      font-size: 1.25rem;
-      padding: 15px 40px;
-      margin-top: 22px;
-      cursor: pointer;
-      box-shadow: 0 4px 16px #1976d266;
-      transition: background 0.18s, color 0.18s;
-      text-decoration: none;
-    }
-    .cta-btn:hover {
-      background: #ffe066;
-      color: #1976d2;
-    }
-    main {
-      padding: 40px 5vw 80px 5vw;
-      max-width: 970px;
-      margin: 0 auto;
-      background: transparent;
-    }
-    section {
-      margin-bottom: 48px;
-      background: #021c39aa;
-      border-radius: 16px;
-      padding: 30px 22px;
-      box-shadow: 0 6px 26px #1976d244;
-    }
-    section h2 {
-      font-size: 2.2rem;
-      margin-top: 0;
-      margin-bottom: 12px;
-      color: #ffe066;
-    }
-    .features-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 28px;
-      margin: 0;
-      list-style: none;
-      padding: 0;
-    }
-    .features-list li {
-      flex: 1 1 220px;
-      font-size: 1.1rem;
-      color: #fff;
-      background: #1976d288;
-      border-radius: 9px;
-      padding: 18px 14px;
-      margin: 0;
+      margin-bottom: 35px;
+      color: #b6d8fd;
+      max-width: 550px;
     }
     .screenshots {
       display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
+      gap: 32px;
       justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      margin-bottom: 32px;
     }
     .screenshots img {
-      max-width: 220px;
-      border-radius: 15px;
-      box-shadow: 0 6px 22px #0005;
-    }
-    .pricing-table {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .plan {
+      height: 200px;
+      border-radius: 16px;
+      box-shadow: 0 4px 30px #001c;
       background: #fff;
-      color: #1976d2;
-      padding: 26px 26px;
-      border-radius: 15px;
-      box-shadow: 0 3px 16px #01152433;
-      min-width: 220px;
-      text-align: center;
-      margin-bottom: 12px;
+      padding: 8px;
     }
-    .plan-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: #1976d2;
+    .cta {
+      margin: 32px 0 0 0;
     }
-    .plan-price {
-      font-size: 2rem;
-      font-weight: 900;
-      color: #ffe066;
+    .cta a {
+      background: #1976d2;
+      color: #fff;
+      padding: 16px 34px;
+      border-radius: 30px;
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 2px 18px #1976d280;
+      transition: background .15s;
+    }
+    .cta a:hover {
+      background: #005ea2;
+    }
+    .features {
+      background: rgba(0,0,0,0.32);
+      border-radius: 18px;
+      padding: 28px 24px;
+      margin: 40px auto 24px auto;
+      max-width: 640px;
+      box-shadow: 0 8px 36px #0008;
+      text-align: left;
+    }
+    .features h2 {
+      color: #f7c340;
+      font-size: 1.6rem;
       margin-bottom: 9px;
     }
-    .faq {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .faq h3 {
-      font-size: 1.18rem;
-      color: #ffe066;
-      margin-bottom: 3px;
-      margin-top: 15px;
-    }
-    .faq p {
-      margin-top: 0;
-      color: #fff;
-      font-size: 1.07rem;
-    }
-    footer {
-      background: #15283e;
+    .features ul {
+      list-style: none;
+      padding: 0;
       color: #cde5fa;
-      text-align: center;
-      padding: 24px 10px 16px 10px;
-      font-size: 1rem;
-      border-top: 2px solid #1976d2;
-      margin-top: 20px;
     }
-    .footer-links {
-      color: #ffe066;
-      text-decoration: underline;
-      margin: 0 10px;
+    .features ul li {
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    .footer {
+      padding: 30px 0 20px 0;
+      text-align: center;
+      color: #8ea2be;
+      font-size: 1rem;
+      margin-top: auto;
+      background: rgba(0,0,0,0.23);
+      border-top: 1px solid #173047;
+    }
+    @media (max-width: 600px) {
+      .nav, .hero, .features { padding-left: 4vw; padding-right: 4vw;}
+      .screenshots img { height: 110px; }
+      .nav img { height: 46px; }
+      .nav-title { font-size: 1.4rem;}
+      .hero h1 { font-size: 1.3rem;}
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="NavMiles logo"/>
-      <span class="logo-title">NavMiles</span>
-    </div>
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#screenshots">Screenshots</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="privacy.html" target="_blank">Privacy</a>
-      <a href="mailto:support@navmiles.com">Contact</a>
-    </nav>
-  </header>
-
-  <div class="hero">
-    <div class="hero-title">Drive Smarter, Track Every Mile</div>
-    <div class="hero-desc">
-      NavMiles is the all-in-one mileage and fuel tracker built for real drivers. One-tap gas finder, auto trip logs, IRS-ready exports, and more. 
-    </div>
-    <a class="cta-btn" href="#">Get NavMiles Now</a>
+  <div class="nav">
+    <img src="assets/navmiles1.png" alt="NavMiles Logo" />
+    <span class="nav-title">NavMiles</span>
   </div>
 
-  <main>
-    <section id="features">
-      <h2>Why NavMiles?</h2>
-      <ul class="features-list">
-        <li>🚗 **One-Tap Gas Station Finder** — Instantly find the best gas stops along your route.</li>
-        <li>🧾 **Automatic Trip Logging** — Track every drive for taxes, business, or personal use.</li>
-        <li>🔊 **Turn-by-Turn Voice Navigation** — Easy directions with your choice of voice.</li>
-        <li>📈 **Mileage & Fuel Reporting** — Visualize and export your trip and fuel data anytime.</li>
-        <li>📤 **PDF/CSV Export** — Send your trip log for taxes or business reimbursement.</li>
-        <li>🌎 **Works in the US & Canada** — Compatible with any vehicle.</li>
-      </ul>
-    </section>
+  <div class="hero">
+    <h1>Smart Fuel & Mileage Tracker</h1>
+    <p>Track your mileage, find the cheapest gas, and maximize your IRS tax deduction with NavMiles – the all-in-one solution for drivers, small business owners, and fleets.</p>
 
-    <section id="screenshots">
-      <h2>App Screenshots</h2>
-      <div class="screenshots">
-        <img src="screenshot1.png" alt="NavMiles Dashboard" />
-        <img src="screenshot2.png" alt="NavMiles Gas Finder" />
-        <img src="screenshot3.png" alt="NavMiles Trip Log" />
-      </div>
-    </section>
-
-    <section id="pricing">
-      <h2>Pricing</h2>
-      <div class="pricing-table">
-        <div class="plan">
-          <div class="plan-title">Personal</div>
-          <div class="plan-price">$0<span style="font-size:1rem;">/month</span></div>
-          <ul>
-            <li>Basic trip logging</li>
-            <li>Gas finder</li>
-            <li>15-day log history</li>
-          </ul>
-        </div>
-        <div class="plan">
-          <div class="plan-title">Business</div>
-          <div class="plan-price">$5.99<span style="font-size:1rem;">/month</span></div>
-          <ul>
-            <li>Unlimited logs</li>
-            <li>PDF/CSV export</li>
-            <li>Tax-ready reports</li>
-            <li>Priority support</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="faq">
-      <h2>Frequently Asked Questions</h2>
-      <h3>Is NavMiles free?</h3>
-      <p>NavMiles has a forever-free personal plan. Business features are available with a subscription.</p>
-      <h3>How do I export trip logs?</h3>
-      <p>Business subscribers can export trip logs in PDF or CSV directly from the app.</p>
-      <h3>How does NavMiles keep my data secure?</h3>
-      <p>Your data is encrypted and never sold. Review our <a href="privacy.html" class="footer-links" target="_blank">privacy policy</a>.</p>
-      <h3>Can I use NavMiles for my business?</h3>
-      <p>Yes! NavMiles is built for both personal and business mileage tracking.</p>
-      <h3>Need help?</h3>
-      <p>Email us anytime: <a class="footer-links" href="mailto:support@navmiles.com">support@navmiles.com</a></p>
-    </section>
-  </main>
-
-  <footer>
-    <div>
-      &copy; 2025 NavMiles. All rights reserved.
-      <a class="footer-links" href="privacy.html" target="_blank">Privacy Policy</a>
-      &bull; Designed by Harborfront Apps
+    <div class="screenshots">
+      <img src="assets/navmiles2.png" alt="Screenshot 1"/>
+      <img src="assets/smart1.png" alt="Screenshot 2"/>
+      <img src="assets/fuelgague2.png" alt="Fuel Gauge"/>
     </div>
-  </footer>
+
+    <div class="cta">
+      <a href="https://apps.apple.com/app/idYOUR_APP_ID_HERE" target="_blank">Download on the App Store</a>
+    </div>
+  </div>
+
+  <div class="features">
+    <h2>Features:</h2>
+    <ul>
+      <li>🛣️ Accurate trip & mileage logging for business, tax, or personal use</li>
+      <li>⛽ One-tap “Find Gas” with current prices and stations near you</li>
+      <li>🚗 Intelligent fuel tracking & proactive low-fuel alerts</li>
+      <li>📊 IRS-compliant reports (PDF/CSV export)</li>
+      <li>🔒 All data securely stored and privacy-first</li>
+      <li>🌎 Built for drivers, gig workers, and small businesses</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Mcuztoms LLC • <a href="privacy.html" style="color:#46cfff;">Privacy Policy</a>
+  </div>
 </body>
 </html>
