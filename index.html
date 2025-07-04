@@ -1,126 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NavMiles - Smart Fuel & Mileage Tracker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>NavMiles – Smart Fuel & Mileage Tracker</title>
+  <meta name="description" content="NavMiles: The smart, one-tap mileage, fuel, and trip tracker for drivers and businesses. IRS-ready logs, fuel alerts, business/personal switching, and more.">
+  <meta property="og:title" content="NavMiles – Smart Fuel & Mileage Tracker">
+  <meta property="og:description" content="One-tap gas, IRS-ready trip logs, fuel alerts, and more. Save time and money with NavMiles.">
+  <meta property="og:image" content="assets/app_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/app_logo.png">
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background: #082033;
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
+      background: radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%);
       color: #cde5fa;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
     }
     .container {
-      width: 100%;
-      max-width: 480px;
+      max-width: 450px;
       margin: 0 auto;
+      padding: 0 18px 60px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 38px;
     }
-    .logo-img {
-      width: 95%;
-      max-width: 340px;
-      margin-bottom: 26px;
-      border-radius: 20px;
-      box-shadow: 0 4px 36px #01152488;
-      object-fit: contain;
-      background: transparent;
+    .logo {
+      width: 220px;
+      margin: 40px auto 22px auto;
       display: block;
+      border-radius: 30px;
+      box-shadow: 0 6px 36px #01152444;
     }
     .download-btn {
       display: block;
-      background: #1976d2;
-      color: #fff;
-      font-size: 1.2rem;
-      font-weight: bold;
-      padding: 17px 0;
       width: 100%;
+      padding: 22px 0;
+      margin: 0 auto 30px auto;
+      background: #1e88e5;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.35rem;
       border: none;
-      border-radius: 13px;
-      box-shadow: 0 4px 16px #09203e66;
+      border-radius: 20px;
       cursor: pointer;
-      margin: 18px 0 34px 0;
-      letter-spacing: 1px;
-      transition: background 0.2s;
+      box-shadow: 0 3px 12px #01152455;
+      transition: background 0.18s;
       text-align: center;
       text-decoration: none;
+      letter-spacing: 1px;
     }
     .download-btn:hover {
-      background: #2356a8;
+      background: #1976d2;
     }
-    .section {
-      background: #11294c;
-      border-radius: 18px;
-      padding: 32px 26px 22px 26px;
-      box-shadow: 0 2px 12px #09203e55;
+    .why-card {
       width: 100%;
-      max-width: 430px;
-      margin-bottom: 24px;
+      background: rgba(10,24,47,0.97);
+      border-radius: 26px;
+      padding: 34px 28px 28px 28px;
+      margin-bottom: 34px;
+      box-shadow: 0 6px 28px #01152460;
     }
-    .section-title {
-      color: #ffc13d;
-      font-size: 1.7rem;
-      font-weight: 700;
+    .why-title {
+      color: #e39b0d;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 14px;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+    .why-card ul {
+      margin: 20px 0 0 0;
+      padding-left: 18px;
+    }
+    .why-card li {
       margin-bottom: 13px;
-      letter-spacing: 1px;
+      font-size: 1.07rem;
+      line-height: 1.7;
+    }
+    .why-card p {
+      color: #b5d4ef;
+      font-size: 1.07rem;
+      margin: 0 0 8px 0;
       text-align: center;
     }
-    ul {
-      padding-left: 20px;
-      margin-top: 14px;
-      margin-bottom: 0;
+    .footer {
+      position: fixed;
+      bottom: 0; left: 0; width: 100vw;
+      background: rgba(10,24,47,0.92);
+      color: #8ea2be;
+      text-align: center;
+      font-size: 1rem;
+      padding: 13px 6px 11px 6px;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      z-index: 100;
+      box-shadow: 0 -2px 12px #01152466;
     }
-    ul li {
-      margin-bottom: 11px;
-      font-size: 1.06rem;
-      color: #bfe2fd;
-      line-height: 1.5;
+    .footer a {
+      color: #46cfff;
+      text-decoration: none;
+      margin-left: 3px;
+      font-size: 1.16em;
+      vertical-align: middle;
+      transition: color 0.18s;
     }
-    @media (max-width: 480px) {
-      .container, .section {
-        padding: 18px 5vw;
-      }
-      .section {
-        padding-top: 26px;
-        padding-bottom: 15px;
-      }
+    .footer a:hover {
+      color: #e39b0d;
+    }
+    .x-icon {
+      width: 23px; height: 23px; vertical-align: middle; margin-right: 4px;
+      filter: brightness(1.2);
+    }
+    @media (max-width: 600px) {
+      .container { max-width: 99vw; padding: 0 5vw 70px 5vw; }
+      .why-card { padding: 19px 8vw 23px 8vw; }
+      .logo { width: 85vw; min-width: 180px; max-width: 280px; }
+      .download-btn { padding: 17px 0; font-size: 1.1rem;}
     }
   </style>
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <!-- LOGO IMAGE -->
-    <img src="assets/app_logo.png" alt="NavMiles Logo" class="logo-img" />
+    <!-- Logo -->
+    <img src="assets/app_logo.png" class="logo" alt="NavMiles Logo">
 
+    <!-- Download Button -->
+    <a class="download-btn" href="#" target="_blank">Download on the App Store</a>
 
-    <!-- DOWNLOAD BUTTON -->
-    <a href="#" class="download-btn">Download on the App Store</a>
-
-    <!-- Why NavMiles Section -->
-    <div class="section">
-      <div class="section-title">Why NavMiles?</div>
-      <div style="margin-bottom: 10px; text-align:center; color:#cde5fa;">
+    <!-- Why Card -->
+    <div class="why-card">
+      <div class="why-title">Why NavMiles?</div>
+      <p>
         NavMiles is your intelligent mileage and fuel tracker—built for drivers, freelancers, business owners, and anyone who wants to save money and time.<br><br>
         One tap finds the nearest gas, logs your trip, and tracks your fuel costs—all with IRS-compliant records.
-      </div>
+      </p>
       <ul>
         <li>✓ Fast, one-tap gas station finder along your route</li>
         <li>✓ Effortless mileage tracking & trip logs for tax deductions</li>
         <li>✓ Automatic fuel alerts and range calculations</li>
         <li>✓ Export IRS-ready trip logs (PDF & CSV)</li>
         <li>✓ Business & personal trip tracking—switch with a tap</li>
-        <li>✓ Simple, beautiful, and works offline</li>
+        <li>✓ Privacy-first. No selling your data—ever</li>
       </ul>
     </div>
+  </div>
+  <div class="footer">
+    &copy; 2025 NavMiles • Built by mcuztoms llc
+    <a href="https://x.com/NavMiles" target="_blank" title="Follow NavMiles on X">
+      <img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">
+      @NavMiles
+    </a>
   </div>
 </body>
 </html>
