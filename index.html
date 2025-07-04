@@ -1,63 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NavMiles – Smart Fuel & Mileage Tracker</title>
-  <link rel="icon" type="image/png" href="assets/navmiles1.png">
-<style>
-body {
-  min-height: 100vh;
-  min-width: 100vw;
-  margin: 0;
-  padding: 0;
-  background: url('app logo.png') no-repeat center center fixed;
-  background-size: contain; /* or use: cover, if you want it to always fill the screen */
-  background-color: #011524; /* fallback color */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-</style>
-  
-
-  
+  <meta charset="UTF-8">
+  <title>NavMiles – Smarter Mileage & Fuel Tracking App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NavMiles is the all-in-one mileage, fuel, and trip tracking app for smarter drivers. One-tap fuel finder, IRS-compliant logs, and much more.">
+  <link rel="icon" type="image/png" href="applogo.png">
+  <style>
+    body {
+      min-height: 100vh;
+      min-width: 100vw;
+      margin: 0;
+      padding: 0;
+      background: #011524;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    }
+    .logo-bg {
+      width: 340px;
+      max-width: 92vw;
+      height: auto;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 40px #0006;
+      border-radius: 26px;
+      background: #fff;
+      padding: 18px 34px;
+      display: block;
+    }
+    h1 {
+      color: #1976d2;
+      margin-bottom: 8px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+    .subtitle {
+      color: #cde5fa;
+      font-size: 1.15rem;
+      max-width: 430px;
+      text-align: center;
+      margin: 0 auto 18px auto;
+      line-height: 1.55;
+    }
+    .highlight {
+      color: #e39b0d;
+      font-weight: bold;
+    }
+    .button {
+      background: #1976d2;
+      color: #fff;
+      padding: 13px 32px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.13rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      cursor: pointer;
+      margin-top: 38px;
+      margin-bottom: 10px;
+      transition: background 0.17s;
+      box-shadow: 0 3px 15px #1976d234;
+    }
+    .button:hover {
+      background: #1157a6;
+    }
+    .footer {
+      color: #8ea2be;
+      margin-top: 45px;
+      font-size: 0.98rem;
+      text-align: center;
+      letter-spacing: 0.4px;
+    }
+    @media (max-width: 600px) {
+      .logo-bg { width: 92vw; padding: 10px; }
+      h1 { font-size: 1.7rem; }
+      .subtitle { font-size: 1rem; }
+    }
+  </style>
 </head>
 <body>
-  <div class="nav">
-    <img src="assets/navmiles1.png" alt="NavMiles Logo" />
-    <span class="nav-title">NavMiles</span>
-  </div>
-
-  <div class="hero">
-    <h1>Smart Fuel & Mileage Tracker</h1>
-    <p>Track your mileage, find the cheapest gas, and maximize your IRS tax deduction with NavMiles – the all-in-one solution for drivers, small business owners, and fleets.</p>
-
-    <div class="screenshots">
-      <img src="assets/navmiles2.png" alt="Screenshot 1"/>
-      <img src="assets/smart1.png" alt="Screenshot 2"/>
-      <img src="assets/fuelgague2.png" alt="Fuel Gauge"/>
-    </div>
-
-    <div class="cta">
-      <a href="https://apps.apple.com/app/idYOUR_APP_ID_HERE" target="_blank">Download on the App Store</a>
-    </div>
-  </div>
-
-  <div class="features">
-    <h2>Features:</h2>
-    <ul>
-      <li>🛣️ Accurate trip & mileage logging for business, tax, or personal use</li>
-      <li>⛽ One-tap “Find Gas” with current prices and stations near you</li>
-      <li>🚗 Intelligent fuel tracking & proactive low-fuel alerts</li>
-      <li>📊 IRS-compliant reports (PDF/CSV export)</li>
-      <li>🔒 All data securely stored and privacy-first</li>
-      <li>🌎 Built for drivers, gig workers, and small businesses</li>
-    </ul>
-  </div>
-
+  <img src="applogo.png" alt="NavMiles Logo" class="logo-bg" />
+  <h1>NavMiles</h1>
+  <p class="subtitle">
+    The smarter way to track mileage, find fuel, and log trips – all in one tap.<br>
+    <span class="highlight">Drive smarter. Save more. Log everything.</span>
+  </p>
+  <a href="https://apps.apple.com/" target="_blank" rel="noopener">
+    <button class="button">Download on the App Store</button>
+  </a>
   <div class="footer">
-    &copy; 2025 Mcuztoms LLC • <a href="privacy.html" style="color:#46cfff;">Privacy Policy</a>
+    &copy; 2025 Mcuztoms LLC. All rights reserved.
   </div>
 </body>
 </html>
