@@ -7,14 +7,69 @@
   <link rel="icon" type="image/png" href="assets/app_logo.png">
   <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
   <style>
-    body { margin:0; font-family:'Inter',Arial,sans-serif; background:radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%); color:#cde5fa; min-height:100vh;}
-    .navbar { width:100vw; background:rgba(10,24,47,0.95); box-shadow:0 1px 10px #01152433; position:sticky; top:0; z-index:20; display:flex; justify-content:center;}
-    .nav-content { width:100%; max-width:630px; display:flex; align-items:center; justify-content:center; margin:0 auto; gap:12px; padding:10px 0 7px 0;}
-    .nav-logo { height:36px; margin-right:16px; border-radius:13px; box-shadow:0 3px 12px #01152433; background:#fff1; object-fit:contain;}
-    .nav-btn { background:none; border:none; color:#cde5fa; font-size:1.05rem; padding:9px 16px; font-weight:700; border-radius:13px; margin:0 4px; cursor:pointer; transition:background 0.15s, color 0.15s; text-decoration:none; display:inline-block;}
-    .nav-btn.active, .nav-btn:hover { background:#1e88e5; color:#fff;}
-    .container { max-width:520px; margin:0 auto; padding:30px 8px 50px 8px; display:flex; flex-direction:column; align-items:center;}
-    .card { width:100%; background:rgba(10,24,47,0.97); border-radius:26px; padding:34px 18px 28px 18px; margin-bottom:34px; box-shadow:0 6px 28px #01152460;}
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%);
+      color: #cde5fa;
+      min-height: 100vh;
+    }
+    .navbar {
+      width: 100vw;
+      background: rgba(10,24,47,0.95);
+      box-shadow: 0 1px 10px #01152433;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      min-height: 56px;
+    }
+    .nav-content {
+      width: 100%;
+      max-width: 630px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      gap: 12px;
+      padding: 10px 0 7px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      flex-wrap: nowrap;
+    }
+    .nav-logo {
+      height: 36px;
+      margin-right: 16px;
+      border-radius: 13px;
+      box-shadow: 0 3px 12px #01152433;
+      background: #fff1;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      background: none;
+      border: none;
+      color: #cde5fa;
+      font-size: 1.05rem;
+      padding: 9px 16px;
+      font-weight: 700;
+      border-radius: 13px;
+      margin: 0 4px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-btn.active, .nav-btn:hover {
+      background: #1e88e5;
+      color: #fff;
+    }
+    .container { max-width:520px; margin:0 auto; padding:30px 8px 150px 8px; display:flex; flex-direction:column; align-items:center; }
+    .card { width:100%; background:rgba(10,24,47,0.97); border-radius:26px; padding:34px 18px 28px 18px; margin-bottom:34px; box-shadow:0 6px 28px #01152460; }
     .faq-title { color:#e39b0d; font-size:2rem; font-weight:bold; margin-bottom:18px; text-align:center; letter-spacing:0.5px;}
     .faq-list { margin:22px 0 0 0; padding:0; list-style:none;}
     .faq-q { color:#36cfff; font-weight:bold; margin-top:22px; margin-bottom:5px; font-size:1.13rem; letter-spacing:0.2px; text-align:left;}
@@ -61,24 +116,39 @@
     }
     .footer a:hover { color: #e39b0d; }
     .x-icon { width: 21px; height: 21px; vertical-align: middle; margin-right: 2px; filter: brightness(1.2);}
-    @media (max-width:600px) { .container{max-width:99vw; padding:0 4vw 70px 4vw;} .faq-title{font-size:1.3rem;} }
+    @media (max-width: 700px) {
+      .container { max-width: 99vw; padding: 0 4vw 180px 4vw;}
+      .faq-title { font-size: 1.3rem;}
+      .card { padding: 24px 6vw 22px 6vw; }
+    }
     @media (max-width: 650px) {
-      .footer-row { flex-direction: column; align-items: center; gap: 4px; }
-      .footer { font-size: 0.95rem; padding: 14px 5vw 68px 5vw; }
+      .footer-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+      .footer {
+        font-size: 0.95rem;
+        padding: 14px 5vw 68px 5vw;
+        position: fixed;
+        left: 0; bottom: 0; width: 100vw;
+      }
       .footer-links { gap: 8px; margin-top: 2px; }
       .container { padding-bottom: 190px !important;}
-      .nav-content { flex-wrap: wrap; gap: 4px; justify-content: flex-start; overflow-x: auto; }
+      .nav-content { flex-wrap: nowrap; gap: 4px; justify-content: flex-start; padding-left: 4vw; overflow-x: auto; scrollbar-width: none; }
       .nav-content::-webkit-scrollbar { display: none; }
-      .nav-btn { padding: 7px 10px; font-size: 1rem; margin: 2px 3px; }
-      .logo { width: 82vw !important; max-width: 190px !important; }
+      .nav-btn { padding: 8px 9px; font-size: 1rem; margin: 2px 2px; white-space: nowrap; }
+      .nav-logo { height: 29px; margin-right: 9px; min-width: 28px; max-width: 32px; }
     }
     @media (max-width: 430px) {
       .footer { font-size: 0.84rem; padding: 11px 3vw 18px 4vw;}
       .container { padding-bottom: 210px !important;}
+      .card { padding: 16px 2vw 18px 2vw; }
     }
   </style>
 </head>
 <body>
+  <!-- Navigation Bar (matches Pricing/Comparison page) -->
   <div class="navbar">
     <div class="nav-content">
       <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
