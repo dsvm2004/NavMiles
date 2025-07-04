@@ -140,6 +140,50 @@
       .container { max-width: 99vw; padding: 0 4vw 100px 4vw;}
       .newsletter-title { font-size: 1.3rem;}
     }
+
+    @media (max-width: 650px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.97rem;
+    padding: 13px 6px 18px 12px;
+    gap: 4px;
+    position: fixed;
+    left: 0; bottom: 0; width: 100vw;
+    background: rgba(10,24,47,0.95);
+  }
+  .footer a {
+    margin-left: 0 !important;
+    margin-right: 12px;
+    margin-bottom: 2px;
+    font-size: 1.08em;
+    display: inline-block;
+  }
+  .container {
+    padding-bottom: 170px !important;
+  }
+  .nav-content {
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+  .nav-btn {
+    padding: 7px 10px;
+    font-size: 1rem;
+    margin: 2px 3px;
+  }
+  .logo {
+    width: 82vw !important;
+    max-width: 190px !important;
+  }
+}
+@media (max-width: 430px) {
+  .footer { font-size: 0.84rem; padding: 11px 3vw 18px 4vw;}
+  .container { padding-bottom: 190px !important;}
+}
+
+  
   </style>
 </head>
 <body>
