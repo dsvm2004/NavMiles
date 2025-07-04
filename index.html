@@ -39,6 +39,8 @@
       margin: 0 auto;
       gap: 12px;
       padding: 10px 0 7px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .nav-logo {
       height: 36px;
@@ -61,6 +63,7 @@
       transition: background 0.15s, color 0.15s;
       text-decoration: none;
       display: inline-block;
+      white-space: nowrap;
     }
     .nav-btn.active, .nav-btn:hover {
       background: #1e88e5;
@@ -69,7 +72,7 @@
     .container {
       max-width: 480px;
       margin: 0 auto;
-      padding: 0 18px 60px 18px;
+      padding: 0 18px 145px 18px; /* More padding for footer on mobile */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -174,80 +177,84 @@
     }
     .footer {
       position: fixed;
-      bottom: 0; left: 0; width: 100vw;
-      background: rgba(10,24,47,0.92);
+      left: 0; bottom: 0; width: 100vw;
+      background: rgba(10,24,47,0.95);
       color: #8ea2be;
-      text-align: center;
       font-size: 1rem;
-      padding: 13px 6px 11px 6px;
+      padding: 14px 10px 22px 10px;
       letter-spacing: 0.5px;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
       z-index: 100;
+      flex-wrap: wrap;
       box-shadow: 0 -2px 12px #01152466;
     }
     .footer a {
       color: #46cfff;
       text-decoration: none;
-      margin-left: 3px;
-      font-size: 1.16em;
-      vertical-align: middle;
+      font-size: 1.14em;
+      margin-left: 8px;
+      margin-right: 8px;
+      margin-bottom: 2px;
       transition: color 0.18s;
+      display: inline-block;
+      word-break: break-all;
     }
     .footer a:hover { color: #e39b0d; }
     .x-icon { width: 23px; height: 23px; vertical-align: middle; margin-right: 4px; filter: brightness(1.2);}
-    @media (max-width: 600px) {
-      .container { max-width: 99vw; padding: 0 5vw 130px 5vw;}
-      .logo, .nav-logo { width: 85vw; min-width: 110px; max-width: 280px; }
+    @media (max-width: 700px) {
+      .container { max-width: 99vw; padding: 0 4vw 160px 4vw;}
+      .logo, .nav-logo { width: 85vw; min-width: 110px; max-width: 220px; }
       .download-btn { padding: 17px 0; font-size: 1.1rem;}
       .features-list { font-size: 0.96rem; }
       .whats-new-card { font-size: 0.98rem; }
     }
-
     @media (max-width: 650px) {
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 0.97rem;
-    padding: 13px 6px 18px 12px;
-    gap: 4px;
-    position: fixed;
-    left: 0; bottom: 0; width: 100vw;
-    background: rgba(10,24,47,0.95);
-  }
-  .footer a {
-    margin-left: 0 !important;
-    margin-right: 12px;
-    margin-bottom: 2px;
-    font-size: 1.08em;
-    display: inline-block;
-  }
-  .container {
-    padding-bottom: 170px !important;
-  }
-  .nav-content {
-    flex-wrap: wrap;
-    gap: 4px;
-    justify-content: flex-start;
-    overflow-x: auto;
-  }
-  .nav-btn {
-    padding: 7px 10px;
-    font-size: 1rem;
-    margin: 2px 3px;
-  }
-  .logo {
-    width: 82vw !important;
-    max-width: 190px !important;
-  }
-}
-@media (max-width: 430px) {
-  .footer { font-size: 0.84rem; padding: 11px 3vw 18px 4vw;}
-  .container { padding-bottom: 190px !important;}
-}
-
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 0.95rem;
+        gap: 4px;
+        padding: 16px 4vw 75px 4vw;
+        position: fixed;
+        left: 0; bottom: 0; width: 100vw;
+      }
+      .footer a {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 1.08em;
+        margin-bottom: 6px;
+      }
+      .container {
+        padding-bottom: 180px !important;
+      }
+      .nav-content {
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: flex-start;
+        padding-left: 4vw;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .nav-content::-webkit-scrollbar { display: none; }
+      .nav-btn {
+        padding: 8px 9px;
+        font-size: 1rem;
+        margin: 2px 2px;
+        white-space: nowrap;
+      }
+      .nav-logo {
+        width: 36px !important;
+        min-width: 32px;
+        max-width: 44px;
+      }
+    }
+    @media (max-width: 430px) {
+      .footer { font-size: 0.84rem; padding: 11px 3vw 18px 4vw;}
+      .container { padding-bottom: 200px !important;}
+    }
   </style>
 </head>
 <body>
@@ -276,16 +283,15 @@
     <a class="download-btn" href="#" target="_blank">Download on the App Store</a>
 
     <ul class="features-list">
-  <li>Fast, one-tap gas station finder along your route</li>
-  <li>Effortless mileage tracking & trip logs for tax deductions</li>
-  <li>Automatic fuel alerts and range calculations</li>
-  <li>Export IRS-ready trip logs (PDF & CSV)</li>
-  <li>Business & personal trip tracking—switch with a tap</li>
-  <li><b>Police & Accident Reporting!</b></li>
-  <li><b>One-Button Fine Dining: Instantly find the best restaurants along your route</b></li>
-  <li>Privacy-first. No selling your data—ever</li>
-</ul>
-
+      <li>Fast, one-tap gas station finder along your route</li>
+      <li>Effortless mileage tracking & trip logs for tax deductions</li>
+      <li>Automatic fuel alerts and range calculations</li>
+      <li>Export IRS-ready trip logs (PDF & CSV)</li>
+      <li>Business & personal trip tracking—switch with a tap</li>
+      <li><b>Police & Accident Reporting!</b></li>
+      <li><b>One-Button Fine Dining: Instantly find the best restaurants along your route</b></li>
+      <li>Privacy-first. No selling your data—ever</li>
+    </ul>
 
     <div class="whats-new-title">🚀 What's Next</div>
     <div class="whats-new-card">
