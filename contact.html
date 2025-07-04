@@ -1,42 +1,218 @@
-.footer-row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  text-align: center;
-}
-.footer .copyright {
-  margin-right: 8px;
-  white-space: nowrap;
-}
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-}
-@media (max-width: 650px) {
-  .footer-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    width: 100%;
-    text-align: center !important;
-  }
-  .footer .copyright {
-    margin-right: 0;
-    margin-bottom: 2px;
-    width: 100%;
-    display: block;
-    text-align: center;
-  }
-  .footer-links {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Contact NavMiles</title>
+  <link rel="icon" type="image/png" href="assets/app_logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin:0; padding:0; font-family:'Inter',Arial,sans-serif; background:radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%); color:#cde5fa; min-height:100vh; }
+    body { min-height: 100vh; }
+    .navbar { width:100vw; background:rgba(10,24,47,0.95); box-shadow:0 1px 10px #01152433; position:sticky; top:0; z-index:20; display:flex; justify-content:center;}
+    .nav-content { width:100%; max-width:630px; display:flex; align-items:center; justify-content:center; margin:0 auto; gap:12px; padding:10px 0 7px 0;}
+    .nav-logo { height:36px; margin-right:16px; border-radius:13px; box-shadow:0 3px 12px #01152433; background:#fff1; object-fit:contain;}
+    .nav-btn { background:none; border:none; color:#cde5fa; font-size:1.05rem; padding:9px 16px; font-weight:700; border-radius:13px; margin:0 4px; cursor:pointer; transition:background 0.15s, color 0.15s; text-decoration:none; display:inline-block;}
+    .nav-btn.active, .nav-btn:hover { background:#1e88e5; color:#fff;}
+    .container {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 32px 12px 150px 12px; /* 150px bottom for footer space */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(10,24,47,0.97);
+      border-radius: 26px;
+      padding: 34px 22px 28px 22px;
+      margin-bottom: 34px;
+      box-shadow: 0 6px 28px #01152460;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    .contact-title {
+      color: #e39b0d;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 18px;
+      text-align: center;
+      letter-spacing: 0.5px;
+      width: 100%;
+    }
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    label {
+      color: #e39b0d;
+      font-weight: bold;
+      margin-bottom: 7px;
+      display: block;
+      width: 100%;
+      text-align: left;
+      font-size: 1.05em;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 13px 12px;
+      border-radius: 9px;
+      border: 1.5px solid #184872;
+      background: #0d233a;
+      color: #fff;
+      font-size: 1.04em;
+      margin-bottom: 17px;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+    input:focus, textarea:focus { border:1.5px solid #1e88e5;}
+    .contact-btn {
+      background: #1e88e5;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.13em;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 0;
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto 0 auto;
+      cursor: pointer;
+      box-shadow: 0 2px 10px #01152444;
+      transition: background 0.18s;
+      display: block;
+      text-align: center;
+    }
+    .contact-btn:hover { background:#1976d2;}
+    .contact-note {
+      color: #8ea2be;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 0.95rem;
+      width: 100%;
+    }
+    /* --- Footer (now always centered) --- */
+    .footer {
+      position: fixed;
+      left: 0; bottom: 0; width: 100vw;
+      background: rgba(10,24,47,0.97);
+      color: #8ea2be;
+      font-size: 1rem;
+      padding: 13px 6px 11px 6px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -2px 12px #01152466;
+      z-index: 100;
+      text-align: center;
+    }
+    .footer-row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      width: 100%;
+      text-align: center;
+    }
+    .footer .copyright { 
+      margin: 0; 
+      white-space: nowrap;
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+    .footer-links { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 10px; 
+      align-items: center; 
+      justify-content: center; 
+      width: 100%; 
+      text-align: center;
+    }
+    .footer a {
+      color: #46cfff;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: color 0.18s;
+      display: inline-block;
+      margin: 0 4px;
+    }
+    .footer a:hover { color: #e39b0d; }
+    .x-icon { width: 21px; height: 21px; vertical-align: middle; margin-right: 2px; filter: brightness(1.2);}
+    /* Responsive Fixes */
+    @media (max-width: 700px) {
+      .container { max-width: 99vw; padding: 0 2vw 180px 2vw;}
+      .card { padding: 24px 6vw 22px 6vw; max-width: 98vw; }
+      .contact-title { font-size: 1.3rem; }
+    }
+    @media (max-width: 650px) {
+      .footer-row { gap: 4px; }
+      .footer { font-size: 0.95rem; padding: 14px 5vw 68px 5vw; }
+      .footer-links { gap: 8px; margin-top: 2px; }
+      .container { padding-bottom: 190px !important;}
+      .nav-content { flex-wrap: wrap; gap: 4px; justify-content: flex-start; overflow-x: auto; }
+      .nav-content::-webkit-scrollbar { display: none; }
+      .nav-btn { padding: 7px 10px; font-size: 1rem; margin: 2px 3px; }
+      .logo { width: 82vw !important; max-width: 190px !important; }
+      .card { box-sizing: border-box; }
+    }
+    @media (max-width: 430px) {
+      .footer { font-size: 0.84rem; padding: 11px 3vw 18px 4vw;}
+      .container { padding-bottom: 210px !important;}
+      .card { padding: 16px 2vw 18px 2vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-content">
+      <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
+      <a class="nav-btn" href="index.html">Home</a>
+      <a class="nav-btn" href="pricing.html">Pricing</a>
+      <a class="nav-btn" href="comparison.html">Comparison</a>
+      <a class="nav-btn" href="faq.html">FAQ</a>
+      <a class="nav-btn" href="newsletter.html">Newsletter</a>
+      <a class="nav-btn active" href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <div class="contact-title">Contact Us</div>
+      <form action="mailto:support@navmiles.com" method="POST" enctype="text/plain" autocomplete="off">
+        <label for="name">Name</label>
+        <input id="name" name="Name" type="text" required placeholder="Your name" autocomplete="off">
+        <label for="email">Email</label>
+        <input id="email" name="Email" type="email" required placeholder="Your email" autocomplete="off">
+        <label for="msg">Message</label>
+        <textarea id="msg" name="Message" required rows="3" placeholder="How can we help?"></textarea>
+        <button class="contact-btn" type="submit">Send Message</button>
+        <div class="contact-note">
+          Or email us at <a href="mailto:support@navmiles.com" style="color:#46cfff">support@navmiles.com</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Centered Footer (matches index/landing) -->
+  <div class="footer">
+    <div class="footer-row">
+      <span class="copyright">&copy; 2025 NavMiles • Built by Mcuztoms LLC</span>
+      <span class="footer-links">
+        <a href="https://x.com/NavMiles" target="_blank">
+          <img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">@NavMiles
+        </a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="tos.html">Terms of Service</a>
+        <a href="refund.html">Refund Policy</a>
+      </span>
+    </div>
+  </div>
+</body>
+</html>
