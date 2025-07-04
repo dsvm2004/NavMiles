@@ -17,7 +17,7 @@
     .container {
       max-width: 520px;
       margin: 0 auto;
-      padding: 32px 12px 150px 12px; /* 150px bottom for footer space */
+      padding: 32px 12px 150px 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -119,6 +119,7 @@
       align-items: center;
       gap: 12px;
       width: 100%;
+      text-align: center;
     }
     .footer .copyright { margin-right: 8px; white-space: nowrap;}
     .footer-links { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center;}
@@ -139,9 +140,26 @@
       .contact-title { font-size: 1.3rem; }
     }
     @media (max-width: 650px) {
-      .footer-row { flex-direction: column; align-items: center; gap: 4px; }
+      .footer-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        width: 100%;
+        text-align: center !important;
+      }
+      .footer .copyright {
+        margin-right: 0;
+        margin-bottom: 2px;
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+      .footer-links {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+      }
       .footer { font-size: 0.95rem; padding: 14px 5vw 68px 5vw; }
-      .footer-links { gap: 8px; margin-top: 2px; }
       .container { padding-bottom: 190px !important;}
       .nav-content { flex-wrap: wrap; gap: 4px; justify-content: flex-start; overflow-x: auto; }
       .nav-content::-webkit-scrollbar { display: none; }
@@ -185,7 +203,7 @@
       </form>
     </div>
   </div>
-  <!-- Footer (matches index/landing, nothing else changed) -->
+  <!-- Footer (true centered for all devices) -->
   <div class="footer">
     <div class="footer-row">
       <span class="copyright">&copy; 2025 NavMiles • Built by Mcuztoms LLC</span>
