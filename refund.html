@@ -1,35 +1,72 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Refund Policy – NavMiles</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>NavMiles – Refund Policy</title>
+  <link rel="icon" type="image/png" href="assets/app_logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; font-family:'Inter',Arial,sans-serif; background:radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%); color:#cde5fa; min-height:100vh;}
+    .navbar { width:100vw; background:rgba(10,24,47,0.95); box-shadow:0 1px 10px #01152433; position:sticky; top:0; z-index:20; display:flex; justify-content:center;}
+    .nav-content { width:100%; max-width:630px; display:flex; align-items:center; justify-content:center; margin:0 auto; gap:12px; padding:10px 0 7px 0;}
+    .nav-logo { height:36px; margin-right:16px; border-radius:13px; box-shadow:0 3px 12px #01152433; background:#fff1; object-fit:contain;}
+    .nav-btn { background:none; border:none; color:#cde5fa; font-size:1.05rem; padding:9px 16px; font-weight:700; border-radius:13px; margin:0 4px; cursor:pointer; transition:background 0.15s, color 0.15s; text-decoration:none; display:inline-block;}
+    .nav-btn.active, .nav-btn:hover { background:#1e88e5; color:#fff;}
+    .container { max-width:520px; margin:0 auto; padding:30px 8px 50px 8px; display:flex; flex-direction:column; align-items:center;}
+    .card { width:100%; background:rgba(10,24,47,0.97); border-radius:26px; padding:34px 18px 28px 18px; margin-bottom:34px; box-shadow:0 6px 28px #01152460;}
+    .refund-title { color:#e39b0d; font-size:2rem; font-weight:bold; margin-bottom:8px; text-align:center; letter-spacing:0.5px;}
+    .update-date { color:#8ea2be; font-size:1rem; font-style:italic; margin-bottom:22px; text-align:center;}
+    .section-title { color:#36cfff; font-weight:700; font-size:1.19rem; margin-top:20px; margin-bottom:5px; }
+    .body-text { color:#cde5fa; font-size:1.07rem; line-height:1.7; margin-bottom:5px;}
+    .footer { position:fixed; bottom:0; left:0; width:100vw; background:rgba(10,24,47,0.92); color:#8ea2be; text-align:center; font-size:1rem; padding:13px 6px 11px 6px; letter-spacing:0.5px; display:flex; justify-content:center; align-items:center; gap:12px; z-index:100; box-shadow:0 -2px 12px #01152466;}
+    .footer a { color:#46cfff; text-decoration:none; margin-left:3px; font-size:1.16em; transition:color 0.18s;}
+    .footer a:hover { color:#e39b0d;}
+    .x-icon { width:23px; height:23px; vertical-align:middle; margin-right:4px; filter:brightness(1.2);}
+    a { color:#46cfff; text-decoration:underline; }
+    @media (max-width:600px) { .container{max-width:99vw; padding:0 4vw 70px 4vw;} .refund-title{font-size:1.3rem;} }
+  </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="features.html">Features</a>
-    <a href="comparison.html">Comparison</a>
-    <a href="faq.html">FAQ</a>
-    <a href="newsletter.html">Newsletter</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <main>
-    <section class="content-page">
-      <h1>Refund Policy</h1>
-      <p>All subscriptions and purchases are non-refundable, except where required by law. If you believe you were charged in error, contact <a href="mailto:support@navmiles.com">support@navmiles.com</a> within 7 days. The maximum refund will not exceed your most recent monthly payment.</p>
-      <p>Subscriptions may be canceled anytime in the App Store or Play Store. No partial refunds for unused time.</p>
-      <a href="index.html" class="back-home">← Back to Home</a>
-    </section>
-  </main>
-  <footer>
-    <a href="privacy.html">Privacy Policy</a> •
-    <a href="tos.html">Terms of Service</a> •
+  <div class="navbar">
+    <div class="nav-content">
+      <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
+      <a class="nav-btn" href="index.html">Home</a>
+      <a class="nav-btn" href="comparison.html">Comparison</a>
+      <a class="nav-btn" href="faq.html">FAQ</a>
+      <a class="nav-btn" href="newsletter.html">Newsletter</a>
+      <a class="nav-btn" href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <div class="refund-title">Refund Policy</div>
+      <div class="update-date">Last updated: June 2025</div>
+
+      <div class="section-title">Subscription Refunds</div>
+      <div class="body-text">
+        All subscription fees and charges for NavMiles are non-refundable except as required by law. If you believe you were charged in error, please contact us at <a href="mailto:support@navmiles.com">support@navmiles.com</a> within 7 days of the transaction. The maximum refund available for any claim will not exceed the amount paid for your most recent subscription period (monthly payment).
+      </div>
+      <div class="section-title">How to Request a Refund</div>
+      <div class="body-text">
+        Email <a href="mailto:support@navmiles.com">support@navmiles.com</a> with your account details and a description of your issue. We'll review your request and respond within 3 business days.
+      </div>
+      <div class="section-title">Apple App Store & Google Play</div>
+      <div class="body-text">
+        If you purchased NavMiles via the App Store or Google Play, refunds must be requested through their respective platforms, subject to their policies.
+      </div>
+      <div class="section-title">No Liability for Indirect Losses</div>
+      <div class="body-text">
+        We are not liable for any indirect, incidental, or consequential losses related to refunds. Your sole remedy is a refund of the most recent monthly payment amount, if eligible.
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    &copy; 2025 NavMiles • Built by mcuztoms llc
+    <a href="https://x.com/NavMiles" target="_blank"><img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">@NavMiles</a>
+    <a href="privacy.html">Privacy Policy</a> &middot;
+    <a href="tos.html">Terms of Service</a> &middot;
     <a href="refund.html">Refund Policy</a>
-    <br />
-    &copy; 2025 NavMiles. All rights reserved.
-  </footer>
+  </div>
 </body>
 </html>
