@@ -12,8 +12,9 @@
   <link rel="icon" type="image/png" href="assets/app_logo.png">
   <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: 'Inter', Arial, sans-serif;
       background: radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%);
       color: #cde5fa;
@@ -23,7 +24,6 @@
       width: 100vw;
       background: rgba(10,24,47,0.95);
       box-shadow: 0 1px 10px #01152433;
-      padding: 0;
       position: sticky;
       top: 0;
       z-index: 20;
@@ -55,13 +55,11 @@
       font-size: 1.05rem;
       padding: 9px 16px;
       font-weight: 700;
-      letter-spacing: 0.2px;
       border-radius: 13px;
       margin: 0 4px;
       cursor: pointer;
       transition: background 0.15s, color 0.15s;
       text-decoration: none;
-      outline: none;
       display: inline-block;
     }
     .nav-btn.active, .nav-btn:hover {
@@ -69,25 +67,50 @@
       color: #fff;
     }
     .container {
-      max-width: 520px;
+      max-width: 480px;
       margin: 0 auto;
       padding: 0 18px 60px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
     }
     .logo {
       width: 220px;
-      margin: 36px auto 16px auto;
+      margin: 36px auto 22px auto;
       display: block;
       border-radius: 30px;
       box-shadow: 0 6px 36px #01152444;
+    }
+    .title {
+      font-size: 2.2rem;
+      color: #e39b0d;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-align: center;
+      margin: 2px 0 9px 0;
+    }
+    .subtitle {
+      color: #46cfff;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+    .desc {
+      color: #b5d4ef;
+      font-size: 1.08rem;
+      text-align: center;
+      margin-bottom: 24px;
+      margin-top: 4px;
+      line-height: 1.7;
     }
     .download-btn {
       display: block;
       width: 100%;
       padding: 22px 0;
-      margin: 28px auto 30px auto;
+      margin: 0 auto 32px auto;
       background: #1e88e5;
       color: #fff;
       font-weight: bold;
@@ -104,48 +127,50 @@
     .download-btn:hover {
       background: #1976d2;
     }
-    .main-card {
-      width: 100%;
-      background: rgba(10,24,47,0.97);
-      border-radius: 26px;
-      padding: 34px 28px 28px 28px;
-      margin-bottom: 34px;
-      box-shadow: 0 6px 28px #01152460;
-    }
-    .main-title {
-      color: #e39b0d;
-      font-size: 1.14rem;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 20px;
-      letter-spacing: 0.3px;
-    }
-    .main-desc {
-      color: #cde5fa;
-      font-size: 1.11rem;
-      text-align: center;
-      margin-bottom: 16px;
-      font-weight: 500;
-      line-height: 1.6;
-    }
-    .main-bullets {
-      margin-top: 18px;
-    }
-    .main-bullets li {
-      font-size: 1.08rem;
-      margin-bottom: 16px;
+    .features-list {
       list-style: none;
-      position: relative;
-      padding-left: 25px;
-      line-height: 1.6;
+      padding: 0 0 0 12px;
+      margin-bottom: 33px;
+      margin-top: 7px;
+      width: 100%;
     }
-    .main-bullets li:before {
-      content: "✓";
+    .features-list li {
+      font-size: 1.06rem;
+      margin-bottom: 13px;
+      line-height: 1.7;
+      color: #cde5fa;
+      position: relative;
+      padding-left: 20px;
+    }
+    .features-list li:before {
+      content: '✓';
       position: absolute;
       left: 0;
-      color: #36cfff;
-      font-size: 1.12em;
+      color: #2ee99b;
       font-weight: bold;
+      font-size: 1.19em;
+    }
+    .whats-new-title {
+      color: #e39b0d;
+      font-size: 1.21rem;
+      font-weight: bold;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      text-align: center;
+      letter-spacing: 0.4px;
+    }
+    .whats-new-card {
+      background: rgba(10,24,47,0.97);
+      border-radius: 20px;
+      box-shadow: 0 2px 16px #01152433;
+      padding: 26px 19px 22px 19px;
+      width: 100%;
+      margin: 0 auto 28px auto;
+      color: #b5d4ef;
+      text-align: left;
+      font-size: 1.03rem;
+      margin-bottom: 80px;
+      min-height: 120px;
     }
     .footer {
       position: fixed;
@@ -171,18 +196,14 @@
       vertical-align: middle;
       transition: color 0.18s;
     }
-    .footer a:hover {
-      color: #e39b0d;
-    }
-    .x-icon {
-      width: 23px; height: 23px; vertical-align: middle; margin-right: 4px;
-      filter: brightness(1.2);
-    }
+    .footer a:hover { color: #e39b0d; }
+    .x-icon { width: 23px; height: 23px; vertical-align: middle; margin-right: 4px; filter: brightness(1.2);}
     @media (max-width: 600px) {
-      .container { max-width: 99vw; padding: 0 5vw 70px 5vw; }
-      .main-card { padding: 19px 6vw 23px 6vw; }
+      .container { max-width: 99vw; padding: 0 5vw 130px 5vw;}
       .logo, .nav-logo { width: 85vw; min-width: 110px; max-width: 280px; }
       .download-btn { padding: 17px 0; font-size: 1.1rem;}
+      .features-list { font-size: 0.96rem; }
+      .whats-new-card { font-size: 0.98rem; }
     }
   </style>
 </head>
@@ -193,50 +214,47 @@
       <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
       <a class="nav-btn active" href="index.html">Home</a>
       <a class="nav-btn" href="pricing.html">Pricing</a>
-
       <a class="nav-btn" href="comparison.html">Comparison</a>
       <a class="nav-btn" href="faq.html">FAQ</a>
       <a class="nav-btn" href="newsletter.html">Newsletter</a>
       <a class="nav-btn" href="contact.html">Contact</a>
     </div>
   </div>
+
   <div class="container">
-    <img src="assets/app_logo.png" class="logo" alt="NavMiles Logo">
-    <div class="main-card">
-      <div class="main-title">NavMiles is your intelligent mileage and fuel tracker—built for drivers, freelancers, business owners, and anyone who wants to save money and time.</div>
-      <div class="main-desc">
-        One tap finds the nearest gas, logs your trip, and tracks your fuel costs—all with IRS-compliant records.
-      </div>
-      <a class="download-btn" href="#" target="_blank">Download on the App Store</a>
-      <ul class="main-bullets">
-        <li>Fast, one-tap gas station finder along your route</li>
-        <li>Effortless mileage tracking & trip logs for tax deductions</li>
-        <li>Automatic fuel alerts and range calculations</li>
-        <li>Export IRS-ready trip logs (PDF & CSV)</li>
-        <li>Business & personal trip tracking—switch with a tap</li>
-        <li>Privacy-first. No selling your data—ever</li>
+    <img src="assets/app_logo.png" class="logo" alt="NavMiles Logo" id="main-logo">
+
+    <div class="title">NavMiles</div>
+    <div class="subtitle">Smart Fuel & Mileage Tracker</div>
+    <div class="desc">
+      Effortlessly track your miles, fuel, and expenses—right from your phone.<br>
+      One tap for IRS-ready trip logs, business/personal tracking, gas station finder, fuel alerts, and more.
+    </div>
+    <a class="download-btn" href="#" target="_blank">Download on the App Store</a>
+
+    <ul class="features-list">
+      <li>Fast, one-tap gas station finder along your route</li>
+      <li>Effortless mileage tracking & trip logs for tax deductions</li>
+      <li>Automatic fuel alerts and range calculations</li>
+      <li>Export IRS-ready trip logs (PDF & CSV)</li>
+      <li>Business & personal trip tracking—switch with a tap</li>
+      <li>Privacy-first. No selling your data—ever</li>
+    </ul>
+
+    <div class="whats-new-title">🚀 What's New / What's Next</div>
+    <div class="whats-new-card">
+      <ul style="margin:0; padding-left:22px;">
+        <li>July 2025: App launch on iOS!</li>
+        <li>PDF/CSV trip log export for business plan</li>
+        <li>Enhanced vehicle MPG & tank tracking (Business)</li>
+        <li>Trip log editing, improved UI, and more coming soon</li>
+        <li>Android version planned for fall 2025</li>
       </ul>
     </div>
   </div>
-
-  <div class="card" style="margin-bottom: 36px;">
-  <div class="why-title" style="margin-top:0;">What’s Next for NavMiles?</div>
-  <ul style="margin: 18px 0 0 0; color:#b5d4ef; padding-left: 18px;">
-    <li>• <strong>Android version</strong> (coming soon!)</li>
-    <li>• “Find Dining” – discover restaurants on your route</li>
-    <li>• Fleet management tools for small businesses</li>
-    <li>• Cloud backup & restore</li>
-    <li>• More languages and regional features</li>
-    <li>• …and more based on your feedback!</li>
-  </ul>
-</div>
-
   <div class="footer">
     &copy; 2025 NavMiles • Built by Mcuztoms LLC
-    <a href="https://x.com/NavMiles" target="_blank" title="Follow NavMiles on X">
-      <img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">
-      @NavMiles
-    </a>
+    <a href="https://x.com/NavMiles" target="_blank"><img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">@NavMiles</a>
     <a href="privacy.html">Privacy Policy</a> &middot;
     <a href="tos.html">Terms of Service</a> &middot;
     <a href="refund.html">Refund Policy</a>
