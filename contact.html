@@ -9,11 +9,59 @@
   <style>
     html, body { margin:0; padding:0; font-family:'Inter',Arial,sans-serif; background:radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%); color:#cde5fa; min-height:100vh; }
     body { min-height: 100vh; }
-    .navbar { width:100vw; background:rgba(10,24,47,0.95); box-shadow:0 1px 10px #01152433; position:sticky; top:0; z-index:20; display:flex; justify-content:center;}
-    .nav-content { width:100%; max-width:630px; display:flex; align-items:center; justify-content:center; margin:0 auto; gap:12px; padding:10px 0 7px 0;}
-    .nav-logo { height:36px; margin-right:16px; border-radius:13px; box-shadow:0 3px 12px #01152433; background:#fff1; object-fit:contain;}
-    .nav-btn { background:none; border:none; color:#cde5fa; font-size:1.05rem; padding:9px 16px; font-weight:700; border-radius:13px; margin:0 4px; cursor:pointer; transition:background 0.15s, color 0.15s; text-decoration:none; display:inline-block;}
-    .nav-btn.active, .nav-btn:hover { background:#1e88e5; color:#fff;}
+    .navbar {
+      width: 100vw;
+      background: rgba(10,24,47,0.95);
+      box-shadow: 0 1px 10px #01152433;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      min-height: 56px;
+    }
+    .nav-content {
+      width: 100%;
+      max-width: 630px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      gap: 12px;
+      padding: 10px 0 7px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      flex-wrap: nowrap;
+    }
+    .nav-logo {
+      height: 36px;
+      margin-right: 16px;
+      border-radius: 13px;
+      box-shadow: 0 3px 12px #01152433;
+      background: #fff1;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      background: none;
+      border: none;
+      color: #cde5fa;
+      font-size: 1.05rem;
+      padding: 9px 16px;
+      font-weight: 700;
+      border-radius: 13px;
+      margin: 0 4px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-btn.active, .nav-btn:hover {
+      background: #1e88e5;
+      color: #fff;
+    }
     .container {
       max-width: 520px;
       margin: 0 auto;
@@ -161,10 +209,10 @@
       }
       .footer { font-size: 0.95rem; padding: 14px 5vw 68px 5vw; }
       .container { padding-bottom: 190px !important;}
-      .nav-content { flex-wrap: wrap; gap: 4px; justify-content: flex-start; overflow-x: auto; }
+      .nav-content { flex-wrap: nowrap; gap: 4px; justify-content: flex-start; padding-left: 4vw; overflow-x: auto; scrollbar-width: none; }
       .nav-content::-webkit-scrollbar { display: none; }
-      .nav-btn { padding: 7px 10px; font-size: 1rem; margin: 2px 3px; }
-      .logo { width: 82vw !important; max-width: 190px !important; }
+      .nav-btn { padding: 8px 9px; font-size: 1rem; margin: 2px 2px; white-space: nowrap; }
+      .nav-logo { height: 29px; margin-right: 9px; min-width: 28px; max-width: 32px; }
       .card { box-sizing: border-box; }
     }
     @media (max-width: 430px) {
