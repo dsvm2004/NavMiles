@@ -3,63 +3,268 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>NavMiles Newsletter & Early Access</title>
+  <title>NavMiles – Newsletter & Early Access</title>
   <link rel="icon" type="image/png" href="assets/app_logo.png">
   <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
+  <!-- Brevo form CSS -->
   <style>
-    body { margin:0; font-family:'Inter',Arial,sans-serif; background:radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%); color:#cde5fa; min-height:100vh;}
-    .navbar { width:100vw; background:rgba(10,24,47,0.95); box-shadow:0 1px 10px #01152433; position:sticky; top:0; z-index:20; display:flex; justify-content:center;}
-    .nav-content { width:100%; max-width:630px; display:flex; align-items:center; justify-content:center; margin:0 auto; gap:12px; padding:10px 0 7px 0;}
-    .nav-logo { height:36px; margin-right:16px; border-radius:13px; box-shadow:0 3px 12px #01152433; background:#fff1; object-fit:contain;}
-    .nav-btn { background:none; border:none; color:#cde5fa; font-size:1.05rem; padding:9px 16px; font-weight:700; border-radius:13px; margin:0 4px; cursor:pointer; transition:background 0.15s, color 0.15s; text-decoration:none; display:inline-block;}
-    .nav-btn.active, .nav-btn:hover { background:#1e88e5; color:#fff;}
-    .container { max-width:520px; margin:0 auto; padding:30px 8px 50px 8px; display:flex; flex-direction:column; align-items:center;}
-    .card { width:100%; background:rgba(10,24,47,0.97); border-radius:26px; padding:34px 18px 28px 18px; margin-bottom:34px; box-shadow:0 6px 28px #01152460;}
-    h1 { color:#e39b0d; margin-bottom:18px; text-align:center; font-size:2rem; font-weight:800;}
-    form { margin-top:28px; width:100%; display:flex; flex-direction:column; align-items:center;}
-    input[type="email"] { width:80%; padding:13px 12px; border-radius:9px; border:1.5px solid #184872; background:#0d233a; color:#fff; font-size:1.04em; margin-bottom:14px;}
-    input[type="email"]:focus { border:1.5px solid #1e88e5;}
-    .submit-btn { background:#1e88e5; color:#fff; font-weight:bold; font-size:1.13em; border:none; border-radius:10px; padding:13px 44px; cursor:pointer; box-shadow:0 2px 10px #01152444; transition:background 0.18s;}
-    .submit-btn:hover { background:#1976d2;}
-    .desc { color:#b5d4ef; font-size:1.07rem; margin-top:20px; text-align:center;}
-    .footer { position:fixed; bottom:0; left:0; width:100vw; background:rgba(10,24,47,0.92); color:#8ea2be; text-align:center; font-size:1rem; padding:13px 6px 11px 6px; letter-spacing:0.5px; display:flex; justify-content:center; align-items:center; gap:12px; z-index:100; box-shadow:0 -2px 12px #01152466;}
-    .footer a { color:#46cfff; text-decoration:none; margin-left:3px; font-size:1.16em; transition:color 0.18s;}
-    .footer a:hover { color:#e39b0d;}
-    .x-icon { width:23px; height:23px; vertical-align:middle; margin-right:4px; filter:brightness(1.2);}
-    @media (max-width:600px) { .container{max-width:99vw; padding:0 4vw 70px 4vw;} h1{font-size:1.3rem;} }
+    @font-face {
+      font-display: block;
+      font-family: Roboto;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"),
+           url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff");
+    }
+    @font-face {
+      font-display: fallback;
+      font-family: Roboto;
+      font-weight: 600;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"),
+           url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff");
+    }
+    @font-face {
+      font-display: fallback;
+      font-family: Roboto;
+      font-weight: 700;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"),
+           url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff");
+    }
+    #sib-container input:-ms-input-placeholder {text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda;}
+    #sib-container input::placeholder {text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda;}
+    #sib-container textarea::placeholder {text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda;}
+    #sib-container a {text-decoration: underline; color: #2BB2FC;}
+  </style>
+  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+  <!-- NavMiles site styles -->
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%);
+      color: #cde5fa;
+      min-height: 100vh;
+    }
+    .navbar {
+      width: 100vw;
+      background: rgba(10,24,47,0.95);
+      box-shadow: 0 1px 10px #01152433;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+    }
+    .nav-content {
+      width: 100%;
+      max-width: 630px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      gap: 12px;
+      padding: 10px 0 7px 0;
+    }
+    .nav-logo {
+      height: 36px;
+      margin-right: 16px;
+      border-radius: 13px;
+      box-shadow: 0 3px 12px #01152433;
+      background: #fff1;
+      object-fit: contain;
+    }
+    .nav-btn {
+      background: none;
+      border: none;
+      color: #cde5fa;
+      font-size: 1.05rem;
+      padding: 9px 16px;
+      font-weight: 700;
+      border-radius: 13px;
+      margin: 0 4px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .nav-btn.active, .nav-btn:hover { background: #1e88e5; color: #fff; }
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 18px 70px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .newsletter-title {
+      color: #e39b0d;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 38px 0 9px 0;
+      text-align: center;
+      letter-spacing: 0.6px;
+    }
+    .newsletter-desc {
+      color: #b5d4ef;
+      font-size: 1.12rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .footer {
+      position: fixed;
+      bottom: 0; left: 0; width: 100vw;
+      background: rgba(10,24,47,0.92);
+      color: #8ea2be;
+      text-align: center;
+      font-size: 1rem;
+      padding: 13px 6px 11px 6px;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      z-index: 100;
+      box-shadow: 0 -2px 12px #01152466;
+    }
+    .footer a {
+      color: #46cfff;
+      text-decoration: none;
+      margin-left: 3px;
+      font-size: 1.16em;
+      vertical-align: middle;
+      transition: color 0.18s;
+    }
+    .footer a:hover { color: #e39b0d; }
+    .x-icon { width: 23px; height: 23px; vertical-align: middle; margin-right: 4px; filter: brightness(1.2);}
+    @media (max-width: 600px) {
+      .container { max-width: 99vw; padding: 0 4vw 100px 4vw;}
+      .newsletter-title { font-size: 1.3rem;}
+    }
   </style>
 </head>
 <body>
+  <!-- Navbar -->
   <div class="navbar">
     <div class="nav-content">
       <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
       <a class="nav-btn" href="index.html">Home</a>
       <a class="nav-btn" href="pricing.html">Pricing</a>
-
       <a class="nav-btn" href="comparison.html">Comparison</a>
       <a class="nav-btn" href="faq.html">FAQ</a>
       <a class="nav-btn active" href="newsletter.html">Newsletter</a>
       <a class="nav-btn" href="contact.html">Contact</a>
     </div>
   </div>
+
   <div class="container">
-    <div class="card">
-      <h1>Sign Up for NavMiles News & Early Access</h1>
-      <form action="mailto:support@navmiles.com" method="POST" enctype="text/plain">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <button class="submit-btn" type="submit">Sign Up</button>
-      </form>
-      <div class="desc">
-        We send updates on new features, tips, and beta invites. No spam, ever.
+    <div class="newsletter-title">Sign Up for NavMiles News &amp; Early Access</div>
+    <div class="newsletter-desc">
+      Get app updates, early access, and mileage tips. No spam—ever.<br>
+      Enter your email below to join!
+    </div>
+    <!-- Begin Brevo Form -->
+    <div class="sib-form" style="text-align: center; background-color: #011524;">
+      <div id="sib-form-container" class="sib-form-container">
+        <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
+          <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+            <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+              <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
+            </svg>
+            <span class="sib-form-message-panel__inner-text">
+              Your subscription could not be saved. Please try again.
+            </span>
+          </div>
+        </div>
+        <div></div>
+        <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+          <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+            <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+              <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
+            </svg>
+            <span class="sib-form-message-panel__inner-text">
+              Your subscription has been successful.
+            </span>
+          </div>
+        </div>
+        <div></div>
+        <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid; direction:ltr">
+          <form id="sib-form" method="POST" action="https://db0a234c.sibforms.com/serve/MUIFAHnXwxoTUO5trTW_RgRoG_HdkptcA6qV82OUCX6U2qGdZfwol7arur_6z7k_W0GPA2rN4Wa4BbJ89lzOwj0fs4vXSuPilrWUfmaMcvohvJ20trJEgR6yHAXilXXQgRhoyn4bAlX1ckpbIjhYhUOnkkXNbkfnTgVk48UhY3r5wibzpvdVw6ND9LH71KjOqNdKmsXN9FDnrqX6" data-type="subscription">
+            <div style="padding: 8px 0;">
+              <div class="sib-form-block" style="font-size:32px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent; text-align:left">
+                <p>NavMiles</p>
+              </div>
+            </div>
+            <div style="padding: 8px 0;">
+              <div class="sib-form-block" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent; text-align:left">
+                <div class="sib-text-form-block">
+                  <p>Get app updates, early access, and mileage tips!</p>
+                  <p>Enter your email to subscribe.</p>
+                </div>
+              </div>
+            </div>
+            <div style="padding: 8px 0;">
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row ">
+                    <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#3c4858;" for="EMAIL" data-required="*">Enter your email address to subscribe</label>
+                    <div class="entry__field">
+                      <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="EMAIL" data-required="true" required />
+                    </div>
+                  </div>
+                  <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+                  <label class="entry__specification" style="font-size:12px; text-align:left; font-family:Helvetica, sans-serif; color:#8390A4; text-align:left">
+                    Provide your email address to subscribe. For e.g abc@xyz.com
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div style="padding: 8px 0;">
+              <div class="sib-form-block" style="text-align: left">
+                <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#FFFFFF; background-color:#3E4857; border-radius:3px; border-width:0px;" form="sib-form" type="submit">
+                  <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" style="">
+                    <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                  </svg>
+                  Get Updates
+                </button>
+              </div>
+            </div>
+            <input type="text" name="email_address_check" value="" class="input--hidden">
+            <input type="hidden" name="locale" value="en">
+          </form>
+        </div>
       </div>
     </div>
+    <!-- End Brevo Form -->
   </div>
+
+  <!-- Footer -->
   <div class="footer">
     &copy; 2025 NavMiles • Built by Mcuztoms LLC
-    <a href="https://x.com/NavMiles" target="_blank"><img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">@NavMiles</a>
+    <a href="https://x.com/NavMiles" target="_blank">
+      <img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">@NavMiles
+    </a>
     <a href="privacy.html">Privacy Policy</a> &middot;
     <a href="tos.html">Terms of Service</a> &middot;
     <a href="refund.html">Refund Policy</a>
   </div>
+
+  <!-- Brevo script -->
+  <script>
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+    window.LOCALE = 'en';
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+    window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+    window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+    window.translation = {
+      common: {
+        selectedList: '{quantity} list selected',
+        selectedLists: '{quantity} lists selected',
+        selectedOption: '{quantity} selected',
+        selectedOptions: '{quantity} selected',
+      }
+    };
+    var AUTOHIDE = Boolean(0);
+  </script>
+  <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
 </html>
