@@ -12,6 +12,8 @@
   <link rel="icon" type="image/png" href="assets/app_logo.png">
   <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
   <style>
+
+    
     html, body {
       margin: 0;
       padding: 0;
@@ -273,7 +275,14 @@
       .footer { font-size: 0.84rem; padding: 11px 3vw 18px 4vw;}
       .container { padding-bottom: 210px !important;}
     }
-  </style>
+      </style>
+<script>
+    // If URL contains confirmation_token, show confirm.html instead
+    if (window.location.search.includes('confirmation_token')) {
+      window.location.href = '/confirm.html';
+    }
+  </script>
+  
 </head>
 <body>
   <!-- Navigation Bar -->
