@@ -1,74 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Confirm Your Email – NavMiles</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>NavMiles – Email Confirmed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Example brand blue background; adjust if you want another shade! -->
   <style>
     body {
-      background: #f7faff;
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      color: #223046;
       margin: 0;
       padding: 0;
+      background: #3578e5; /* NavMiles blue */
       min-height: 100vh;
+      font-family: 'Inter', Arial, sans-serif;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
     .container {
       background: #fff;
-      border-radius: 24px;
-      box-shadow: 0 2px 32px rgba(50,120,229,0.07), 0 1.5px 6px rgba(53,120,229,0.12);
-      padding: 40px 34px 30px 34px;
-      max-width: 370px;
+      border-radius: 22px;
+      box-shadow: 0 6px 32px rgba(44,72,150,0.07), 0 1.5px 6px rgba(44,72,150,0.12);
+      padding: 48px 36px 38px 36px;
+      max-width: 375px;
+      width: 94vw;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .logo {
-      width: 120px;
-      margin-bottom: 22px;
-      margin-top: 0;
+      width: 128px;
+      height: 128px;
+      margin-bottom: 18px;
+      margin-top: 4px;
+      object-fit: contain;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
+      box-shadow: 0 0 16px #3578e534;
+      border-radius: 18px;
     }
-    .checkmark {
+    .check {
+      font-size: 62px;
+      color: #31C96E;
+      margin: 18px 0 0 0;
       display: block;
-      margin: 0 auto 16px auto;
-      width: 60px;
-      height: 60px;
     }
-    h2 {
-      font-size: 1.7rem;
+    h1 {
+      font-size: 2.1rem;
+      color: #222b44;
+      margin-bottom: 7px;
+      margin-top: 8px;
       font-weight: 700;
-      margin-bottom: 10px;
-      color: #3578e5;
+      letter-spacing: 0.02em;
     }
     p {
-      color: #2c394b;
-      font-size: 1.08rem;
-      margin-bottom: 18px;
+      color: #444;
+      margin: 9px 0 0 0;
+      font-size: 1.07rem;
+      line-height: 1.55;
+      font-weight: 400;
     }
-    .cta {
-      color: #3578e5;
-      font-weight: 600;
-      margin-top: 14px;
-      font-size: 1.09rem;
+    @media (max-width: 500px) {
+      .container {
+        padding: 30px 6vw 30px 6vw;
+      }
+      .logo {
+        width: 92px; height: 92px;
+      }
+      h1 { font-size: 1.35rem; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="/assets/app_logo.png" alt="NavMiles" class="logo">
-    <!-- SVG Checkmark Icon -->
-    <svg class="checkmark" viewBox="0 0 52 52">
-      <circle cx="26" cy="26" r="25" fill="#e6f5eb"/>
-      <path fill="none" stroke="#16c657" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M14 27l8 8 16-16"/>
-    </svg>
-    <h2>Email Confirmed!</h2>
+    <img src="assets/app_logo.png" class="logo" alt="NavMiles logo">
+    <span class="check">✔️</span>
+    <h1>Email Confirmed!</h1>
     <p>Your email has been verified.<br>
-    Head back to the NavMiles app to start navigating and tracking your trips.</p>
-    <div class="cta">Thank you for joining NavMiles!</div>
+    You can now head back to the NavMiles app and start navigating smarter.</p>
   </div>
 </body>
 </html>
