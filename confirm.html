@@ -1,82 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>NavMiles – Email Confirmed</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Example brand blue background; adjust if you want another shade! -->
+  <meta charset="UTF-8">
+  <title>Email Confirmed – NavMiles</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/app_logo.png">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
-      background: #3578e5; /* NavMiles blue */
-      min-height: 100vh;
+      background: radial-gradient(ellipse at 50% 10%, #082131 70%, #011524 100%);
+      color: #cde5fa;
       font-family: 'Inter', Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-height: 100vh;
+      width: 100vw;
+      overflow-x: hidden;
     }
-    .container {
-      background: #fff;
-      border-radius: 22px;
-      box-shadow: 0 6px 32px rgba(44,72,150,0.07), 0 1.5px 6px rgba(44,72,150,0.12);
-      padding: 48px 36px 38px 36px;
-      max-width: 375px;
-      width: 94vw;
-      text-align: center;
+    .confirm-container {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      min-height: 90vh;
+      max-width: 430px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
-    .logo {
-      width: 128px;
-      height: 128px;
-      margin-bottom: 18px;
-      margin-top: 4px;
-      object-fit: contain;
+    .nav-logo-big {
+      width: 135px;
+      height: 135px;
+      border-radius: 40px;
+      box-shadow: 0 8px 30px #01152455;
+      background: #fff1;
+      object-fit: cover;
+      margin: 24px 0 10px 0;
       display: block;
-      box-shadow: 0 0 16px #3578e534;
-      border-radius: 18px;
     }
-    .check {
-      font-size: 62px;
-      color: #31C96E;
-      margin: 18px 0 0 0;
+    .checkmark {
       display: block;
+      width: 68px;
+      height: 68px;
+      margin: 10px auto 24px auto;
     }
-    h1 {
-      font-size: 2.1rem;
-      color: #222b44;
+    .title {
+      color: #e39b0d;
+      font-size: 2rem;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 1px;
+      margin-top: 0;
       margin-bottom: 7px;
-      margin-top: 8px;
+      text-shadow: 0 4px 32px #0007;
+    }
+    .subtitle {
+      color: #46cfff;
+      font-size: 1.18rem;
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 0.2px;
+    }
+    .desc {
+      color: #b5d4ef;
+      font-size: 1.08rem;
+      text-align: center;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .back-app {
+      margin-top: 10px;
+      font-size: 1.11rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
+      color: #fff;
+      background: #1e88e5;
+      border: none;
+      border-radius: 19px;
+      padding: 14px 34px;
+      text-decoration: none;
+      box-shadow: 0 3px 14px #01152444;
+      transition: background 0.16s, color 0.12s, box-shadow 0.15s;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      display: inline-block;
     }
-    p {
-      color: #444;
-      margin: 9px 0 0 0;
-      font-size: 1.07rem;
-      line-height: 1.55;
-      font-weight: 400;
+    .back-app:hover {
+      background: #1976d2;
+      color: #eec877;
+      box-shadow: 0 7px 25px #01152455;
     }
-    @media (max-width: 500px) {
-      .container {
-        padding: 30px 6vw 30px 6vw;
-      }
-      .logo {
-        width: 92px; height: 92px;
-      }
-      h1 { font-size: 1.35rem; }
+    @media (max-width: 650px) {
+      .confirm-container { padding: 0 2vw; }
+      .nav-logo-big { width: 85vw; max-width: 160px; }
+      .checkmark { width: 50px; height: 50px; }
+      .title { font-size: 1.38rem; }
+      .subtitle { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="assets/app_logo.png" class="logo" alt="NavMiles logo">
-    <span class="check">✔️</span>
-    <h1>Email Confirmed!</h1>
-    <p>Your email has been verified.<br>
-    You can now head back to the NavMiles app and start navigating smarter.</p>
+  <div class="confirm-container">
+    <img src="assets/app_logo.png" alt="NavMiles Logo" class="nav-logo-big" />
+    <!-- SVG Checkmark: modern, colorful, feels "success" -->
+    <svg class="checkmark" viewBox="0 0 52 52">
+      <circle cx="26" cy="26" r="25" fill="#2ee99b" opacity="0.18"/>
+      <path d="M14.5 28.5l7.5 7.5 15.5-15.5" fill="none" stroke="#2ee99b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="title">Email Confirmed!</div>
+    <div class="subtitle">Welcome to NavMiles</div>
+    <div class="desc">
+      Your email has been verified and your account is now active.<br>
+      <b>You're ready to track miles, find gas, and save money!</b>
+    </div>
+    <div style="height:14px;"></div>
+    <div class="desc" style="font-size: 1.01rem; margin-bottom: 0;">
+      Head back to the NavMiles app and start your journey.
+    </div>
   </div>
 </body>
 </html>
