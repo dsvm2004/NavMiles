@@ -1,102 +1,89 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Confirm Your Email | NavMiles</title>
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Email Confirmed • NavMiles</title>
   <style>
     body {
-      background: linear-gradient(120deg, #3578e5 0%, #4cd964 100%);
-      font-family: 'Inter', Arial, sans-serif;
-      min-height: 100vh;
-      margin: 0;
+      background: #172554;
+      color: #fff;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
-    .container {
+    .card {
       background: #fff;
-      border-radius: 22px;
-      box-shadow: 0 8px 32px rgba(53, 120, 229, 0.18);
-      padding: 38px 28px 32px 28px;
+      color: #172554;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(23,37,84,0.18);
+      padding: 48px 32px 32px 32px;
       max-width: 400px;
+      width: 90vw;
       text-align: center;
-      margin: 24px;
     }
     .logo {
-      width: 72px;
-      margin-bottom: 18px;
+      width: 70px;
+      margin-bottom: 14px;
     }
     h1 {
       font-size: 2rem;
       font-weight: 700;
+      margin-bottom: 12px;
       color: #3578e5;
-      margin-bottom: 10px;
     }
     p {
-      color: #2c3e50;
-      font-size: 1.12rem;
-      margin: 10px 0 16px 0;
+      font-size: 1.1rem;
+      margin-bottom: 22px;
+      color: #334155;
+    }
+    .success-check {
+      color: #16c657;
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .return-msg {
+      font-size: 1.05rem;
+      margin-top: 18px;
+      color: #172554;
+      font-weight: 500;
     }
     .btn {
-      display: inline-block;
-      padding: 13px 36px;
-      margin: 18px 0 6px 0;
-      font-size: 1.08rem;
-      font-weight: bold;
+      background: #3578e5;
       color: #fff;
-      background: linear-gradient(90deg, #3578e5 70%, #4cd964 100%);
       border: none;
+      padding: 12px 0;
       border-radius: 14px;
-      text-decoration: none;
+      width: 100%;
+      font-size: 1rem;
+      font-weight: bold;
       cursor: pointer;
-      transition: background 0.25s;
-      box-shadow: 0 3px 9px rgba(53,120,229,0.08);
-    }
-    .btn:hover {
-      background: linear-gradient(90deg, #2557a7 70%, #3bb554 100%);
-    }
-    .small {
-      font-size: 0.98rem;
-      color: #555;
-      margin-top: 12px;
-      margin-bottom: 0;
-    }
-    .footer {
-      margin-top: 28px;
-      color: #fff;
-      font-size: 0.95rem;
-      opacity: 0.86;
-    }
-    @media (max-width: 600px) {
-      .container {
-        max-width: 95vw;
-        padding: 16px 6vw 18px 6vw;
-      }
-      .logo {
-        width: 58px;
-      }
+      box-shadow: 0 4px 14px 0 rgba(53,120,229,0.10);
+      margin-top: 26px;
+      transition: background 0.2s;
+      text-decoration: none;
+      pointer-events: none; /* disables clicking */
+      opacity: 0.7;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Logo (replace src with your actual logo URL!) -->
-    <img class="logo" src="https://navmiles.com/assets/logo.png" alt="NavMiles Logo" onerror="this.style.display='none'">
-
-    <h1>Email Confirmed!</h1>
-    <p>Thank you for confirming your email. Your account is now active.<br>
-    <b>Ready to hit the road?</b></p>
-    <a class="btn" href="https://navmiles.com/app">Open NavMiles App</a>
-    <p class="small">
-      If this page doesn't update automatically after clicking the email, try logging in again.
-    </p>
-  </div>
-  <div class="footer">
-    &copy; 2025 NavMiles &mdash; <a href="https://navmiles.com" style="color: #fff; text-decoration: underline;">Home</a>
+  <div class="card">
+    <img src="https://navmiles.com/assets/logo-icon.png" alt="NavMiles" class="logo" />
+    <div class="success-check">✔️</div>
+    <h1>Email Confirmed</h1>
+    <p>Your email address has been successfully verified.</p>
+    <div class="return-msg">
+      You can now return to the NavMiles app and start navigating with confidence!
+    </div>
+    <button class="btn" disabled>Return to App</button>
+    <div style="margin-top:20px;font-size:13px;color:#64748b;opacity:.7;">
+      If you didn't request this, please ignore this message.
+    </div>
   </div>
 </body>
 </html>
