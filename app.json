@@ -1,0 +1,96 @@
+{
+  "expo": {
+    "name": "NavMiles",
+    "slug": "myfuelapp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/iconn.png",
+    "scheme": "name",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": false,
+
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.dsvm2004.navmiles",
+      "icon": "./assets/images/iconn.png",
+      "buildNumber": "10",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "We need your location to show your position on the map.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app needs your location to function properly, even when the app is in the background for navigation and trip logging.",
+        "NSFaceIDUsageDescription": "Allow Face ID to log you in quickly.",
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSLocationAlwaysUsageDescription": "We need your location in the background to enable navigation and trip tracking even when the app is closed or in the background.",
+        "UIBackgroundModes": ["location", "fetch", "processing"],
+        "BGTaskSchedulerPermittedIdentifiers": ["background-location-task"],
+        "NSUserTrackingUsageDescription": "We use your location to provide turn-by-turn navigation and find nearby gas stations.",
+        "NSUserNotificationUsageDescription": "We send notifications for upcoming turns, low fuel, or important trip events."
+      },
+      "config": {
+        "googleMapsApiKey": "AIzaSyCHBODrOpLE_rEHF6o4uSa2L19loLlHUvM"
+      },
+      "minimumOsVersion": "14.0"
+    },
+
+    "android": {
+      "icon": "./assets/images/iconn.png",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "POST_NOTIFICATIONS"
+      ],
+      "package": "com.dsvm2004.navmiles",
+      "minSdkVersion": 24,
+      "versionCode": 10
+    },
+
+    "permissions": [
+      "ACCESS_FINE_LOCATION",
+      "ACCESS_COARSE_LOCATION",
+      "ACCESS_BACKGROUND_LOCATION",
+      "USE_BIOMETRIC",
+      "USE_FINGERPRINT",
+      "POST_NOTIFICATIONS"
+    ],
+
+    "edgeToEdgeEnabled": true,
+
+    "config": {
+      "googleMaps": {
+        "apiKey": "AIzaSyCHBODrOpLE_rEHF6o4uSa2L19loLlHUvM"
+      }
+    },
+
+    "owner": "dsvm2004",
+
+    "plugins": [
+      ["sentry-expo", { "organization": "<your-org>", "project": "<your-project>" }],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ],
+      "expo-web-browser",
+      "expo-secure-store",
+      "expo-local-authentication",
+      "expo-location",
+      "expo-task-manager",
+      "expo-notifications"
+    ],
+
+    "extra": {
+      "eas": { "projectId": "549b874f-dc49-4e12-818a-d249f720f936" },
+      "router": {}
+    },
+
+    "experiments": { "typedRoutes": true }
+  }
+}
