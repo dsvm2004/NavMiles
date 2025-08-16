@@ -8,7 +8,6 @@
     "scheme": "name",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": false,
-
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.dsvm2004.navmiles",
@@ -30,7 +29,6 @@
       },
       "minimumOsVersion": "14.0"
     },
-
     "android": {
       "icon": "./assets/images/iconn.png",
       "adaptiveIcon": {
@@ -47,7 +45,6 @@
       "minSdkVersion": 24,
       "versionCode": 10
     },
-
     "permissions": [
       "ACCESS_FINE_LOCATION",
       "ACCESS_COARSE_LOCATION",
@@ -56,19 +53,22 @@
       "USE_FINGERPRINT",
       "POST_NOTIFICATIONS"
     ],
-
     "edgeToEdgeEnabled": true,
-
     "config": {
       "googleMaps": {
         "apiKey": "AIzaSyCHBODrOpLE_rEHF6o4uSa2L19loLlHUvM"
       }
     },
-
     "owner": "dsvm2004",
-
     "plugins": [
-      ["sentry-expo", { "organization": "<your-org>", "project": "<your-project>" }],
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "react-native",
+          "organization": "mcuztoms"
+        }
+      ],
       [
         "expo-splash-screen",
         {
@@ -85,12 +85,10 @@
       "expo-task-manager",
       "expo-notifications"
     ],
-
     "extra": {
       "eas": { "projectId": "549b874f-dc49-4e12-818a-d249f720f936" },
       "router": {}
     },
-
     "experiments": { "typedRoutes": true }
   }
 }

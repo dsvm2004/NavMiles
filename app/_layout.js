@@ -1,7 +1,7 @@
 // app/_layout.js
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Stack } from "expo-router";
-import { Platform, AppState } from "react-native";
+import { Platform, AppState, View, Button } from "react-native";
 import Purchases from "react-native-purchases";
 import { SettingsProvider } from "../app/providers/SettingsContext";
 import { UserVehicleProvider } from "../app/providers/UserVehicleContext";
@@ -10,44 +10,101 @@ import * as Location from "expo-location";
 import * as Notifications from "expo-notifications";
 import { LOCATION_TASK } from "../locationTask";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Sentry from "@sentry/react-native";
+import Constants from "expo-constants";
+import { supabase } from "../lib/supabaseClient";
 
-// --- SENTRY (uses env DSN so you don't hardcode it) ---
-import * as Sentry from "sentry-expo";
-Sentry.init({
-  dsn: process.env.EXPO_PUBLIC_SENTRY_DSN || "", // set in .env / EAS
-  enableInExpoDevelopment: true,
-  debug: __DEV__,
-  tracesSampleRate: 1.0, // optional performance tracing
-});
-
-// Optional: capture unhandled rejections in JS
-if (typeof PromiseRejectionEvent === "undefined") {
-  // RN doesn't have PromiseRejectionEvent; Sentry still hooks globals,
-  // this just avoids TS noise if you add typings later.
-}
-
-// --- Optional device info logging (safe if you decide to remove it later) ---
-let Device = null as any;
+// 🔹 Make expo-device optional to avoid bundling errors if not installed
+let Device = null;
 try {
-  // Keep this dynamic so it won’t break web bundling
-  // Note: sentry-expo already depends on expo-device; ensure it's installed.
-  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   Device = require("expo-device");
-} catch {
+} catch (_) {
   // leave null
 }
 
-export default function RootLayout() {
-  const reminderId = useRef<string | null>(null);
+// ✅ Initialize Sentry (paste your real DSN from Sentry)
+Sentry.init({
+  dsn: "https://69279e71b5d8e36b33c87daef623cd87@o4509851788967936.ingest.us.sentry.io/4509851802927104",
+  enableInExpoDevelopment: true,
+  debug: __DEV__,
+  tracesSampleRate: 0.1,
+  profilesSampleRate: 0.0,
+});
 
-  // --- RevenueCat: guard so dev builds without native module don't explode ---
+export default Sentry.wrap(function RootLayout() {
+  const reminderId = useRef(null);
+  const [userSet, setUserSet] = useState(false);
+
+  // Attach user & device context to Sentry as early as possible
+  useEffect(() => {
+    (async () => {
+      try {
+        // — user (Supabase)
+        const { data, error } = await supabase.auth.getUser();
+        if (!error && data?.user) {
+          const u = data.user;
+          Sentry.setUser({
+            id: u.id,
+            email: u.email || undefined,
+          });
+        } else {
+          // anonymous (still useful to group devices)
+          Sentry.setUser({ id: "anonymous" });
+        }
+
+        // — app info
+        const appVersion =
+          Constants?.expoConfig?.version ||
+          Constants?.manifest?.version ||
+          "unknown";
+
+        Sentry.setContext("app", {
+          name:
+            Constants?.expoConfig?.name ||
+            Constants?.manifest?.name ||
+            "NavMiles",
+          version: appVersion,
+          buildNumber:
+            Constants?.expoConfig?.ios?.buildNumber ||
+            Constants?.expoConfig?.android?.versionCode ||
+            "unknown",
+          releaseChannel: Constants?.expoConfig?.releaseChannel || "dev",
+        });
+
+        // — device info (if expo-device available)
+        if (Device) {
+          Sentry.setContext("device", {
+            manufacturer: Device.manufacturer ?? "unknown",
+            brand: Device.brand ?? "unknown",
+            model: Device.modelName ?? "unknown",
+            osName: Device.osName ?? Platform.OS,
+            osVersion: Device.osVersion ?? "unknown",
+            deviceType: String(Device.deviceType ?? "unknown"),
+            isPhysicalDevice: String(Device.isDevice ?? "unknown"),
+          });
+        } else {
+          Sentry.setContext("device", {
+            platform: Platform.OS,
+          });
+        }
+
+        setUserSet(true);
+      } catch (e) {
+        // don’t crash if Sentry context-setting fails
+        console.log("Sentry context init error:", e?.message || e);
+      }
+    })();
+  }, []);
+
+  // RevenueCat (guard during dev)
   useEffect(() => {
     try {
-      const hasRC =
+      if (
         Purchases &&
         typeof Purchases.configure === "function" &&
-        typeof Purchases.getCustomerInfo === "function";
-      if (hasRC) {
+        typeof Purchases.getCustomerInfo === "function"
+      ) {
         Purchases.configure({
           apiKey: Platform.select({
             ios: "appl_JiUsWQRyNraQSTVYPnWAlgIrIpK",
@@ -56,27 +113,14 @@ export default function RootLayout() {
         });
         // Purchases.setLogLevel("DEBUG");
       } else {
-        console.log("RevenueCat not available; skipping configure().");
+        console.log("RevenueCat not available in this build; skipping configure()");
       }
-    } catch (e: any) {
+    } catch (e) {
       console.log("RevenueCat configure failed (ignored in dev):", e?.message || e);
     }
   }, []);
 
-  // --- Device info (only if expo-device is present) ---
-  useEffect(() => {
-    if (Device) {
-      console.log("Device:", {
-        manufacturer: Device.manufacturer,
-        model: Device.modelName,
-        osName: Device.osName,
-        osVersion: Device.osVersion,
-        isDevice: Device.isDevice,
-      });
-    }
-  }, []);
-
-  // --- Location + notifications bootstrap (same logic, wrapped in try/catch) ---
+  // Location + notifications
   useEffect(() => {
     (async () => {
       try {
@@ -107,34 +151,34 @@ export default function RootLayout() {
             },
           });
         }
-      } catch (e: any) {
-        console.log("Location/notification init failed:", e?.message || e);
-        // Don't throw — this is non-fatal for app boot.
+      } catch (e) {
+        console.log("Location/notification init failed (dev build):", e?.message || e);
       }
     })();
   }, []);
 
-  // --- “We miss you!” reminder ---
+  // “We miss you!” reminder
   useEffect(() => {
     const LAST_FOREGROUND_TIMESTAMP_KEY = "lastForegroundTimestamp";
-    const REMINDER_INTERVAL_MS = 48 * 60 * 60 * 1000; // 48h
+    const REMINDER_INTERVAL_MS = 48 * 60 * 60 * 1000;
 
     async function checkAndScheduleReminder() {
       const now = Date.now();
-      let last = await AsyncStorage.getItem(LAST_FOREGROUND_TIMESTAMP_KEY);
+      let lastForegroundTimestamp = await AsyncStorage.getItem(LAST_FOREGROUND_TIMESTAMP_KEY);
 
-      if (last) {
-        const diff = now - parseInt(last, 10);
+      if (lastForegroundTimestamp) {
+        const last = parseInt(lastForegroundTimestamp, 10);
+        const diff = now - last;
+
         if (diff >= REMINDER_INTERVAL_MS) {
           const scheduled = await Notifications.getAllScheduledNotificationsAsync();
-          const existing = scheduled.find(
-            (n) =>
-              n.content?.title === "We miss you!" &&
-              (n.content?.body || "").includes("NavMiles stats")
+          const existingReminder = scheduled.find(
+            (n) => n.content.title === "We miss you!" && n.content.body?.includes("NavMiles stats")
           );
-          if (existing) {
-            await Notifications.cancelScheduledNotificationAsync(existing.identifier);
+          if (existingReminder) {
+            await Notifications.cancelScheduledNotificationAsync(existingReminder.identifier);
           }
+
           await Notifications.scheduleNotificationAsync({
             content: {
               title: "We miss you!",
@@ -150,19 +194,53 @@ export default function RootLayout() {
     }
 
     checkAndScheduleReminder();
+
     const sub = AppState.addEventListener("change", (state) => {
-      if (state === "active") checkAndScheduleReminder();
+      if (state === "active") {
+        checkAndScheduleReminder();
+      }
     });
     return () => sub.remove();
   }, []);
 
   return (
-    <SettingsProvider>
-      <UserVehicleProvider>
-        <TripLogProvider>
-          <Stack screenOptions={{ headerShown: false }} />
-        </TripLogProvider>
-      </UserVehicleProvider>
-    </SettingsProvider>
+    <Sentry.TouchEventBoundary>
+      <SettingsProvider>
+        <UserVehicleProvider>
+          <TripLogProvider>
+            <View style={{ flex: 1 }}>
+              <Stack screenOptions={{ headerShown: false }} />
+
+              {/* ✅ Dev-only Sentry test button (includes user/device extras) */}
+              {__DEV__ && (
+                <View style={{ padding: 10 }}>
+                  <Button
+                    title={userSet ? "Send Sentry Test Event" : "Preparing Sentry..."}
+                    disabled={!userSet}
+                    onPress={() => {
+                      Sentry.captureException(new Error("First error"), {
+                        extra: {
+                          reason: "manual_test_button",
+                          ts: new Date().toISOString(),
+                          platform: Platform.OS,
+                          appVersion:
+                            Constants?.expoConfig?.version ||
+                            Constants?.manifest?.version ||
+                            "unknown",
+                        },
+                        tags: {
+                          env: __DEV__ ? "development" : "production",
+                          area: "root_layout",
+                        },
+                      });
+                    }}
+                  />
+                </View>
+              )}
+            </View>
+          </TripLogProvider>
+        </UserVehicleProvider>
+      </SettingsProvider>
+    </Sentry.TouchEventBoundary>
   );
-}
+});
