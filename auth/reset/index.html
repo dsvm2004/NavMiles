@@ -51,7 +51,6 @@
 
     const qs = new URL(window.location.href).searchParams;
     const token_hash = qs.get('token_hash') || '';
-    const email      = qs.get('email') || '';
     const type       = (qs.get('type') || '').toLowerCase();
     const codeParam  = qs.get('code'); // only for magic link / oauth (not recovery)
 
@@ -68,17 +67,17 @@
 
     async function init() {
       try {
-        // Password recovery flow
-        if (type === 'recovery' && token_hash && email) {
+        // A) Password recovery: verify with ONLY token_hash + type
+        if (type === 'recovery' && token_hash) {
           setMsg('Verifying your reset link…');
-          const { error } = await supabase.auth.verifyOtp({ email, token_hash, type: 'recovery' });
+          const { error } = await supabase.auth.verifyOtp({ token_hash, type: 'recovery' });
           if (error) throw error;
           setMsg('Link verified. Enter your new password below.');
           $form.classList.remove('hidden');
           return;
         }
 
-        // Magic link / OAuth callback (not used for reset emails)
+        // B) Magic link / OAuth: if you ever direct those to this page
         if (codeParam) {
           setMsg('Signing you in…');
           const { error } = await supabase.auth.exchangeCodeForSession(codeParam);
