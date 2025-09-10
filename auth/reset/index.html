@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
   <title>Reset your password · NavMiles</title>
   <style>
     body { margin:0; padding:0; background:#0b1b2c; font-family: Arial, Helvetica, sans-serif; color:#eef5ff; }
@@ -45,23 +46,12 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    // === YOUR SUPABASE PROJECT (production) ===
+    // === NavMiles Supabase (production) ===
     const SUPABASE_URL = 'https://weqzucvyfjydhgvahuag.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndlcXp1Y3Z5Zmp5ZGhndmFodWFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIwODk3NjksImV4cCI6MjA2NzY2NTc2OX0.t0nGmoVviaJD6Lbku2XFPshhayjK8zpLRPQtFRMeVUQ';
     const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     const qs = new URL(window.location.href).searchParams;
-
-    // DEBUG overlay (remove after it works)
-    document.body.insertAdjacentHTML(
-      'afterbegin',
-      `<div style="position:fixed;top:8px;left:8px;background:#102842;color:#9fd3ff;padding:8px 10px;border-radius:6px;font:12px/1.3 monospace;z-index:99999;">
-         href=${encodeURI(window.location.href)}<br>
-         token_hash=${qs.get('token_hash') ? qs.get('token_hash').slice(0,12)+'…' : '(missing)'}<br>
-         type=${qs.get('type') || '(missing)'}
-       </div>`
-    );
-
     const token_hash = qs.get('token_hash') || '';
     const type       = (qs.get('type') || '').toLowerCase();
     const codeParam  = qs.get('code'); // only for magic link / oauth (not recovery)
@@ -79,23 +69,25 @@
 
     async function init() {
       try {
-        // A) Password recovery flow (VERIFY WITH ONLY token_hash + type)
+        // A) Password recovery
         if (type === 'recovery' && token_hash) {
           setMsg('Verifying your reset link…');
           const { error } = await supabase.auth.verifyOtp({ token_hash, type: 'recovery' });
           if (error) throw error;
           setMsg('Link verified. Enter your new password below.');
           $form.classList.remove('hidden');
+          $pw1?.focus();
           return;
         }
 
-        // B) Magic link / OAuth (not used by the reset email, but safe to support)
+        // B) Magic link / OAuth (not used by reset email)
         if (codeParam) {
           setMsg('Signing you in…');
           const { error } = await supabase.auth.exchangeCodeForSession(codeParam);
           if (error) throw error;
           setMsg('Signed in. You can now set a new password below.');
           $form.classList.remove('hidden');
+          $pw1?.focus();
           return;
         }
 
@@ -115,7 +107,13 @@
         setMsg('Updating password…');
         const { error } = await supabase.auth.updateUser({ password: $pw1.value });
         if (error) throw error;
+
         setMsg('Password updated! You can close this page and log in to NavMiles.', 'ok');
+
+        // Optional: try to open the app, then fallback to homepage.
+        // Comment out if you don't want auto-redirect.
+        setTimeout(() => { window.location.href = 'navmiles://auth/reset-complete'; }, 300);
+        setTimeout(() => { window.location.href = 'https://navmiles.com'; }, 1800);
       } catch (e) {
         setMsg(e.message || 'Could not update password.', 'err');
       } finally {
