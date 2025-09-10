@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Reset your NavMiles password</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+      body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0; padding:24px; background:#0b1b2c; color:#eef5ff; }
+      .card { max-width:520px; margin:0 auto; background:#10233a; border:1px solid #1c3652; border-radius:14px; padding:22px; }
+      h1 { font-size:20px; margin:0 0 10px; color:#cde5fa; }
+      .muted { color:#8ea2be; margin:0 0 18px; }
+      .field { margin:10px 0; }
+      input { width:100%; padding:12px; border-radius:10px; border:1px solid #274968; background:#0f2035; color:#fff; }
+      button { background:#1976d2; color:#fff; border:0; border-radius:10px; padding:12px 16px; font-weight:700; width:100%; cursor:pointer; }
+      button[disabled] { opacity:.6; cursor:default; }
+      .hidden { display:none; }
+      .center { text-align:center; }
+      a { color:#78b6ff; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Reset your password</h1>
+      <p class="muted" id="status">Trying to open the NavMiles app…</p>
+
+      <div id="form" class="hidden">
+        <div class="field"><input id="pw1" type="password" placeholder="New password (min 6 chars)" /></div>
+        <div class="field"><input id="pw2" type="password" placeholder="Confirm new password" /></div>
+        <button id="submit">Update Password</button>
+        <p class="muted center" style="margin-top:12px;">
+          If nothing happened, complete the reset here and then log into the app.
+        </p>
+      </div>
+
+      <div id="done" class="hidden center">
+        <p>Password updated ✅</p>
+        <p class="muted">You can now open the NavMiles app and sign in with your new password.</p>
+        <p><a href="navmiles://">Open NavMiles</a></p>
+      </div>
+    </div>
+
+    <script>
+      const url = new URL(window.location.href);
+      const code = url.searchParams.get('code') || url.searchParams.get('token_hash') || '';
+      const type = url.searchParams.get('type') || 'recovery';
+
+      if (code) {
+        // Try to open the app with the one-time code
+        window.location.href = `navmiles://auth/reset-password?code=${encodeURIComponent(code)}&type=${encodeURIComponent(type)}`;
+      }
+
+      const statusEl = document.getElementById('status');
+      const formEl   = document.getElementById('form');
+      const doneEl   = document.getElementById('done');
+
+      setTimeout(() => {
+        statusEl.textContent = "If the app didn't open, you can reset your password here.";
+        formEl.classList.remove('hidden');
+      }, 1200);
+
+      // ⬇️ Fill these in
+      const SUPABASE_URL = "https://YOUR-PROJECT-REF.supabase.co";
+      const SUPABASE_ANON_KEY = "YOUR_PUBLIC_ANON_KEY";
+
+      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+      const submitBtn = document.getElementById('submit');
+      const pw1El = document.getElementById('pw1');
+      const pw2El = document.getElementById('pw2');
+
+      async function webReset() {
+        const p1 = pw1El.value.trim();
+        const p2 = pw2El.value.trim();
+        if (p1.length < 6) { alert("Password too short (min 6)."); return; }
+        if (p1 !== p2) { alert("Passwords do not match."); return; }
+        submitBtn.disabled = true;
+        try {
+          if (code) {
+            const { error: exErr } = await supabase.auth.exchangeCodeForSession(code);
+            if (exErr) throw exErr;
+          }
+          const { error: updErr } = await supabase.auth.updateUser({ password: p1 });
+          if (updErr) throw updErr;
+
+          formEl.classList.add('hidden');
+          statusEl.classList.add('hidden');
+          doneEl.classList.remove('hidden');
+        } catch (e) {
+          alert(e.message || "Could not reset password.");
+        } finally {
+          submitBtn.disabled = false;
+        }
+      }
+
+      submitBtn.addEventListener('click', webReset);
+    </script>
+  </body>
+</html>
