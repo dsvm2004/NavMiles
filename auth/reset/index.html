@@ -54,7 +54,7 @@
     const qs = new URL(window.location.href).searchParams;
     const token_hash = qs.get('token_hash') || '';
     const type       = (qs.get('type') || '').toLowerCase();
-    const codeParam  = qs.get('code'); // only for magic link / oauth (not recovery)
+    const codeParam  = qs.get('code'); // only for magic link / oauth (not used by reset email)
 
     const $status = document.getElementById('status');
     const $form   = document.getElementById('form');
@@ -69,7 +69,7 @@
 
     async function init() {
       try {
-        // A) Password recovery
+        // A) Password recovery (verify with ONLY token_hash + type)
         if (type === 'recovery' && token_hash) {
           setMsg('Verifying your reset link…');
           const { error } = await supabase.auth.verifyOtp({ token_hash, type: 'recovery' });
@@ -80,7 +80,7 @@
           return;
         }
 
-        // B) Magic link / OAuth (not used by reset email)
+        // B) Magic link / OAuth (optional support)
         if (codeParam) {
           setMsg('Signing you in…');
           const { error } = await supabase.auth.exchangeCodeForSession(codeParam);
@@ -97,6 +97,7 @@
       }
     }
 
+    // === Submit handler (includes MOBILE-ONLY deep link + fallback) ===
     $form.addEventListener('submit', async (e) => {
       e.preventDefault();
       if ($pw1.value.length < 6) { setMsg('Password must be at least 6 characters.', 'err'); return; }
@@ -110,10 +111,25 @@
 
         setMsg('Password updated! You can close this page and log in to NavMiles.', 'ok');
 
-        // Optional: try to open the app, then fallback to homepage.
-        // Comment out if you don't want auto-redirect.
-        setTimeout(() => { window.location.href = 'navmiles://auth/reset-complete'; }, 300);
-        setTimeout(() => { window.location.href = 'https://navmiles.com'; }, 1800);
+        // Mobile-only deep link (avoids desktop Safari popup); fallback to site
+        const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        const isAndroid = /Android/i.test(navigator.userAgent);
+
+        if (isIOS || isAndroid) {
+          const deeplinkUrl = 'navmiles://auth/reset-complete';
+          const webFallback = 'https://navmiles.com';
+
+          if (isAndroid) {
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = deeplinkUrl;
+            document.body.appendChild(iframe);
+            setTimeout(() => { window.location.href = webFallback; }, 1200);
+          } else {
+            window.location.href = deeplinkUrl;
+            setTimeout(() => { window.location.href = webFallback; }, 1200);
+          }
+        }
       } catch (e) {
         setMsg(e.message || 'Could not update password.', 'err');
       } finally {
