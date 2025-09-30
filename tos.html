@@ -1,129 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>NavMiles – Terms of Service</title>
-  <link rel="icon" type="image/png" href="assets/app_logo.png">
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/app_logo.png" />
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet" />
   <style>
-    body { margin:0; font-family:'Inter',Arial,sans-serif; background:radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%); color:#cde5fa; min-height:100vh;}
-    .navbar { width:100vw; background:rgba(10,24,47,0.95); box-shadow:0 1px 10px #01152433; position:sticky; top:0; z-index:20; display:flex; justify-content:center;}
-    .nav-content { width:100%; max-width:630px; display:flex; align-items:center; justify-content:center; margin:0 auto; gap:12px; padding:10px 0 7px 0;}
-    .nav-logo { height:36px; margin-right:16px; border-radius:13px; box-shadow:0 3px 12px #01152433; background:#fff1; object-fit:contain;}
-    .nav-btn { background:none; border:none; color:#cde5fa; font-size:1.05rem; padding:9px 16px; font-weight:700; border-radius:13px; margin:0 4px; cursor:pointer; transition:background 0.15s, color 0.15s; text-decoration:none; display:inline-block;}
-    .nav-btn.active, .nav-btn:hover { background:#1e88e5; color:#fff;}
-    .container { max-width:520px; margin:0 auto; padding:30px 8px 50px 8px; display:flex; flex-direction:column; align-items:center;}
-    .card { width:100%; background:rgba(10,24,47,0.97); border-radius:26px; padding:34px 18px 28px 18px; margin-bottom:34px; box-shadow:0 6px 28px #01152460;}
-    .tos-title { color:#e39b0d; font-size:2rem; font-weight:bold; margin-bottom:8px; text-align:center; letter-spacing:0.5px;}
-    .update-date { color:#8ea2be; font-size:1rem; font-style:italic; margin-bottom:22px; text-align:center;}
-    .section-title { color:#36cfff; font-weight:700; font-size:1.19rem; margin-top:20px; margin-bottom:5px; }
-    .body-text { color:#cde5fa; font-size:1.07rem; line-height:1.7; margin-bottom:5px;}
-    .footer { position:fixed; bottom:0; left:0; width:100vw; background:rgba(10,24,47,0.92); color:#8ea2be; text-align:center; font-size:1rem; padding:13px 6px 11px 6px; letter-spacing:0.5px; display:flex; justify-content:center; align-items:center; gap:12px; z-index:100; box-shadow:0 -2px 12px #01152466;}
-    .footer a { color:#46cfff; text-decoration:none; margin-left:3px; font-size:1.16em; transition:color 0.18s;}
-    .footer a:hover { color:#e39b0d;}
-    .x-icon { width:23px; height:23px; vertical-align:middle; margin-right:4px; filter:brightness(1.2);}
-    a { color:#46cfff; text-decoration:underline; }
-    @media (max-width:600px) { .container{max-width:99vw; padding:0 4vw 70px 4vw;} .tos-title{font-size:1.3rem;} }
-    @media (max-width: 650px) {
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 0.97rem;
-    padding: 13px 6px 18px 12px;
-    gap: 4px;
-    position: fixed;
-    left: 0; bottom: 0; width: 100vw;
-    background: rgba(10,24,47,0.95);
-  }
-  .footer a {
-    margin-left: 0 !important;
-    margin-right: 12px;
-    margin-bottom: 2px;
-    font-size: 1.08em;
-    display: inline-block;
-  }
-  .container {
-    padding-bottom: 170px !important;
-  }
-  .nav-content {
-    flex-wrap: wrap;
-    gap: 4px;
-    justify-content: flex-start;
-    overflow-x: auto;
-  }
-  .nav-btn {
-    padding: 7px 10px;
-    font-size: 1rem;
-    margin: 2px 3px;
-  }
-  .logo {
-    width: 82vw !important;
-    max-width: 190px !important;
-  }
-}
-@media (max-width: 430px) {
-  .footer { font-size: 0.84rem; padding: 11px 3vw 18px 4vw;}
-  .container { padding-bottom: 190px !important;}
-}
+    :root {
+      --bg1: #082131;
+      --bg2: #011524;
+      --ink: #cde5fa;
+      --ink-dim: #8ea2be;
+      --ink-acc: #36cfff;
+      --ink-acc2: #46cfff;
+      --brand: #1e88e5;
+      --gold: #e39b0d;
+      --card: rgba(10,24,47,0.97);
+      --nav: rgba(10,24,47,0.95);
+      --footer: rgba(10,24,47,0.92);
+      --shadow: #01152460;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: radial-gradient(ellipse at 50% 20%, var(--bg1) 70%, var(--bg2) 100%);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    .navbar {
+      width: 100vw;
+      background: var(--nav);
+      box-shadow: 0 1px 10px #01152433;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-content {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      gap: 12px;
+      padding: 10px 12px 7px 12px;
+    }
+
+    .nav-logo {
+      height: 36px;
+      margin-right: 16px;
+      border-radius: 13px;
+      box-shadow: 0 3px 12px #01152433;
+      background: #ffffff11;
+      object-fit: contain;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: var(--ink);
+      font-size: 1.05rem;
+      padding: 9px 16px;
+      font-weight: 700;
+      border-radius: 13px;
+      margin: 0 4px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .nav-btn.active, .nav-btn:hover {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 36px 20px 120px 20px; /* extra bottom padding for footer */
+    }
+
+    .card {
+      width: 100%;
+      background: var(--card);
+      border-radius: 26px;
+      padding: 34px 28px 28px 28px;
+      margin-bottom: 34px;
+      box-shadow: 0 6px 28px var(--shadow);
+    }
+
+    .tos-title {
+      color: var(--gold);
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    .update-date {
+      color: var(--ink-dim);
+      font-size: 1rem;
+      font-style: italic;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .section-title {
+      color: var(--ink-acc);
+      font-weight: 700;
+      font-size: 1.18rem;
+      margin-top: 22px;
+      margin-bottom: 7px;
+    }
+
+    .body-text {
+      color: var(--ink);
+      font-size: 1.08rem;
+      line-height: 1.7;
+      margin-bottom: 6px;
+    }
+
+    .highlight { color: #b6d8fd; font-weight: 700; }
+    a { color: var(--ink-acc2); text-decoration: underline; }
+    a:hover { color: var(--gold); }
+
+    .footer {
+      position: fixed;
+      bottom: 0; left: 0; width: 100vw;
+      background: var(--footer);
+      color: var(--ink-dim);
+      text-align: center;
+      font-size: 1rem;
+      padding: 13px 6px 11px 6px;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      z-index: 100;
+      box-shadow: 0 -2px 12px #01152466;
+      backdrop-filter: saturate(1.1) blur(4px);
+    }
+
+    .footer a {
+      color: var(--ink-acc2);
+      text-decoration: none;
+      margin-left: 3px;
+      font-size: 1.05em;
+      transition: color 0.18s;
+    }
+
+    .x-icon { width: 23px; height: 23px; vertical-align: middle; margin-right: 4px; filter: brightness(1.2);}
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-content { max-width: 95vw; }
+    }
+
+    @media (max-width: 600px) {
+      .container { max-width: 99vw; padding: 0 3vw 110px 3vw; }
+      .card { padding: 19px 5vw 19px 5vw; }
+      .tos-title { font-size: 1.6rem; }
+    }
+
+    @media (max-width: 650px) {
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 0.97rem;
+        padding: 13px 6px 18px 12px;
+        gap: 4px;
+        background: rgba(10,24,47,0.95);
+      }
+      .footer a {
+        margin-left: 0 !important;
+        margin-right: 12px;
+        margin-bottom: 2px;
+        font-size: 1.02em;
+        display: inline-block;
+      }
+      .container { padding-bottom: 170px !important; }
+      .nav-content {
+        flex-wrap: wrap;
+        gap: 4px;
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+      .nav-btn {
+        padding: 7px 10px;
+        font-size: 1rem;
+        margin: 2px 3px;
+      }
+      .nav-logo {
+        height: 32px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .footer { font-size: 0.88rem; padding: 11px 3vw 18px 4vw; }
+      .container { padding-bottom: 190px !important; }
+    }
   </style>
 </head>
 <body>
-  <div class="navbar">
+  <div class="navbar" role="navigation" aria-label="Primary">
     <div class="nav-content">
       <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
       <a class="nav-btn" href="index.html">Home</a>
       <a class="nav-btn" href="pricing.html">Pricing</a>
-
       <a class="nav-btn" href="comparison.html">Comparison</a>
       <a class="nav-btn" href="faq.html">FAQ</a>
       <a class="nav-btn" href="newsletter.html">Newsletter</a>
       <a class="nav-btn" href="contact.html">Contact</a>
+      <a class="nav-btn active" href="tos.html" aria-current="page">Terms</a>
     </div>
   </div>
-  <div class="container">
-    <div class="card">
-      <div class="tos-title">Terms of Service</div>
-      <div class="update-date">Last updated: June 2025</div>
 
-      <div class="section-title">1. Acceptance of Terms</div>
-      <div class="body-text">By using the NavMiles app ("Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, you may not use the Service.</div>
-      
-      <div class="section-title">2. Account Registration & Security</div>
-      <div class="body-text">You are responsible for maintaining the confidentiality of your account and password. You agree to notify us immediately of any unauthorized use of your account.</div>
-      
-      <div class="section-title">3. Subscriptions, Billing, and Refund Policy</div>
-      <div class="body-text">NavMiles may offer subscription plans with recurring billing. By subscribing, you authorize us to charge your chosen payment method on a recurring basis. </div>
-      <div class="body-text"><b>Refund Policy:</b> All fees and charges are non-refundable except as required by law. If you believe you were charged in error, please contact us at <a href="mailto:support@navmiles.com">support@navmiles.com</a> within 7 days of the transaction. The maximum refund available for any claim will not exceed the amount paid for your most recent subscription period.</div>
-      <div class="body-text">Subscriptions can be canceled at any time. Cancellations take effect at the end of your current billing period; no pro-rated refunds will be issued.</div>
+  <main class="container">
+    <article class="card">
+      <h1 class="tos-title">Terms of Service</h1>
+      <div class="update-date">Last updated: September 30, 2025</div>
 
-      <div class="section-title">4. User Content & Conduct</div>
-      <div class="body-text">You are responsible for all content you submit to the Service and agree not to use NavMiles for any unlawful or harmful activity.</div>
+      <h2 class="section-title">1) Acceptance of Terms</h2>
+      <p class="body-text">
+        These Terms of Service (the “Terms”) govern your access to and use of the NavMiles mobile application, websites, content, products, and services
+        (collectively, the “Service”). The Service is owned and operated by <span class="highlight">Mcuztoms LLC</span> (“Company,” “we,” “us,” “our”).
+        By accessing or using the Service, you agree to be bound by these Terms. If you do not agree, do not use the Service.
+      </p>
 
-      <div class="section-title">5. Limitation of Liability</div>
-      <div class="body-text">To the fullest extent permitted by law, NavMiles, its owners, and affiliates shall not be liable for any indirect, incidental, or consequential damages, including loss of data or profits, or for any damages arising from the use of, or inability to use, the Service. Our total liability for any claims arising out of or relating to your use of the Service will not exceed the amount paid by you, if any, for accessing the Service during the twelve (12) months preceding the claim, or the cost of your most recent subscription period, whichever is less.</div>
-      <div class="body-text">NavMiles is provided “as is” without warranty of any kind. We do not guarantee the accuracy of any information or navigation data.</div>
+      <h2 class="section-title">2) Eligibility & Account</h2>
+      <p class="body-text">
+        You must be at least 16 years old (or the age of legal driving in your jurisdiction, if higher) to use the Service. You are responsible for
+        maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree to provide accurate,
+        current, and complete information and to promptly update it as needed.
+      </p>
 
-      <div class="section-title">6. No Vehicle or Safety Liability</div>
-      <div class="body-text">NavMiles is intended for informational and convenience purposes only. We are not responsible for damages to your vehicle, property, or personal injury that may arise from using the Service.</div>
+      <h2 class="section-title">3) Subscriptions, Billing & Refunds</h2>
+      <p class="body-text">
+        Some features of the Service require a paid subscription. By starting a subscription, you authorize us and/or our payment processors (including the
+        applicable app store) to charge your selected payment method on a recurring basis until canceled. Prices and features may change with notice as required by law.
+      </p>
+      <p class="body-text">
+        <span class="highlight">Refunds:</span> Except where required by law or expressly stated otherwise, all fees are non-refundable. If you believe you were
+        charged in error, contact us at <a href="mailto:support@navmiles.com">support@navmiles.com</a> within 10 days of the charge. You may cancel at any time via
+        your device’s app store settings or in-app where available. Cancellation takes effect at the end of the current billing period. No prorated refunds are provided unless required by law.
+      </p>
 
-      <div class="section-title">7. Privacy</div>
-      <div class="body-text">Please review our <a href="privacy.html">Privacy Policy</a> to learn how we handle your data.</div>
+      <h2 class="section-title">4) Safety; No Professional Advice</h2>
+      <p class="body-text">
+        <span class="highlight">Drive safely.</span> Do not interact with the app while driving unless allowed by applicable law and it is safe to do so. Mount your device
+        in a legal, secure manner and comply with all traffic laws. The Service provides informational tools only and does not replace your judgment, vehicle instrumentation,
+        or official traffic guidance. We do not provide legal, financial, mechanical, or professional advice.
+      </p>
 
-      <div class="section-title">8. Changes to Terms</div>
-      <div class="body-text">We reserve the right to update these Terms at any time. Your continued use of NavMiles after any changes constitutes acceptance of those changes.</div>
+      <h2 class="section-title">5) Acceptable Use</h2>
+      <p class="body-text">
+        You agree not to: (a) use the Service for any unlawful purpose; (b) infringe or violate others’ rights; (c) decompile, reverse engineer, or attempt to extract source code
+        (except to the extent such restrictions are prohibited by law); (d) access the Service via automated means not provided by us; (e) interfere with or disrupt the Service;
+        (f) upload malicious code or data; or (g) circumvent any usage limits or access controls.
+      </p>
 
-      <div class="section-title">9. Contact Us</div>
-      <div class="body-text">For questions, support, or to request a refund, contact us at <a href="mailto:support@navmiles.com">support@navmiles.com</a>.</div>
+      <h2 class="section-title">6) User Content & Feedback</h2>
+      <p class="body-text">
+        You retain ownership of content you submit, but grant us a worldwide, non-exclusive, royalty-free, sublicensable, and transferable license to use, reproduce, modify, distribute,
+        publicly perform, and display such content solely for operating, improving, and promoting the Service. You represent that you have all rights necessary to grant this license.
+        You agree we may use any feedback without obligation to you.
+      </p>
+
+      <h2 class="section-title">7) Third-Party Services & Data</h2>
+      <p class="body-text">
+        The Service may display or rely on third-party data (e.g., maps, routing, fuel prices) and services. We do not control and are not responsible for third-party content or availability.
+        Your use of third-party services may be subject to their terms and privacy policies.
+      </p>
+
+      <h2 class="section-title">8) Beta & Experimental Features</h2>
+      <p class="body-text">
+        From time to time, we may offer beta or experimental features. These features are provided “as is”, may be modified or discontinued at any time, and may have errors. Your use is at your sole risk.
+      </p>
+
+      <h2 class="section-title">9) Ownership; License to You</h2>
+      <p class="body-text">
+        We and our licensors own all rights, title, and interest in and to the Service and its content, including all intellectual property rights. Subject to your compliance with these Terms,
+        we grant you a limited, non-exclusive, non-transferable, revocable license to use the Service for your personal, non-commercial use.
+      </p>
+
+      <h2 class="section-title">10) Privacy</h2>
+      <p class="body-text">
+        Our collection and use of personal data is described in our <a href="privacy.html">Privacy Policy</a>. By using the Service, you consent to our data practices as described there.
+      </p>
+
+      <h2 class="section-title">11) Disclaimer of Warranties</h2>
+      <p class="body-text">
+        TO THE FULLEST EXTENT PERMITTED BY LAW, THE SERVICE IS PROVIDED “AS IS” AND “AS AVAILABLE”, WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING WITHOUT LIMITATION
+        WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICE WILL BE ACCURATE, RELIABLE, ERROR-FREE, UNINTERRUPTED, OR SECURE.
+      </p>
+
+      <h2 class="section-title">12) Limitation of Liability</h2>
+      <p class="body-text">
+        TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT WILL COMPANY (MCUZTOMS LLC), ITS AFFILIATES, LICENSORS, OR SERVICE PROVIDERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL,
+        EXEMPLARY, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE, DATA, GOODWILL, OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR IN CONNECTION WITH THE SERVICE OR THESE TERMS, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+      </p>
+      <p class="body-text">
+        <span class="highlight">TOTAL COMPENSATION CAP:</span> TO THE MAXIMUM EXTENT PERMITTED BY LAW, OUR AGGREGATE LIABILITY FOR ALL CLAIMS ARISING OUT OF OR RELATING TO THE SERVICE OR THESE TERMS
+        SHALL NOT EXCEED THE AMOUNT YOU ACTUALLY PAID TO US FOR THE SERVICE IN THE ONE (1) MONTH IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM. SOME JURISDICTIONS DO NOT ALLOW CERTAIN LIMITATIONS; IF APPLICABLE LAW DOES NOT ALLOW THE ABOVE LIMITATIONS, THEY SHALL APPLY TO THE FULLEST EXTENT PERMITTED.
+      </p>
+
+      <h2 class="section-title">13) Indemnification</h2>
+      <p class="body-text">
+        You agree to defend, indemnify, and hold harmless Mcuztoms LLC, its affiliates, officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses
+        (including reasonable attorneys’ fees) arising from or related to: (a) your use of the Service; (b) your violation of these Terms; or (c) your violation of any law or third-party rights.
+      </p>
+
+      <h2 class="section-title">14) Driving & Vehicle Risks</h2>
+      <p class="body-text">
+        You understand that driving involves risk of accidents, property damage, personal injury, and death. You assume all risks associated with driving and the use of the Service in a vehicle.
+        The Service does not control your vehicle, does not replace safe driving practices, and may not reflect real-time road, weather, or traffic conditions.
+      </p>
+
+      <h2 class="section-title">15) Suspension & Termination</h2>
+      <p class="body-text">
+        We may suspend or terminate your access to the Service at any time, with or without notice, if we believe you have violated these Terms or for any reason in our discretion.
+        Upon termination, your right to use the Service will immediately cease, but the following sections will survive: 6, 7, 8, 9, 11–20.
+      </p>
+
+      <h2 class="section-title">16) Changes to the Service or Terms</h2>
+      <p class="body-text">
+        We may modify or discontinue the Service (in whole or part) at any time. We may also update these Terms from time to time. If we make material changes, we will provide notice as required by law.
+        Your continued use of the Service after changes become effective constitutes acceptance of the revised Terms.
+      </p>
+
+      <h2 class="section-title">17) Governing Law; Venue</h2>
+      <p class="body-text">
+        These Terms are governed by the laws of the State of Michigan, without regard to its conflicts of law rules. Subject to the arbitration provision below, exclusive venue for any permitted court action
+        is in the state or federal courts located in Kent County, Michigan, and you consent to personal jurisdiction there.
+      </p>
+
+      <h2 class="section-title">18) Binding Arbitration; Class-Action Waiver</h2>
+      <p class="body-text">
+        <span class="highlight">Arbitration:</span> Any dispute, claim, or controversy arising out of or relating to these Terms or the Service will be resolved by binding, individual arbitration administered by a
+        recognized provider (e.g., AAA) under its applicable rules. Arbitration will take place in Kent County, Michigan (or by video/teleconference if mutually agreed). Judgment on the award may be entered in any court of competent jurisdiction.
+      </p>
+      <p class="body-text">
+        <span class="highlight">Class-Action Waiver:</span> You and Company agree that each may bring claims against the other only in your or its individual capacity and not as a plaintiff or class member in any purported class or representative proceeding.
+        The arbitrator may not consolidate claims or preside over any form of representative or class proceeding.
+      </p>
+      <p class="body-text">
+        <span class="highlight">Small Claims Exception & Opt-Out:</span> Either party may seek relief in small claims court for qualifying disputes. You may opt out of arbitration within 30 days of first accepting these Terms
+        by emailing <a href="mailto:support@navmiles.com">support@navmiles.com</a> with the subject “Arbitration Opt-Out” and your account details.
+      </p>
+
+      <h2 class="section-title">19) Force Majeure</h2>
+      <p class="body-text">
+        We are not liable for any delay or failure to perform due to causes beyond our reasonable control, including acts of God, natural disasters, war, terrorism, labor disputes, government actions,
+        internet or telecommunications failures, or third-party service interruptions.
+      </p>
+
+      <h2 class="section-title">20) Miscellaneous</h2>
+      <p class="body-text">
+        These Terms constitute the entire agreement between you and us regarding the Service and supersede all prior agreements. If any provision is held unenforceable, it will be enforced to the maximum extent permissible,
+        and the remaining provisions will remain in full force. You may not assign these Terms without our prior written consent; we may assign them without restriction. No waiver is effective unless in writing and signed by us.
+      </p>
+
+      <h2 class="section-title">21) Contact</h2>
+      <p class="body-text">
+        For questions, support, or billing issues, contact: <a href="mailto:support@navmiles.com">support@navmiles.com</a><br />
+        Company: <span class="highlight">Mcuztoms LLC</span>
+      </p>
+    </article>
+  </main>
+
+  <footer class="footer" role="contentinfo" aria-label="Footer">
+    <div>© <span id="yy"></span> NavMiles. All rights reserved.</div>
+    <div>Powered by <strong>Mcuztoms LLC</strong></div>
+    <div>•</div>
+    <div>Follow us on
+      <a href="https://x.com/navmiles" target="_blank" rel="noopener noreferrer" aria-label="NavMiles on X/Twitter">
+        <img class="x-icon" src="assets/x.svg" alt="" />X
+      </a>
     </div>
-  </div>
-  <div class="footer">
-    &copy; 2025 NavMiles • Built by Mcuztoms LLC
-    <a href="https://x.com/NavMiles" target="_blank"><img class="x-icon" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X logo">@NavMiles</a>
-    <a href="privacy.html">Privacy Policy</a> &middot;
-    <a href="tos.html">Terms of Service</a> &middot;
-    <a href="refund.html">Refund Policy</a>
-  </div>
+    <div>•</div>
+    <div><a href="privacy.html">Privacy Policy</a></div>
+  </footer>
+
+  <script>
+    // Set year dynamically
+    document.getElementById('yy').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
