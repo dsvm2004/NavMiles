@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>NavMiles – Privacy Policy</title>
-  <link rel="icon" type="image/png" href="assets/app_logo.png">
-  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/app_logo.png" />
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg1: #082131;
+      --bg2: #011524;
+      --ink: #cde5fa;
+      --ink-dim: #8ea2be;
+      --ink-acc: #36cfff;
+      --ink-acc2: #46cfff;
+      --brand: #1e88e5;
+      --gold: #e39b0d;
+      --card: rgba(10,24,47,0.97);
+      --nav: rgba(10,24,47,0.95);
+      --footer: rgba(10,24,47,0.92);
+      --shadow: #01152460;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: 'Inter', Arial, sans-serif;
-      background: radial-gradient(ellipse at 50% 20%, #082131 70%, #011524 100%);
-      color: #cde5fa;
+      background: radial-gradient(ellipse at 50% 20%, var(--bg1) 70%, var(--bg2) 100%);
+      color: var(--ink);
       min-height: 100vh;
     }
+
     .navbar {
       width: 100vw;
-      background: rgba(10,24,47,0.95);
+      background: var(--nav);
       box-shadow: 0 1px 10px #01152433;
       position: sticky;
       top: 0;
@@ -24,28 +42,31 @@
       display: flex;
       justify-content: center;
     }
+
     .nav-content {
       width: 100%;
-      max-width: 630px;
+      max-width: 900px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto;
       gap: 12px;
-      padding: 10px 0 7px 0;
+      padding: 10px 12px 7px 12px;
     }
+
     .nav-logo {
       height: 36px;
       margin-right: 16px;
       border-radius: 13px;
       box-shadow: 0 3px 12px #01152433;
-      background: #fff1;
+      background: #ffffff11;
       object-fit: contain;
     }
+
     .nav-btn {
       background: none;
       border: none;
-      color: #cde5fa;
+      color: var(--ink);
       font-size: 1.05rem;
       padding: 9px 16px;
       font-weight: 700;
@@ -55,63 +76,75 @@
       transition: background 0.15s, color 0.15s;
       text-decoration: none;
       display: inline-block;
+      white-space: nowrap;
     }
+
     .nav-btn.active, .nav-btn:hover {
-      background: #1e88e5;
+      background: var(--brand);
       color: #fff;
     }
+
     .container {
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 36px 20px 120px 20px; /* extra bottom padding for footer */
       background: none;
     }
+
     .policy-card {
       width: 100%;
-      background: rgba(10,24,47,0.97);
+      background: var(--card);
       border-radius: 26px;
       padding: 34px 28px 28px 28px;
       margin-bottom: 34px;
-      box-shadow: 0 6px 28px #01152460;
+      box-shadow: 0 6px 28px var(--shadow);
     }
+
     .policy-title {
-      color: #e39b0d;
+      color: var(--gold);
       font-size: 2rem;
-      font-weight: bold;
+      font-weight: 800;
       margin-bottom: 10px;
       text-align: center;
       letter-spacing: 0.5px;
     }
+
     .update-date {
-      color: #8ea2be;
+      color: var(--ink-dim);
       font-size: 1rem;
       font-style: italic;
       margin-bottom: 24px;
       text-align: center;
     }
+
     .section-title {
-      color: #36cfff;
+      color: var(--ink-acc);
       font-weight: 700;
       font-size: 1.18rem;
       margin-top: 22px;
       margin-bottom: 7px;
     }
+
     .body-text {
-      color: #cde5fa;
+      color: var(--ink);
       font-size: 1.08rem;
       line-height: 1.7;
-      margin-bottom: 3px;
+      margin-bottom: 6px;
     }
+
     .highlight {
       color: #b6d8fd;
-      font-weight: bold;
+      font-weight: 700;
     }
-    a { color: #46cfff; text-decoration: underline; }
+
+    a { color: var(--ink-acc2); text-decoration: underline; }
+    a:hover { color: var(--gold); }
+
     .footer {
       position: fixed;
       bottom: 0; left: 0; width: 100vw;
-      background: rgba(10,24,47,0.92);
-      color: #8ea2be;
+      background: var(--footer);
+      color: var(--ink-dim);
       text-align: center;
       font-size: 1rem;
       padding: 13px 6px 11px 6px;
@@ -122,67 +155,71 @@
       gap: 12px;
       z-index: 100;
       box-shadow: 0 -2px 12px #01152466;
+      backdrop-filter: saturate(1.1) blur(4px);
     }
+
     .footer a {
-      color: #46cfff;
+      color: var(--ink-acc2);
       text-decoration: none;
       margin-left: 3px;
-      font-size: 1.16em;
+      font-size: 1.05em;
       transition: color 0.18s;
     }
-    .footer a:hover { color: #e39b0d; }
-    .x-icon { width: 23px; height: 23px; vertical-align: middle; margin-right: 4px; filter: brightness(1.2);}
-    @media (max-width: 600px) {
-      .container { max-width: 99vw; padding: 0 3vw 110px 3vw;}
-      .policy-card { padding: 19px 5vw 19px 5vw; }
-      .policy-title { font-size: 1.3rem;}
-      @media (max-width: 650px) {
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 0.97rem;
-    padding: 13px 6px 18px 12px;
-    gap: 4px;
-    position: fixed;
-    left: 0; bottom: 0; width: 100vw;
-    background: rgba(10,24,47,0.95);
-  }
-  .footer a {
-    margin-left: 0 !important;
-    margin-right: 12px;
-    margin-bottom: 2px;
-    font-size: 1.08em;
-    display: inline-block;
-  }
-  .container {
-    padding-bottom: 170px !important;
-  }
-  .nav-content {
-    flex-wrap: wrap;
-    gap: 4px;
-    justify-content: flex-start;
-    overflow-x: auto;
-  }
-  .nav-btn {
-    padding: 7px 10px;
-    font-size: 1rem;
-    margin: 2px 3px;
-  }
-  .logo {
-    width: 82vw !important;
-    max-width: 190px !important;
-  }
-}
-@media (max-width: 430px) {
-  .footer { font-size: 0.84rem; padding: 11px 3vw 18px 4vw;}
-  .container { padding-bottom: 190px !important;}
-}
 
+    .x-icon { width: 23px; height: 23px; vertical-align: middle; margin-right: 4px; filter: brightness(1.2);}
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-content { max-width: 95vw; }
+    }
+
+    @media (max-width: 600px) {
+      .container { max-width: 99vw; padding: 0 3vw 110px 3vw; }
+      .policy-card { padding: 19px 5vw 19px 5vw; }
+      .policy-title { font-size: 1.6rem; }
+    }
+
+    @media (max-width: 650px) {
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 0.97rem;
+        padding: 13px 6px 18px 12px;
+        gap: 4px;
+        background: rgba(10,24,47,0.95);
+      }
+      .footer a {
+        margin-left: 0 !important;
+        margin-right: 12px;
+        margin-bottom: 2px;
+        font-size: 1.02em;
+        display: inline-block;
+      }
+      .container { padding-bottom: 170px !important; }
+      .nav-content {
+        flex-wrap: wrap;
+        gap: 4px;
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+      .nav-btn {
+        padding: 7px 10px;
+        font-size: 1rem;
+        margin: 2px 3px;
+      }
+      .nav-logo {
+        height: 32px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .footer { font-size: 0.88rem; padding: 11px 3vw 18px 4vw; }
+      .container { padding-bottom: 190px !important; }
     }
   </style>
 </head>
 <body>
-  <div class="navbar">
+  <div class="navbar" role="navigation" aria-label="Primary">
     <div class="nav-content">
       <img src="assets/app_logo.png" class="nav-logo" alt="NavMiles Logo" />
       <a class="nav-btn" href="index.html">Home</a>
@@ -191,49 +228,141 @@
       <a class="nav-btn" href="faq.html">FAQ</a>
       <a class="nav-btn" href="newsletter.html">Newsletter</a>
       <a class="nav-btn" href="contact.html">Contact</a>
+      <a class="nav-btn active" href="privacy.html" aria-current="page">Privacy</a>
     </div>
   </div>
-  <div class="container">
-    <div class="policy-card">
-      <div class="policy-title">Privacy Policy</div>
-      <div class="update-date">Last Updated: June 2025</div>
 
-      <div class="section-title">1. Introduction</div>
-      <div class="body-text">
-        NavMiles (“we,” “us,” or “our”) is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, share, and safeguard your information when you use the NavMiles mobile application (“App”).
-      </div>
+  <main class="container">
+    <article class="policy-card">
+      <h1 class="policy-title">Privacy Policy</h1>
+      <div class="update-date">Last updated: September 30, 2025</div>
 
-      <div class="section-title">2. Information We Collect</div>
-      <div class="body-text">
-        <span class="highlight">A. Information You Provide:</span><br>
-        • Account Information (name, email, password, vehicle info)<br>
-        • Payment Information (if/when you purchase subscriptions; processed securely by third-party providers)<br>
-        • Communications (feedback, support requests)
-        <br><br>
-        <span class="highlight">B. Information Collected Automatically:</span><br>
-        • Usage Data (app features used, session length)<br>
-        • Device Information (type, operating system, unique identifiers)<br>
-        • Location Data (with your explicit permission—for features such as mileage tracking and fuel finder)
-      </div>
+      <h2 class="section-title">1) Who We Are (Controller)</h2>
+      <p class="body-text">
+        The Service is owned and operated by <span class="highlight">Mcuztoms LLC</span> (“Company,” “we,” “us,” “our”).
+        This Privacy Policy explains how we collect, use, disclose, and safeguard information when you use the NavMiles
+        mobile application, website(s), content, and related services (collectively, the “Service”). For privacy inquiries,
+        contact <a href="mailto:support@navmiles.com">support@navmiles.com</a>.
+      </p>
 
-      <div class="section-title">3. How We Use Your Information</div>
-      <div class="body-text">
-        We use your information to:<br>
-        • Provide and improve the NavMiles App and its features<br>
-        • Process subscriptions and payments (handled by trusted payment partners)<br>
-        • Communicate with you (including updates, security alerts, customer support)<br>
-        • Customize your experience and provide relevant suggestions (e.g., fuel stations, route optimization)<br>
-        • Ensure security and prevent unauthorized use<br>
-        • Comply with applicable laws and regulations
-      </div>
+      <h2 class="section-title">2) Information We Collect</h2>
+      <p class="body-text"><span class="highlight">Account & Contact Data</span>: name, email address, device identifiers, subscription status, and communications you send us (e.g., support requests, feedback).</p>
+      <p class="body-text"><span class="highlight">Location & Navigation Data</span>: GPS location, movement, route, trip logs, and related telemetry when you grant permission. You control these permissions in your device settings.</p>
+      <p class="body-text"><span class="highlight">Usage Data</span>: app interactions, feature use, crash reports, diagnostics, performance metrics, and analytics (which may be collected via SDKs).</p>
+      <p class="body-text"><span class="highlight">Device & Technical Data</span>: device model, OS version, app version, language, time zone, and approximate region inferred from IP.</p>
+      <p class="body-text"><span class="highlight">User Content</span>: optional hazard reports, notes, or other information you submit.</p>
+      <p class="body-text"><span class="highlight">Payment Data</span>: processed by app stores or payment providers; we generally receive tokens/confirmations, not full payment card details.</p>
 
-      <div class="section-title">4. How We Share Your Information</div>
-      <div class="body-text">
-        We do <b>not</b> sell your personal information. We may share your information:<br>
-        • With trusted service providers who help us operate the app (e.g., analytics, payment processors, cloud hosting)<br>
-        • If required by law, court order, or government request<br>
-        • To protect our rights, users, property, or safety<br>
-        • With your consent or at your direction
-      </div>
+      <h2 class="section-title">3) How We Use Information (Purposes)</h2>
+      <p class="body-text">
+        We use information to: (a) provide and improve the Service (routing, trip logs, MPG tools); (b) operate subscriptions and billing;
+        (c) personalize features and content; (d) maintain safety and integrity, including fraud prevention, debugging, and security;
+        (e) analyze performance and usage; (f) communicate with you (service messages, updates, support); and (g) comply with law and enforce our Terms.
+      </p>
 
-      <div class="section-title">5. Data Security
+      <h2 class="section-title">4) Legal Bases (Where Applicable)</h2>
+      <p class="body-text">
+        Where required (e.g., EEA/UK), we rely on: (i) performance of a contract (providing the Service),
+        (ii) legitimate interests (improving and securing the Service), (iii) consent (e.g., precise location,
+        certain analytics where required), and (iv) legal obligations.
+      </p>
+
+      <h2 class="section-title">5) Sharing & Disclosure</h2>
+      <p class="body-text">
+        We do not sell your personal information for money. We may share information with: (a) <span class="highlight">service providers / processors</span>
+        who assist with hosting, analytics, error reporting, customer support, and payments; (b) <span class="highlight">map and navigation partners</span> to enable routing and geolocation features;
+        (c) <span class="highlight">legal and safety</span> recipients when required by law, subpoena, or to protect rights, safety, and property; and (d) <span class="highlight">business transferees</span>
+        in connection with a merger, acquisition, or sale of assets.
+      </p>
+
+      <h2 class="section-title">6) Analytics, SDKs & Third-Party Content</h2>
+      <p class="body-text">
+        The Service may use third-party SDKs and content (e.g., maps). These providers may collect or receive certain data about your device or use of the Service
+        to help us with analytics, performance, or features. Their use of data is subject to their own privacy policies.
+      </p>
+
+      <h2 class="section-title">7) Your Privacy Rights</h2>
+      <p class="body-text">
+        Depending on your location, you may have rights to: access, correct, delete, or port your data; restrict or object to certain processing; and withdraw consent.
+        You may also have the right to lodge a complaint with a supervisory authority. We will not discriminate against you for exercising your rights.
+      </p>
+      <p class="body-text">
+        <span class="highlight">CCPA/CPRA (California) & Similar State Laws</span>: You may have rights to know/access, correct, delete, and opt out of certain data “sharing” or “sales”
+        (as defined by law, including cross-context behavioral advertising). We do not sell personal information for money; if we ever engage in activities that
+        could be deemed “sale” or “sharing,” you can opt out by contacting us at <a href="mailto:support@navmiles.com">support@navmiles.com</a>.
+      </p>
+
+      <h2 class="section-title">8) Do Not Track, Do Not Sell/Share</h2>
+      <p class="body-text">
+        Some browsers offer “Do Not Track” signals; we do not currently respond to them. If applicable law defines certain analytics/ads as “sale” or “sharing,”
+        you may opt out as described above.
+      </p>
+
+      <h2 class="section-title">9) Data Retention</h2>
+      <p class="body-text">
+        We retain personal information for as long as necessary to provide the Service, comply with legal obligations, resolve disputes, enforce agreements,
+        and for legitimate business purposes. Retention periods vary based on the type of data and our obligations.
+      </p>
+
+      <h2 class="section-title">10) Data Security</h2>
+      <p class="body-text">
+        We implement reasonable administrative, technical, and physical safeguards designed to protect personal information. However, no method of transmission
+        or storage is completely secure, and we cannot guarantee absolute security.
+      </p>
+
+      <h2 class="section-title">11) Children’s Privacy</h2>
+      <p class="body-text">
+        The Service is not directed to children under the age of 16 (or the age of legal driving in your jurisdiction, if higher), and we do not knowingly collect
+        personal information from children. If you believe a child has provided personal information to us, please contact
+        <a href="mailto:support@navmiles.com">support@navmiles.com</a> so we can take appropriate action.
+      </p>
+
+      <h2 class="section-title">12) Location Data Choices</h2>
+      <p class="body-text">
+        Certain features require location access. You can enable/disable location permissions in your device settings. If you disable location, some features
+        (e.g., navigation, trip logging, nearby gas) may not function.
+      </p>
+
+      <h2 class="section-title">13) International Transfers</h2>
+      <p class="body-text">
+        We may process and store information in the United States and other countries that may have different data protection laws than your country.
+        Where required, we use appropriate safeguards (e.g., contractual clauses).
+      </p>
+
+      <h2 class="section-title">14) Third-Party Links & Services</h2>
+      <p class="body-text">
+        The Service may link to third-party websites, apps, or services. We are not responsible for their privacy practices. Please review their policies before
+        providing any information.
+      </p>
+
+      <h2 class="section-title">15) Changes to This Policy</h2>
+      <p class="body-text">
+        We may update this Privacy Policy from time to time. If we make material changes, we will provide notice as required by law. Your continued use of the Service
+        after changes become effective constitutes acceptance of the revised policy.
+      </p>
+
+      <h2 class="section-title">16) Contact Us</h2>
+      <p class="body-text">
+        Email: <a href="mailto:support@navmiles.com">support@navmiles.com</a><br />
+        Company: <span class="highlight">Mcuztoms LLC</span>
+      </p>
+    </article>
+  </main>
+
+  <footer class="footer" role="contentinfo" aria-label="Footer">
+    <div>© <span id="yy"></span> NavMiles. All rights reserved.</div>
+    <div>Powered by <strong>Mcuztoms LLC</strong></div>
+    <div>•</div>
+    <div>Follow us on
+      <a href="https://x.com/navmiles" target="_blank" rel="noopener noreferrer" aria-label="NavMiles on X/Twitter">
+        <img class="x-icon" src="assets/x.svg" alt="" />X
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Set year dynamically
+    document.getElementById('yy').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
